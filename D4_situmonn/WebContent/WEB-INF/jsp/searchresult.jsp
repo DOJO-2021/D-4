@@ -4,9 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>質問・相談システム(仮)｜検索結果</title>
 </head>
 <body>
+<div class="wrapper">
+<jsp:include page="/headernologin.jsp"/>
 
+
+<jsp:include page="/footer.jsp"/>
+</div>
 </body>
 </html>
