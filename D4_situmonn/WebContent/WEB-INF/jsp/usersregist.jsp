@@ -8,6 +8,7 @@
 </head>
 <body>
 <div class="wrapper">
+<jsp:include page="/WEB-INF/jsp/headernologin.jsp"/>
 <h2>ユーザー登録</h2>
 <form method="POST" action="/D4_situmonn/UsersRegistServlet">
 <input type="text" name="id_input" placeholder="ID入力欄">
@@ -20,6 +21,7 @@
 
 <br><input type="submit" name="regist_button" value="登録"><br>
 </form>
+<jsp:include page="/WEB-INF/jsp/footer.jsp"/>
 </div>
 </body>
 </html>
