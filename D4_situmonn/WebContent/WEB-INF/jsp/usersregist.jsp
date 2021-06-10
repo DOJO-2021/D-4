@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>質問・相談システム(仮)</title>
 </head>
 <body>
 
