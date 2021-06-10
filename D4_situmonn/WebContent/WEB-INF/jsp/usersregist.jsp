@@ -11,15 +11,18 @@
 <jsp:include page="/headernologin.jsp"/>
 <h2>ユーザー登録</h2>
 <form method="POST" action="/D4_situmonn/UsersRegistServlet">
-<input type="text" name="id_input" placeholder="ID入力欄">
-<input type="password" name="password_input"  placeholder="パスワード入力欄">
-<input type="text" name="name_input"  placeholder="氏名">
-<input type="text" name="company_input"  placeholder="会社名"><br>
+  <input type="text" name="id_input" placeholder="ID入力欄" required><br>
+  <input type="password" name="password_input"  placeholder="パスワード入力欄" required><br>
+  <input type="text" name="name_input"  placeholder="氏名" required><br>
+  <input type="text" name="company_input"  placeholder="会社名" required><br>
 ユーザー種別<br><input type="radio" name="user_category" value="student">受講生<br>
             <input type="radio" name="user_category" value="teacher">講師<br>
-            <input type="radio" name="user_category" value="management office">運営事務局<br>
+            <input type="radio" name="user_category" value="admin">運営事務局<br>
 
-<br><input type="submit" name="regist_button" value="登録"><br>
+<input type="submit" name="regist_button" value="登録"><br>
+
+<!-- 登録完了した場合、トップページに遷移する旨をアラートで表示する -->
+
 </form>
 <jsp:include page="/footer.jsp"/>
 </div>
