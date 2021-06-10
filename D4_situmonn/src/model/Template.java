@@ -6,9 +6,9 @@ public class Template implements Serializable{
 	private int TEMP_ID;
 	private String TEMP_CONTENTS;
 
-	public Template(int TEMP_ID, String TEMP_CONTENTS) {
-		this.TEMP_ID = TEMP_ID;
-		this.TEMP_CONTENTS = TEMP_CONTENTS;
+	public Template() {
+		this.TEMP_ID = 0;
+		this.TEMP_CONTENTS = "";
 	}
 
 	public int getTEMP_ID() {
