@@ -5,15 +5,27 @@
   <head>
   <meta charset="UTF-8">
   <title>質問・相談システム(仮)|質問編集</title>
-   <Script>
+    <Script>
     'use strict';
     function check(){
-	  if(window.confirm('質問内容を編集しますか？')){ // 確認ダイアログを表示
-		return true; // 「OK」時は送信を実行
-	  }
+	  if(window.confirm('質問内容を更新しますか？')){ // 確認ダイアログを表示
+		  return true; // 「OK」時は送信を実行
+	    }
+	  else {
+		  return false;
+      }
     }
     <!-- トップページに遷移するプログラムはservlet -->
-  </script>
+
+    function OnLinkClick() {  //キャンセルのリンクがクリックされたとき
+        if (window.confirm('編集中の項目を破棄します。')){
+        	return true;
+        }
+        else {
+  		  return false;
+        }
+      }
+    </script>
   </head>
 
   <body>
@@ -21,7 +33,7 @@
     <jsp:include page="/header.jsp"/>
     <h2>質問編集</h2>
 
-        <form method="POST" action="/D4_situmonn/QuestionEditServlet">
+        <form method="POST" action="/D4_situmonn/QuestionEditServlet" onSubmit="return check()">
 
         <!-- question postとほぼ同じ内容 -->
 
@@ -108,17 +120,19 @@
         <option value="Others">その他</option>
         </select><br>
 
+        <!-- 添付ファイルボタン -->
+         <input type="submit" name="file_select" value="ファイル選択"><br>
+
         <!-- 解決チェックボックスの追加 -->
+        解決チェックボックス<br>
+        <input type="checkbox" name="solution_button" value="解決">解決<br>
 
         <!-- 更新ボタンはsubmit -->
         <input type="submit" name="update_button" value="更新">
 
-        <!--  -->
-
-        <!-- キャンセルはリンク -->
-        <a href="/D4_situmonn/MypageServlet">キャンセル</a>
-        <!-- ①キャンセルボタンをリンクをクリックしたときアラートを出す方法
-              -->
+        <!-- キャンセルのリンク部分にonclick="OnLinkClick();"と書き加える -->
+        <!-- onclicをおすとJavaScriptに飛ぶ -->
+         <a href = "/D4_situmonn/MypageServlet" onclick="OnLinkClick();">キャンセル</a>
 
         </form>
     <jsp:include page="/footer.jsp"/>
