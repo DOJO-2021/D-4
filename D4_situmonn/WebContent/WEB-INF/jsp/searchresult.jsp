@@ -9,8 +9,8 @@
 <body>
 <div class="wrapper">
 <jsp:include page="/headernologin.jsp"/>
-<h2>トップページ</h2>
-<table>
+<h2>検索結果</h2>
+<table class=scroll><!-- テーブルに罫線とスクロールバー -->
 <!--<c:forEach var="" items="${}" >　←DAOができたら　-->
  <tr>
    <th>タイトル</th>
