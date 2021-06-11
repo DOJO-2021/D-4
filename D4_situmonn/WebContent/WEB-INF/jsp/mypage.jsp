@@ -10,36 +10,42 @@
 <div class="wrapper">
 <jsp:include page="/headernologin.jsp"/>
 <h2>検索結果</h2>
-プロフィール<br>
-<table><!-- テーブルに罫線 -->
 
- <tr>
-   <th>ID</th>
-   <th>氏名</th>
- </tr>
- <tr>
-   <th>会社名</th>
-   <th>ユーザー種別</th>
- </tr>
+<table><!-- テーブルに罫線(タグで指定) -->
+ <caption>プロフィール</caption>
+  <tr>
+    <th>${ID}</th>
+    <th>${氏名}</th>
+  </tr>
+  <tr>
+    <th>${会社名}</th>
+    <th>${ユーザー種別}</th>
+  </tr>
 </table>
+<a href="/D4_situmonn/ProfileEditServlet">プロフィール編集</a>
 
 
-
-<table class=scroll><!-- テーブルに罫線とスクロールバー -->
-<!--<c:forEach var="" items="${}" >　←DAOができたら　-->
- <tr>
-   <th>タイトル</th>
- </tr>
- <tr>
-   <th></th>
-   <th></th>
-   <th>質問者の名前</th>
-   <th>質問日時</th>
-   <th>解決/未解決</th>
- </tr>
- <tr>
-   <th>質問内容を先頭から100字表示する</th>
- </tr>
+<table class=scroll><!-- テーブルに罫線(タグで指定)とスクロールバー -->
+ <caption>自分のした質問</caption>
+ <!--<c:forEach var="" items="${}" >　←DAOができたら　-->
+  <tr>
+    <th>${タイトル}</th>
+    <th><a href="/D4_situmonn/QeustionEditServlet">編集</a></th>
+  </tr>
+  <tr>
+    <th>${質問日時}</th>
+    <th>${解決/未解決}</th>
+  </tr>
+  <tr>
+    <th>${タグ1}</th>
+    <th>${タグ2}</th>
+    <th>${タグ3}</th>
+    <th>${タグ4}</th>
+    <th>${タグ5}</th>
+  </tr>
+  <tr>
+    <th>${質問内容}</th>
+  </tr>
  <!--</c:forEach>-->
 </table>
 

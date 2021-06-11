@@ -1,1 +1,9 @@
 @charset "UTF-8";
+
+
+html{
+  font-family: 'M PLUS Rounded 1c';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
