@@ -1,60 +1,82 @@
 package model;
 
-import java.io.Serializable;
+import java.util.Date;
 
-public class Answer implements Serializable{
-	private int ANS_ID;
-	private int Q_ID;
-	private String ANS_CONTENTS;
-	private String USER_ID;
-	private String ANS_DATE;
+public class Answer{
+	private int ans_id;
+	private int q_id;
+	private String ans_contents;
+	private String user_id;
+	private Date ans_date;
+	private String user_name;
 
-	public Answer(int ANS_ID, int Q_ID, String ANS_CONTENTS,
-			String USER_ID, String ANS_DATE) {
-		this.ANS_ID = ANS_ID;
-		this.Q_ID = Q_ID;
-		this.ANS_CONTENTS = ANS_CONTENTS;
-		this.USER_ID = USER_ID;
-		this.ANS_DATE = ANS_DATE;
+	public Answer(int ans_id, int q_id, String ans_contents,
+			String user_id, Date ans_date) {
+		this.ans_id = ans_id;
+		this.q_id = q_id;
+		this.ans_contents = ans_contents;
+		this.user_id = user_id;
+		this.ans_date = ans_date;
 	}
 
-	public int getANS_ID() {
-		return ANS_ID;
+	public Answer() {
+		ans_id = 0;
+		q_id = 0;
+		ans_contents = "";
+		user_id = "";
+		ans_date = new Date();
 	}
 
-	public void setANS_ID(int aNS_ID) {
-		ANS_ID = aNS_ID;
+	public Answer(String ans_contents, String user_name) {
+		this.ans_contents = ans_contents;
+		this.user_name = user_name;
 	}
 
-	public int getQ_ID() {
-		return Q_ID;
+	public int getAns_id() {
+		return ans_id;
 	}
 
-	public void setQ_ID(int q_ID) {
-		Q_ID = q_ID;
+	public String getUser_name() {
+		return user_name;
 	}
 
-	public String getANS_CONTENTS() {
-		return ANS_CONTENTS;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
-	public void setANS_CONTENTS(String aNS_CONTENTS) {
-		ANS_CONTENTS = aNS_CONTENTS;
+	public void setAns_id(int ans_id) {
+		this.ans_id = ans_id;
 	}
 
-	public String getUSER_ID() {
-		return USER_ID;
+	public int getQ_id() {
+		return q_id;
 	}
 
-	public void setUSER_ID(String uSER_ID) {
-		USER_ID = uSER_ID;
+	public void setQ_id(int q_id) {
+		this.q_id = q_id;
 	}
 
-	public String getANS_DATE() {
-		return ANS_DATE;
+	public String getAns_contents() {
+		return ans_contents;
 	}
 
-	public void setANS_DATE(String aNS_DATE) {
-		ANS_DATE = aNS_DATE;
+	public void setAns_contents(String ans_contents) {
+		this.ans_contents = ans_contents;
+	}
+
+	public String getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+
+	public Date getAns_date() {
+		return ans_date;
+	}
+
+	public void setAns_date(Date ans_date) {
+		this.ans_date = ans_date;
 	}
 }

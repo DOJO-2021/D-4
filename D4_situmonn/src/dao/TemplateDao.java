@@ -26,10 +26,10 @@ public class TemplateDao {
 			ResultSet rs = pStmt.executeQuery();
 
 			while(rs.next()) {
-				Template temp = new Template();
-				temp.setTEMP_ID(rs.getInt("TEMP_ID"));
-				temp.setTEMP_CONTENTS(rs.getString("TEMP_CONTENTS"));
-
+				Template temp = new Template(
+						rs.getInt("TEMP_ID"),
+						rs.getString("TEMP_CONTENTS")
+						);
 				Template.add(temp);
 			}
 		}

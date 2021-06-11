@@ -1,29 +1,32 @@
 package model;
 
-import java.io.Serializable;
+public class Template{
+	private int temp_id;
+	private String temp_contents;
 
-public class Template implements Serializable{
-	private int TEMP_ID;
-	private String TEMP_CONTENTS;
+	public Template(int temp_id, String temp_contents) {
+		this.temp_id = temp_id;
+		this.temp_contents = temp_contents;
+	}
 
 	public Template() {
-		this.TEMP_ID = 0;
-		this.TEMP_CONTENTS = "";
+		this.temp_id = 0;
+		this.temp_contents = "";
 	}
 
-	public int getTEMP_ID() {
-		return TEMP_ID;
+	public int getTemp_id() {
+		return temp_id;
 	}
 
-	public void setTEMP_ID(int tEMP_ID) {
-		TEMP_ID = tEMP_ID;
+	public void setTemp_id(int temp_id) {
+		this.temp_id = temp_id;
 	}
 
-	public String getTEMP_CONTENTS() {
-		return TEMP_CONTENTS;
+	public String getTemp_contents() {
+		return temp_contents;
 	}
 
-	public void setTEMP_CONTENTS(String tEMP_CONTENTS) {
-		TEMP_CONTENTS = tEMP_CONTENTS;
+	public void setTemp_contents(String temp_contents) {
+		this.temp_contents = temp_contents;
 	}
 }
