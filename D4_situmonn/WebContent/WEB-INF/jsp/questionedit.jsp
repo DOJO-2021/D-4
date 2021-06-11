@@ -132,7 +132,7 @@
 
         <!-- キャンセルのリンク部分にonclick="OnLinkClick();"と書き加える -->
         <!-- onclicをおすとJavaScriptに飛ぶ -->
-         <a href = "/D4_situmonn/MypageServlet" onclick="OnLinkClick();">キャンセル</a>
+         <a href = "/D4_situmonn/MypageServlet" onclick="return OnLinkClick();">キャンセル</a>
 
         </form>
     <jsp:include page="/footer.jsp"/>
