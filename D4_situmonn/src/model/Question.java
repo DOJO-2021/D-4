@@ -1,7 +1,8 @@
 package model;
+import java.io.Serializable;
 import java.util.Date;
 
-public class Question {
+public class Question implements Serializable {
 	private int q_id; //Q_ID
 	private String q_title; //Q_TITLE
 	private String q_contents; //Q_CONTENTS
@@ -15,10 +16,13 @@ public class Question {
 	private Date q_date; //Q_DATE
 	private int done_tag; //DONE_TAG
 	private int counter; //COUNTER
+	//INNER JOIN時に使用するため
+	private String user_name; //USER_NAME
 
 	//引数のあるコンストラクタ
 	public Question(int q_id, String q_title, String q_contents, String q_tag01, String q_tag02, String q_tag03,
-			String q_tag04, String q_tag05, String user_id, String q_file, Date q_date, int done_tag, int counter) {
+			String q_tag04, String q_tag05, String user_id, String q_file, Date q_date, int done_tag, int counter,
+			String user_name) {
 		super();
 		this.q_id = q_id;
 		this.q_title = q_title;
@@ -33,6 +37,7 @@ public class Question {
 		this.q_date = q_date;
 		this.done_tag = done_tag;
 		this.counter = counter;
+		this.user_name = user_name;
 	}
 
 	//引数がないコンストラクタ（デフォルトコンストラクタ）
@@ -49,9 +54,10 @@ public class Question {
 		this.q_tag05 = "";
 		this.user_id = "";
 		this.q_file = "";
-		this.q_date = new Date();
+		this.q_date = null;
 		this.done_tag = 0;
 		this.counter = 0;
+		this.user_name = "";
 	}
 
 	public int getQ_id() {
@@ -156,5 +162,13 @@ public class Question {
 
 	public void setCounter(int counter) {
 		this.counter = counter;
+	}
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_id = user_name;
 	}
 }
