@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class MyapageServlet
  */
-@WebServlet("/MyapageServlet")
+@WebServlet("/MypageServlet")
 public class MypageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
