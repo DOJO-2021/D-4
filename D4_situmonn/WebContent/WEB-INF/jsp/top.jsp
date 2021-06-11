@@ -62,7 +62,7 @@ function check(){
 <!-- メイン -->
 <h2>トップページ</h2>
 	<form method = "POST" action = "/D4_situmonn/TopServlet" name = "search_form" onSubmit = "return check()">
-	<p>※質問タグもしくはキーワードのどちらかを入力してください</p>
+	<p>※質問タグもしくはキーワードのどちらかは必ず入力してください</p>
 		<div>
 			質問タグ<br>
 			<input type = "checkbox" name = "questions_tag" value = "Personal">パーソナルコース

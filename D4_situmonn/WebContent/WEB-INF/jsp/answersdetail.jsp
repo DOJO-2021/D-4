@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>質問相談システム(仮)|質問詳細</title>
-<Script>
+<script>
 'use strict';
 function check(){
 	if(window.confirm('回答を送信してもよろしいですか？')){ // 確認ダイアログを表示
@@ -55,11 +55,10 @@ function check(){
 
 <!-- </c:forEach>  -->
 
-<form method = "POST" action = "/D4_situmonn/AnswerDetailServlet">
+<form method = "POST" action = "/D4_situmonn/AnswerDetailServlet" onSubmit = "return check()">
 <table>
 <tr>
-  <th>新規回答入力</th>
-  <td>
+  <td>新規回答入力<br>
     <label><textarea name = "newanswer">
     </textarea></label>
   </td>
