@@ -8,12 +8,45 @@
 <Script>
 'use strict';
 function check(){
-	if(window.confirm('回答を送信してもよろしいですか？')){ // 確認ダイアログを表示
-		return true; // 「OK」時は送信を実行
-	}
+	const password1 = document.getElementById("pass1");
+	const value1 = password1.value;
+
+	const password2 = document.getElementById("pass2");
+	const value2 = password2.value;
+
+		if (value1 != value2){
+			window.alert('パスワードの値が一致していません。');
+		}
+		else if(window.confirm('回答を送信してもよろしいですか？')){ // 確認ダイアログを表示
+			return true; // 「OK」時は送信を実行
+		}
+		else{ // 「キャンセル」時の処理
+			return false; // 送信を中止
+		}
 }
 
 
+function OnLinkClick() {  //キャンセルのリンクがクリックされたとき
+	if (window.confirm('編集中の項目を破棄します。')){
+		return true;
+	}
+	else{ // 「キャンセル」時の処理
+		return false; // 送信を中止
+	}
+}
+<!--
+function PasswordCheck(){
+const password1 = document.getElementById("pass1");
+const value1 = password1.value;
+
+const password2 = document.getElementById("pass2");
+const value2 = password2.value;
+
+	if (value1 == value2){
+		window.alert('パスワードの値が一致していません。');
+	}
+}
+-->
 </script>
 </head>
 <body>
@@ -23,7 +56,7 @@ function check(){
 <h2>プロフィール編集</h2>
 
 <!-- ここからメイン -->
-<form method = "POST" action = "/D4_situmonn/ProfileEditServlet">
+<form method = "POST" action = "/D4_situmonn/ProfileEditServlet" onSubmit="return check();">
 <!-- value = EL式 で元々登録されている氏名・会社名・パスワードを表示 -->
   <label>
   氏名<br>
@@ -35,16 +68,16 @@ function check(){
   </label>
     <label>
   パスワード<br>
-  <input type="password" name="password_input" required><br>
+  <input type="password" name="password_input" id="pass1" required><br>
   </label>
     <label>
   パスワード確認<br>
-  <input type="password" name="password_confirm" required><br>
+  <input type="password" name="password_confirm" id="pass2"required><br>
   </label>
 
   <input type = "submit" value = "更新">
 
-  <a href = "/D4_situmonn/MypageServlet">キャンセル</a>
+  <a href = "/D4_situmonn/MypageServlet" onclick="return OnLinkClick();">キャンセル</a>
 
 </form>
 <!-- フッター -->
