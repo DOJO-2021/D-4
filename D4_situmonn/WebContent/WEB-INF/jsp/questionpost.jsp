@@ -44,7 +44,7 @@
 
       <!-- 質問タグを選択。プルダウンであらかじめ用意された質問タグから選択する。 -->
         質問タグ<br>
-        <select name="question_tag1" required>
+        <select name="question_tag1">
         <option value="">-----</option>
         <option value="Personal">パーソナルコース</option>
         <option value="ITBasic">IT基礎コース</option>
