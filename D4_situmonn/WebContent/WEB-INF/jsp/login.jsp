@@ -21,7 +21,7 @@ window.alert('パスワードが違います。');
 <h2>ログイン</h2>
 <form method="POST" action="/D4_situmonn/LoginServlet" >
   <input type="text" name="ID" required  placeholder="ID"><br>
-  <input type="password" name="ID" required  placeholder="パスワード"><br>
+  <input type="password" name="PW" required  placeholder="パスワード"><br>
   <input type="submit" value="ログイン" ><br>
   <a href="/D4_situmonn/UsersRegistServlet">新規登録はこちらから</a>
 </form>
