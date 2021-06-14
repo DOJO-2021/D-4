@@ -61,21 +61,20 @@ public class TopServlet extends HttpServlet {
 		//【保留】解決未解決ラベルはString型に、値は0か1
 		String solution_label = request.getParameter("solution_label");
 
-
-
+		//検索処理を行うために、qDaoオブジェクトを生成
 		QuestionsDao qDao = new QuestionsDao();
 
 		//解決か未解決かで呼び出すメソッド異なる？　解決→selectQListS、未解決→
 		// 【保留】！new Questionの引数入れる　検索処理を行う 検索に関係ない場所は "" かIDは0にする
 		if (solution_label == "1") {  //解決済みの時の検索処理とリクエストスコープへの格納
-		  List<Question> QList = qDao.selectQListS(new Question());
+		  List<Question> QList = qDao.selectQListS(new Question(       ));
 		  request.setAttribute("QList", QList);
 		}
 		else if(solution_label == "0"){  //未解決の時の検索処理とリクエストスコープへの格納
 
 		}
 
-		// 結果ページにフォワードする
+		// 検索結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/searchresult.jsp");
 		dispatcher.forward(request, response);
 	}
