@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.tomcat.jni.User;
 
 import dao.UsersDao;
+import model.Result;
 
 /**
  * Servlet implementation class UsersRegistServlet
@@ -72,32 +73,20 @@ public class UsersRegistServlet extends HttpServlet {
 
 		// IDが重複している場合アラートを表示
 		UsersDao UDao = new UsersDao();
-		if(UDao.CheckResult == true) {
-
+		if(UDao.insertcheck(user_id)) {
 			if (UDao.insert(new User(user_id, password, user_name, company, user_category))) {	// 登録成功
 			request.setAttribute("result",
-			new Result("登録成功！",  "/D4_situmonn/TopServlet"));
+			new Result("登録成功！"));
 	    	} //resultのbeansがないので赤線が出る。作成するか相談する。
 	     	else {
 			request.setAttribute("result",
-			new Result("登録失敗！", "レコードを登録できませんでした。", "/D4_situmonn/LoginServlet"));
+			new Result("登録失敗！"));
 	    	}
 		}
 		else {
 			request.setAttribute("result",
-			new Result("登録失敗！", "レコードを登録できませんでした。", "/D4_situmonn/LoginServlet"));
+			new Result("登録失敗！"));
 
-		}
-
-		// 登録処理を行う
-		UsersDao UDao = new UsersDao();
-		if (UDao.insert(new User(user_id, password, user_name, company, user_category))) {	// 登録成功
-			request.setAttribute("result",
-			new Result("登録成功！", "レコードを登録しました。", "/D4_situmonn/TopServlet"));
-		} //resultのbeansがないので赤線が出る。作成するか相談する。
-		else {												// 登録失敗
-			request.setAttribute("result",
-			new Result("登録失敗！", "レコードを登録できませんでした。", "/D4_situmonn/LoginServlet"));
 		}
 
 		// 結果ページにフォワードする
