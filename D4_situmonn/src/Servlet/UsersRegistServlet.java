@@ -71,10 +71,22 @@ public class UsersRegistServlet extends HttpServlet {
 		// リクエストパラメータのチェックはいる？→jspで記述してあるので不要
 
 		// IDが重複している場合アラートを表示
-		class main {
-			public main(String[] args) {
-		System.out.println("このIDは既に使用されています。変更してください。");
-		 }
+		UsersDao UDao = new UsersDao();
+		if(UDao.CheckResult == true) {
+
+			if (UDao.insert(new User(user_id, password, user_name, company, user_category))) {	// 登録成功
+			request.setAttribute("result",
+			new Result("登録成功！",  "/D4_situmonn/TopServlet"));
+	    	} //resultのbeansがないので赤線が出る。作成するか相談する。
+	     	else {
+			request.setAttribute("result",
+			new Result("登録失敗！", "レコードを登録できませんでした。", "/D4_situmonn/LoginServlet"));
+	    	}
+		}
+		else {
+			request.setAttribute("result",
+			new Result("登録失敗！", "レコードを登録できませんでした。", "/D4_situmonn/LoginServlet"));
+
 		}
 
 		// 登録処理を行う
