@@ -1,8 +1,6 @@
 package Servlet;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,8 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.BcDAO;
-import model.Bc;
+import dao.QuestionsDao;
 import model.Question;
 
 /**
@@ -36,6 +33,14 @@ public class AnswersDetailServlet extends HttpServlet {
 			return;
 		}
 
+		//検索処理を行う
+		QuestionsDao qDao = new QuestionsDao();
+		List<Question> QEdit = qDao.selectQDetail(q_id);
+
+		//リクエストスコープに格納する
+		request.setAttribute("QEdit", QEdit);
+
+
 		// 質問詳細ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");//パス名を変更
 		dispatcher.forward(request, response);
@@ -53,18 +58,6 @@ public class AnswersDetailServlet extends HttpServlet {
 			return;
 		}
 
-
-		//検索処理を行う
-		QuestionsDao qDao = new qDAO();
-		List<Question> QEdit = qDao.selectQDetail(q_id);
-
-		//リクエストスコープに格納する
-		request.setAttribute("listOfAll", listOfAll);
-
-
-		//list.jspにフォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/list.jsp");
-		dispatcher.forward(request, response);
 	}
 }
-}
+

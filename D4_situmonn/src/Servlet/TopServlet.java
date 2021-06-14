@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.QuestionsDao;
 import model.Question;
 
 /**
@@ -56,21 +57,23 @@ public class TopServlet extends HttpServlet {
 		String q_tag9 = request.getParameter("question_tag9");
 		String q_tag10 = request.getParameter("question_tag10");
 		String q_tag11 = request.getParameter("question_tag11");
-
 		String keyword = request.getParameter("keyword");
-
 		//【保留】解決未解決ラベルはString型に、値は0か1
 		String solution_label = request.getParameter("solution_label");
 
 
-		// 【保留】検索処理を行う 検索に関係ない場所は "" かIDは0にする
-		QuestionsDao qDao = new qDao();
-		List<Question> answerList = qDao.select(new Question()));  //クラス名Questionでいいのか分からない+newしたときの()の中身
 
+		QuestionsDao qDao = new QuestionsDao();
 
-		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("answerList", answerList);
+		//解決か未解決かで呼び出すメソッド異なる？　解決→selectQListS、未解決→
+		// 【保留】！new Questionの引数入れる　検索処理を行う 検索に関係ない場所は "" かIDは0にする
+		if (solution_label == "1") {  //解決済みの時の検索処理とリクエストスコープへの格納
+		  List<Question> QList = qDao.selectQListS(new Question());
+		  request.setAttribute("QList", QList);
+		}
+		else if(solution_label == "0"){  //未解決の時の検索処理とリクエストスコープへの格納
 
+		}
 
 		// 結果ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/searchresult.jsp");
