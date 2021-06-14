@@ -44,27 +44,27 @@ function isCheck() {
 	<p>※質問タグもしくはキーワードのどちらかは必ず入力してください</p>
 		<div>
 			質問タグ<br>
-			<input class="checkboxes" type = "checkbox" name = "questions_tag" value = "Personal">パーソナルコース
-			<input class="checkboxes" type = "checkbox" name = "questions_tag" value = "ITBasic">IT基礎コース
-			<input class="checkboxes" type = "checkbox" name = "questions_tag" value = "JavaBasic">Java基礎コース
-			<input class="checkboxes" type = "checkbox" name = "questions_tag" value = "WebAppDev">Webアプリ開発<br>
+			<input class="checkboxes" type = "checkbox" name = "questions_tag1" value = "Personal">パーソナルコース
+			<input class="checkboxes" type = "checkbox" name = "questions_tag2" value = "ITBasic">IT基礎コース
+			<input class="checkboxes" type = "checkbox" name = "questions_tag3" value = "JavaBasic">Java基礎コース
+			<input class="checkboxes" type = "checkbox" name = "questions_tag4" value = "WebAppDev">Webアプリ開発<br>
 
-			<input class="checkboxes" type = "checkbox" name = "questions_tag" value = "LifeCounseling">人生相談
-			<input class="checkboxes" type = "checkbox" name = "questions_tag" value = "Error">エラー対応
-			<input class="checkboxes" type = "checkbox" name = "questions_tag" value = "ComTrouble">機器トラブル
-			<input class="checkboxes" type = "checkbox" name = "questions_tag" value = "NetTrouble">ネットワークトラブル<br>
+			<input class="checkboxes" type = "checkbox" name = "questions_tag5" value = "LifeCounseling">人生相談
+			<input class="checkboxes" type = "checkbox" name = "questions_tag6" value = "Error">エラー対応
+			<input class="checkboxes" type = "checkbox" name = "questions_tag7" value = "ComTrouble">機器トラブル
+			<input class="checkboxes" type = "checkbox" name = "questions_tag8" value = "NetTrouble">ネットワークトラブル<br>
 
-			<input class="checkboxes" type = "checkbox" name = "questions_tag" value = "ITKnowledge">IT知識
-			<input class="checkboxes" type = "checkbox" name = "questions_tag" value = "ToAdmin">運営事務局宛て
-			<input class="checkboxes" type = "checkbox" name = "questions_tag" value = "Others">その他
+			<input class="checkboxes" type = "checkbox" name = "questions_tag9" value = "ITKnowledge">IT知識
+			<input class="checkboxes" type = "checkbox" name = "questions_tag10" value = "ToAdmin">運営事務局宛て
+			<input class="checkboxes" type = "checkbox" name = "questions_tag11" value = "Others">その他
 		</div>
 		<div>
 			<label>キーワード<br>
 			<input type = "text" name = "keyword" id = "key"></label>
 		</div>
 		<div>
-			<input type = "radio" name = "solution_label" value = "solved" checked required>解決済
-			<input type = "radio" name = "solution_label" value = "unsolved">未解決
+			<input type = "radio" name = "solution_label" value = "1" checked required>解決済
+			<input type = "radio" name = "solution_label" value = "0">未解決
 		</div>
 		<input type = "submit" name = "search" value = "検索" onClick="return isCheck()">
 	</form>
