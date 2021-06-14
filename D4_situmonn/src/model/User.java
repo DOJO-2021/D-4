@@ -3,19 +3,19 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 	private String user_id; //USER_ID
-	private String user_name; //USER_NAME
 	private String password; //PASSWORD
-	private String user_category; //USER_CATEGORY
+	private String user_name; //USER_NAME
 	private String company; //COMPANY
+	private String user_category; //USER_CATEGORY
 
 	//引数のあるコンストラクタ
-	public User(String user_id, String user_name, String password, String user_category, String company) {
+	public User(String user_id, String password, String user_name, String company, String user_category) {
 		super();
 		this.user_id = user_id;
-		this.user_name = user_name;
 		this.password = password;
-		this.user_category = user_category;
+		this.user_name = user_name;
 		this.company = company;
+		this.user_category = user_category;
 	}
 
 	//引数がないコンストラクタ（デフォルトコンストラクタ）
@@ -23,10 +23,10 @@ public class User implements Serializable {
 	public User() {
 		super();
 		this.user_id = "";
-		this.user_name = "";
 		this.password = "";
-		this.user_category = "";
+		this.user_name = "";
 		this.company = "";
+		this.user_category = "";
 	}
 
 	public String getUser_id() {
@@ -37,6 +37,14 @@ public class User implements Serializable {
 		this.user_id = user_id;
 	}
 
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getUser_name() {
 		return user_name;
 	}
@@ -45,12 +53,12 @@ public class User implements Serializable {
 		this.user_name = user_name;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getCompany() {
+		return company;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
 	public String getUser_category() {
@@ -61,11 +69,4 @@ public class User implements Serializable {
 		this.user_category = user_category;
 	}
 
-	public String getCompany() {
-		return company;
-	}
-
-	public void setCompany(String company) {
-		this.company = company;
-	}
 }
