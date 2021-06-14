@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 <body>
 <div class="wrapper">
 <jsp:include page="/headernologin.jsp"/>
-<h2>検索結果</h2>
+<h2>マイページ</h2>
 
 <table><!-- テーブルに罫線(タグで指定) -->
  <caption>プロフィール</caption>
