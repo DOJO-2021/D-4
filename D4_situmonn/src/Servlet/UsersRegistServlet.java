@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tomcat.jni.User;
+
+import dao.UsersDao;
+
 /**
  * Servlet implementation class UsersRegistServlet
  */
@@ -58,32 +62,35 @@ public class UsersRegistServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String id_input = request.getParameter("id_input");
-		String password_input = request.getParameter("password_input");
-		String name_input = request.getParameter("name_input");
-		String company_input = request.getParameter("company_input");
+		String user_id = request.getParameter("id_input");
+		String password = request.getParameter("password_input");
+		String user_name = request.getParameter("name_input");
+		String company = request.getParameter("company_input");
 		String user_category = request.getParameter("user_category");
 
 		// リクエストパラメータのチェックはいる？→jspで記述してあるので不要
 
+		// IDが重複している場合アラートを表示
+		class main {
+			public main(String[] args) {
+		System.out.println("このIDは既に使用されています。変更してください。");
+		 }
+		}
+
 		// 登録処理を行う
-		UsersDAO UDao = new UsersDAO();
-		if (UDao.insert(new Users(0, id_input, password_input, name_input, company_input, user_category))) {	// 登録成功
+		UsersDao UDao = new UsersDao();
+		if (UDao.insert(new User(user_id, password, user_name, company, user_category))) {	// 登録成功
 			request.setAttribute("result",
 			new Result("登録成功！", "レコードを登録しました。", "/D4_situmonn/TopServlet"));
-		}
+		} //resultのbeansがないので赤線が出る。作成するか相談する。
 		else {												// 登録失敗
 			request.setAttribute("result",
-			new Result("登録失敗！", "レコードを登録できませんでした。", "/simpleBC/MenuServlet"));
+			new Result("登録失敗！", "レコードを登録できませんでした。", "/D4_situmonn/LoginServlet"));
 		}
 
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usersresult.jsp");
 		dispatcher.forward(request, response);
-	}
-
-
-		doGet(request, response);
 	}
 
 }
