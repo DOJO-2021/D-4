@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,26 +28,26 @@
 
 <table class=scroll><!-- テーブルに罫線(タグで指定)とスクロールバー -->
  <caption>自分のした質問</caption>
- <!--<c:forEach var="" items="${}" >　←DAOができたら　-->
+ <c:forEach var="e" items="${QList}" >
   <tr>
-    <th>${タイトル}</th>
+    <th>${e.q_title}</th>
     <th><a href="/D4_situmonn/QeustionEditServlet">編集</a></th>
   </tr>
   <tr>
-    <th>${質問日時}</th>
-    <th>${解決/未解決}</th>
+    <th>${e.q_date}</th>
+    <th>${e.done_tag}</th>
   </tr>
   <tr>
-    <th>${タグ1}</th>
-    <th>${タグ2}</th>
-    <th>${タグ3}</th>
-    <th>${タグ4}</th>
-    <th>${タグ5}</th>
+    <th>${e.q_tag01}</th>
+    <th>${e.q_tag02}</th>
+    <th>${e.q_tag03}</th>
+    <th>${e.q_tag04}</th>
+    <th>${e.q_tag05}</th>
   </tr>
   <tr>
-    <th>${質問内容}</th>
+    <th>${e.q_contents}</th>
   </tr>
- <!--</c:forEach>-->
+</c:forEach>
 </table>
 
 <jsp:include page="/footer.jsp"/>

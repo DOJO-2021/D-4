@@ -23,41 +23,36 @@ import model.User;
 public class MypageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D-4situmonn/LoginServlet");
-			return;
-		}
-
-		// リクエストパラメータを取得する
-		request.setCharacterEncoding("UTF-8");
-		String user_id = request.getParameter("user_id");
-		String password = request.getParameter("password");
-		String user_name = request.getParameter("user_name");
-		String company = request.getParameter("company");
-		String user_category = request.getParameter("user_category");
+			if (session.getAttribute("id") == null) {
+			    response.sendRedirect("/D-4situmonn/LoginServlet");
+			    return;
+		    }
 
 		// ログインしているユーザーの検索処理を行う【エラー保留中2021/06/14】
 		UsersDao UDao = new UsersDao();
-		List<User> cardList = UDao.select(new User(user_id,password, user_name, company, user_category));
+		String user_id = (String) session.getAttribute("id");
+		System.out.println("ユーザID：" + user_id);
+		List<User> cardList = UDao.select(user_id);
 
-	    // 検索結果をリクエストスコープに格納する
+		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
 
-		//ユーザーの質問のリクエストパラメータは取得する？
+	    //リスエスとスコープに保存された検索結果のリストを取得
+		QuestionsDao QDao = new QuestionsDao();
+		String user_id = (String) session.getAttribute("id");
+		System.out.println("ユーザID：" + user_id);
+		List<Question> QList = QDao.selectMyQList(user_id);
 
+		// 検索結果をリクエストスコープに格納する
+	 	request.setAttribute("QList", QList);
 
-        // ログインしているユーザーの質問の検索処理を行う【エラー保留中2021/06/14】
-	    QuestionsDao QDao = new QuestionsDao();
-	    List<Question> QList = QDao.select (new MyQList(user_id));
+	 // マイページにフォワードする
+	 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");
+	 		dispatcher.forward(request, response);
+	 		}
 
-        // 検索結果をリクエストスコープに格納する
-	    request.setAttribute("QList", QList);
+	}
 
-		// マイページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");
-		dispatcher.forward(request, response);
-		}
-}

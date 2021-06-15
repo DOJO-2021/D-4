@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +12,7 @@
 <jsp:include page="/headernologin.jsp"/>
 <h2>検索結果</h2>
 <table class=scroll><!-- テーブルに罫線とスクロールバー -->
-<!--<c:forEach var="" items="${}" >　←DAOができたら　-->
+<c:forEach var="e" items="${QList}" >
  <tr>
    <th>タイトル</th>
  </tr>
@@ -25,7 +26,7 @@
  <tr>
    <th>質問内容を先頭から100字表示する</th>
  </tr>
- <!--</c:forEach>-->
+</c:forEach>
 </table>
 
 

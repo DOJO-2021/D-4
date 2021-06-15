@@ -50,8 +50,6 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("/D-4_situmonn/TopServlet");//フォワード先のサーブレット名を入力
 		}
 
-		//この先の処理は不明(2021/06/11)
-
 		else {									// ログイン失敗
 			// リクエストスコープに、メッセージを格納する
 			request.setAttribute("result",
