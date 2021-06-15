@@ -26,7 +26,7 @@ public class SearchResultServlet extends HttpServlet {
 	// もしもログインしていなかったらログインサーブレットにリダイレクトする
 	HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-		    response.sendRedirect("/D-4situmonn/LoginServlet");
+		    response.sendRedirect("./LoginServlet");
 		    return;
 	    }
 
@@ -49,14 +49,25 @@ public class SearchResultServlet extends HttpServlet {
 	}
 
 
-    //postはいらない？
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D-4situmonn/LoginServlet");
+			response.sendRedirect("./LoginServlet");
 			return;
 		}
+
+		//
+		request.setCharacterEncoding("UTF-8");
+		int q_id = Integer.parseInt(request.getParameter("Q_ID"));
+
+		QuestionsDao qDao = new QuestionsDao();
+		List<Question> QEdit = qDao.selectQDetail(q_id);
+
+		request.setAttribute("QEdit", QEdit);
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/searchresult.jsp");
+		dispatcher.forward(request, response);
 	}
 
 
