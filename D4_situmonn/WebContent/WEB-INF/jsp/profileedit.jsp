@@ -34,25 +34,14 @@ function OnLinkClick() {  //キャンセルのリンクがクリックされた�
 		return false; // 送信を中止
 	}
 }
-<!--
-function PasswordCheck(){
-const password1 = document.getElementById("pass1");
-const value1 = password1.value;
-
-const password2 = document.getElementById("pass2");
-const value2 = password2.value;
-
-	if (value1 == value2){
-		window.alert('パスワードの値が一致していません。');
-	}
-}
--->
 </script>
 </head>
+
 <body>
 <div class = "wrapper">
 <!-- ここからヘッダー -->
 <jsp:include page = "/header.jsp"/>
+
 <h2>プロフィール編集</h2>
 
 <!-- ここからメイン -->
@@ -60,15 +49,15 @@ const value2 = password2.value;
 <!-- value = EL式 で元々登録されている氏名・会社名・パスワードを表示 -->
   <label>
   氏名<br>
-  <input type="text" name="name_input" required><br>
+  <input type="text" name="name_input" value = "${cardList.user_name}" required><br>
   </label>
     <label>
   会社名<br>
-  <input type="text" name="company_input"><br>
+  <input type="text" name="company_input" value = "${cardList.company}"><br>
   </label>
     <label>
   パスワード<br>
-  <input type="password" name="password_input" id="pass1" required><br>
+  <input type="password" name="password_input" value = "${cardList.password}" id="pass1" required><br>
   </label>
     <label>
   パスワード確認<br>

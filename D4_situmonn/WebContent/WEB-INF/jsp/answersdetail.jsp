@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!-- Coreタグライブラリへのパスを書く -->
-<!-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> -->
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -28,32 +28,33 @@ function check(){
 
 <table class = "ansdetail">
 <tr>
-  <td><!-- 質問内容のEL式 --></td>
-  <td><!-- 解決・未解決ラベルのEL式 --></td>
+  <td>質問内容<br>${QEdit.q_contents}
+  </td>
+  <td>${QEdit.done_tag}</td>
 </tr>
 <tr>
-  <td><!-- 質問内容のEL式 --></td>
+  <td>質問内容<br>${QEdit.q_contents}</td>
 </tr>
 <tr>
-<td><!-- 質問タグのEL式 --></td>
+<td>質問タグ<br>${QEdit.q_tag01}・${QEdit.q_tag02}・${QEdit.q_tag03}・${QEdit.q_tag04}・${QEdit.q_tag05}</td>
 </tr>
 <tr>
-<td><!-- 添付ファイルのリンク表示 --></td>
+<td>${QEdit.q_file}</td>
 </tr>
 </table>
 
-<!-- <c:forEach> で繰り返し -->
+<c:forEach var="e" items="${AnswerList}">
 
 <table class = answers>
 <tr>
-  <td><!-- 回答者名のEL式 --></td>
+  <td>回答者名<br></td>
 </tr>
 <tr>
-  <td><!-- 回答内容のEL式 --></td>
+  <td>回答内容<br></td>
 </tr>
 </table>
 
-<!-- </c:forEach>  -->
+</c:forEach>
 
 <form method = "POST" action = "/D4_situmonn/AnswerDetailServlet" onSubmit = "return check()">
 <table>
