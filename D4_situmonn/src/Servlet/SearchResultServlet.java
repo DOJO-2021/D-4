@@ -32,7 +32,9 @@ public class SearchResultServlet extends HttpServlet {
 
 		//リスエスとスコープに保存された検索結果のリストを取得　【リストの取得について保留2021/06/15】
 		QuestionsDao QDao = new QuestionsDao();
-	    List<Question> QList = QDao.selectMyQList(user_id));
+		String user_id = (String) session.getAttribute("id");
+		System.out.println("ユーザID：" + user_id);
+	    List<Question> QList = QDao.selectMyQList(user_id);
 
         //検索結果を日付の古い順に表示するやり方【保留　2021/06/15】
 
