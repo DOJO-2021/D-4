@@ -28,7 +28,7 @@ public class QuestionsDao {
 
 			//SQL文を準備
 			String sql = "select Q_ID, Q_TITLE, Q_CONTENTS, Q_TAG01, Q_TAG02, Q_TAG03, Q_TAG04, Q_TAG05, Q_DATE, DONE_TAG "
-					+ "from D_QUESTION "
+					+ "from D_QUESTIONS "
 					+ "where USER_ID = ? "
 					+ "order by Q_DATE";
 
@@ -88,7 +88,7 @@ public class QuestionsDao {
 
 	//検索一覧から質問詳細移動時 & マイページから質問詳細移動時用
 	//引数paramで検索項目を指定し、検索結果のリストを返す
-	public List<Question> selectQDetail(String q_id) {
+	public List<Question> selectQDetail(int q_id) {
 
 		Connection conn = null;
 		List<Question> QEdit = new ArrayList<Question>();
@@ -111,7 +111,7 @@ public class QuestionsDao {
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-			pStmt.setString(1, q_id);
+			pStmt.setInt(1, q_id);
 
 			//SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -202,7 +202,7 @@ public class QuestionsDao {
 			}
 
 			//INSERT文を準備
-			String sql = "insert into D_QUESTION ( Q_ID, Q_TITLE, Q_CONTENTS, Q_TAG01, Q_TAG02, Q_TAG03, Q_TAG04, Q_TAG05, USER_ID, Q_FILE, Q_DATE, DONE_TAG, COUNTER ) "
+			String sql = "insert into D_QUESTIONS ( Q_ID, Q_TITLE, Q_CONTENTS, Q_TAG01, Q_TAG02, Q_TAG03, Q_TAG04, Q_TAG05, USER_ID, Q_FILE, Q_DATE, DONE_TAG, COUNTER ) "
 					+ "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURDATE(), 0, 0)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -291,7 +291,7 @@ public class QuestionsDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem", "sa", "sa");
 
 			//SQL文の準備
-			String sql = "select COUNTER from D_QUESTION where Q_ID = ?";
+			String sql = "select COUNTER from D_QUESTIONS where Q_ID = ?";
 
 			PreparedStatement pStmt1 = conn.prepareStatement(sql);
 
