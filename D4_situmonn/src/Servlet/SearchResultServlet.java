@@ -26,7 +26,7 @@ public class SearchResultServlet extends HttpServlet {
 	// もしもログインしていなかったらログインサーブレットにリダイレクトする
 	HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-		    response.sendRedirect("/D-4situmonn/LoginServlet");
+		    response.sendRedirect("./LoginServlet");
 		    return;
 	    }
 
@@ -53,7 +53,7 @@ public class SearchResultServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D-4situmonn/LoginServlet");
+			response.sendRedirect("./LoginServlet");
 			return;
 		}
 
