@@ -79,23 +79,24 @@ public class QuestionsPostServlet extends HttpServlet {
 
 	    // 登録処理 question dao
 	    QuestionsDao QDao = new QuestionsDao();
-	    if (QDao.insertQRecord(new Question(user_id, password, user_name, company, user_category))) {	// 登録成功
-			request.setAttribute("result",
-			new Result("登録成功！"));
-	    	} //resultのbeansがないので赤線が出る。作成するか相談する。
+	    if (QDao.insertQRecord(new Question(q_id, q_title, q_contents, q_tag01, q_tag02, q_tag03, q_tag04, q_tag05,
+	    		user_id, q_file, q_date, 0, counter, user_name)))  {	//
+			// QuestionのIDは保留
+	    	// Questionのuser_idは保留。どうやって情報を取得するのか？
+	    	// Stringに変えるのか？
+	    	request.setAttribute("result",
+			new Result("質問登録成功！"));
+	    	}
 	     	else {
 			request.setAttribute("result",
-			new Result("登録失敗！"));
+			new Result("質問登録失敗！"));
 	    	}
+
+	    // テンプレ挿入機能はどのようにしたらよいか？
 
 		// トップページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 		dispatcher.forward(request, response);
-
-
-
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 
