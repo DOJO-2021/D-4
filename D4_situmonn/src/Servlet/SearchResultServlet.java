@@ -36,6 +36,10 @@ public class SearchResultServlet extends HttpServlet {
 
         //検索結果を日付の古い順に表示するやり方【保留　2021/06/15】
 
+
+	   // 検索結果をリクエストスコープに格納する
+	 		request.setAttribute("QList", QList);
+
 	    // 検索結果ページにフォワードする
 	 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/seachreslut.jsp");
 	 		dispatcher.forward(request, response);
