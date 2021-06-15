@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.jni.User;
-
 import dao.UsersDao;
 import model.Result;
+import model.User;
 
 /**
  * Servlet implementation class UsersRegistServlet
