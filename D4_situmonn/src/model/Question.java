@@ -41,7 +41,7 @@ public class Question implements Serializable {
 	}
 
 	//引数がないコンストラクタ（デフォルトコンストラクタ）
-	//String型の場合 ""、int型の場合 0、Date型の場合 newDate()
+	//String型の場合 ""、int型の場合 0、Date型の場合 null
 	public Question() {
 		super();
 		this.q_id = 0;
