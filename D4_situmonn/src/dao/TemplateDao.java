@@ -17,7 +17,7 @@ public class TemplateDao {
 
 		try {
 			Class.forName("org.h2.Driver");
-			conn = DriverManager.getConnection(" jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem ", "sa", "sa");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem ", "sa", "sa");
 
 			String sql = "SELECT * FROM M_TEMPLATE";
 

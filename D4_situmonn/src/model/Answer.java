@@ -34,6 +34,15 @@ public class Answer{
 		this.user_name = user_name;
 	}
 
+	public Answer(int q_id, String ans_contents,
+			String user_id, Date ans_date, String user_name) {
+		this.q_id = q_id;
+		this.ans_contents = ans_contents;
+		this.user_id = user_id;
+		this.ans_date = ans_date;
+		this.user_name = user_name;
+	}
+
 	public int getAns_id() {
 		return ans_id;
 	}

@@ -24,7 +24,7 @@ public class AnswerDaoTest {
 
 				// insert()のテスト
 				System.out.println("---------- insert()のテスト ----------");
-				Answer insRec = new Answer(1, 1, "Test", "Test", null, "Test");
+				Answer insRec = new Answer(1, "Test", "Test", null, "Test");
 				if (dao.insert(insRec)) {
 					System.out.println("登録成功！");
 				}
