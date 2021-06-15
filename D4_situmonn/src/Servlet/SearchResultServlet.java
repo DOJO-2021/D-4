@@ -30,7 +30,7 @@ public class SearchResultServlet extends HttpServlet {
 		    return;
 	    }
 
-		//リスエスとスコープに保存された検索結果のリストを取得　【リストの取得について保留2021/06/15】
+		//リスエストスコープに保存された検索結果のリストを取得　【リストの取得について保留2021/06/15】
 		QuestionsDao QDao = new QuestionsDao();
 		String user_id = (String) session.getAttribute("id");
 		System.out.println("ユーザID：" + user_id);

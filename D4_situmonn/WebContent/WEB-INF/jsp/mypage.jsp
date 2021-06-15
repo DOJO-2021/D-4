@@ -14,14 +14,16 @@
 
 <table><!-- テーブルに罫線(タグで指定) -->
  <caption>プロフィール</caption>
+ <c:forEach var="e" items="${cardList}" >
   <tr>
-    <th>${ID}</th>
-    <th>${氏名}</th>
+    <th>${e.user_id}</th>
+    <th>${e.user_name}</th>
   </tr>
   <tr>
-    <th>${会社名}</th>
-    <th>${ユーザー種別}</th>
+    <th>${e.company}</th>
+    <th>${e.user_category}</th>
   </tr>
+  </c:forEach>
 </table>
 <a href="/D4_situmonn/ProfileEditServlet">プロフィール編集</a>
 
