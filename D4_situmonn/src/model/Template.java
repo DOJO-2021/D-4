@@ -1,6 +1,8 @@
 package model;
 
-public class Template{
+import java.io.Serializable;
+
+public class Template implements Serializable {
 	private int temp_id;
 	private String temp_contents;
 

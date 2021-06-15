@@ -60,6 +60,39 @@ public class Question implements Serializable {
 		this.user_name = "";
 	}
 
+	//マイページ一覧表示用
+	public Question(int q_id, String q_title, String q_contents, String q_tag01, String q_tag02, String q_tag03,
+			String q_tag04, String q_tag05, Date q_date, int done_tag) {
+		super();
+		this.q_id = q_id;
+		this.q_title = q_title;
+		this.q_contents = q_contents;
+		this.q_tag01 = q_tag01;
+		this.q_tag02 = q_tag02;
+		this.q_tag03 = q_tag03;
+		this.q_tag04 = q_tag04;
+		this.q_tag05 = q_tag05;
+		this.q_date = q_date;
+		this.done_tag = done_tag;
+	}
+
+	//編集時確定用
+	public Question(int q_id, String q_title, String q_contents, String q_tag01, String q_tag02, String q_tag03,
+			String q_tag04, String q_tag05, String q_file, int done_tag) {
+		// TODO 自動生成されたコンストラクター・スタブ
+		super();
+		this.q_id = q_id;
+		this.q_title = q_title;
+		this.q_contents = q_contents;
+		this.q_tag01 = q_tag01;
+		this.q_tag02 = q_tag02;
+		this.q_tag03 = q_tag03;
+		this.q_tag04 = q_tag04;
+		this.q_tag05 = q_tag05;
+		this.q_file = q_file;
+		this.done_tag = done_tag;
+	}
+
 	public int getQ_id() {
 		return q_id;
 	}
