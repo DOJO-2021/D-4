@@ -11,12 +11,13 @@ public class Answer{
 	private String user_name;
 
 	public Answer(int ans_id, int q_id, String ans_contents,
-			String user_id, Date ans_date) {
+			String user_id, Date ans_date, String user_name) {
 		this.ans_id = ans_id;
 		this.q_id = q_id;
 		this.ans_contents = ans_contents;
 		this.user_id = user_id;
 		this.ans_date = ans_date;
+		this.user_name = user_name;
 	}
 
 	public Answer() {
@@ -25,6 +26,7 @@ public class Answer{
 		ans_contents = "";
 		user_id = "";
 		ans_date = new Date();
+		user_name = "";
 	}
 
 	public Answer(String ans_contents, String user_name) {

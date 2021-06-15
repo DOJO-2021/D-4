@@ -12,9 +12,9 @@ public class AnswerDaoTest {
 
 		AnswersDao dao = new AnswersDao();
 
-		// select()のテスト（nameに "子" を含んだデータを検索する）
+		// select()のテスト
 				System.out.println("---------- select()のテスト ----------");
-				List<Answer> cardList = dao.List(new Answer());
+				List<Answer> cardList = dao.List(new Answer(0, 0, "", "", null, ""));
 				for (Answer card : cardList) {
 					System.out.println(card.getAns_contents());
 					System.out.println(card.getUser_name());
@@ -24,7 +24,7 @@ public class AnswerDaoTest {
 
 				// insert()のテスト
 				System.out.println("---------- insert()のテスト ----------");
-				Answer insRec = new Answer();
+				Answer insRec = new Answer(1, 1, "Test", "Test", null, "Test");
 				if (dao.insert(insRec)) {
 					System.out.println("登録成功！");
 				}
@@ -32,5 +32,4 @@ public class AnswerDaoTest {
 					System.out.println("登録失敗！");
 					}
 	}
-
 }

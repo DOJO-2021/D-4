@@ -1,7 +1,6 @@
 package dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +24,7 @@ public class AnswersDao {
 
 			// SQL文を準備する
 			String sql = "SELECT d_a.ANS_CONTENTS, m_u.USER_NAME FROM D_ANSWERS AS d_a "
-					+ "INNER JOIN M_USERS AS m_u ON d_a.USER_ID = m_u.USERID "
+					+ "INNER JOIN M_USERS AS m_u ON d_a.USER_ID = m_u.USER_ID "
 					+ "WHERE Q_ID = ? ORDER BY ANS_DATE ASC";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -98,7 +97,7 @@ public class AnswersDao {
 			}
 
 			String sql = "INSERT INTO D_ANSWERS(ANS_ID,Q_ID,ANS_CONTENTS,"
-					+ "USER_ID,ANS_DATE) VALUES(?,?,?,?,?)";
+					+ "USER_ID,ANS_DATE) VALUES(?,?,?,?,CURDATE())";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			pStmt.setInt(1,  maxID);
@@ -114,12 +113,6 @@ public class AnswersDao {
 			}
 			else {
 				pStmt.setString(4, null);
-			}
-			if (card.getAns_date() != null) {
-				pStmt.setDate(5, (Date) card.getAns_date());
-			}
-			else {
-				pStmt.setString(5, null);
 			}
 
 			if (pStmt.executeUpdate() == 1) {
