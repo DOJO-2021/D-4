@@ -1,7 +1,6 @@
 package Servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDao;
+import model.Result;
 import model.User;
 
 /**
@@ -25,6 +25,7 @@ public class ProfileEditServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
@@ -33,24 +34,29 @@ public class ProfileEditServlet extends HttpServlet {
 			return;
 		}
 
-		/* 氏名、会社名、パスワードを取得 */
-		// リクエストパラメータを取得する
-		/*
-		request.setCharacterEncoding("UTF-8");
-		String user_id = request.getParameter("id_input");
-		String user_name  = request.getParameter("name_input");
-		String company = request.getParameter("company_input");
-		String password request.getParameter("password_input");
-		 */
-
-		UsersDao UDao = new UsersDao();
-		List<User> cardList = UDao.select(new User();
-
 		// プロフィール編集ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profileedit.jsp");//パス名を変更
 		dispatcher.forward(request, response);
 	}
 
+		/* 氏名、会社名、パスワードを取得 */
+		// リクエストパラメータを取得する
+/*
+		request.setCharacterEncoding("UTF-8");
+		String user_id = request.getParameter("id_input");
+		String user_name  = request.getParameter("name_input");
+		String company = request.getParameter("company_input");
+		String password = request.getParameter("password_input");
+
+
+		UsersDao UDao = new UsersDao();
+		List<User> cardList = UDao.select(user_id);
+
+		// プロフィール編集ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profileedit.jsp");//パス名を変更
+		dispatcher.forward(request, response);
+	}
+*/
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -65,11 +71,18 @@ public class ProfileEditServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
+		String password = request.getParameter("password_input");
 		String user_name  = request.getParameter("name_input");
 		String company = request.getParameter("company_input");
-		String password = request.getParameter("password_input");
+
 
 		//更新処理
 		UsersDao UDao = new UsersDao();
-		if (UDao.update(new User()))
+		if (UDao.update(new User("", password, user_name, company, ""))){
+			request.setAttribute("result", new Result("プロフィールを更新しました。"));
+		}
+		else {
+			request.setAttribute("result", new Result("プロフィールの更新に失敗しました。"));
+		}
+	}
 }

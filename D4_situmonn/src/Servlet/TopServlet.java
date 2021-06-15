@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.QuestionsDao;
+import dao.QuestionsListDao;
 import model.Question;
+import model.QuestionList;
 
 /**
  * Servlet implementation class TopServlet
@@ -57,21 +58,22 @@ public class TopServlet extends HttpServlet {
 		String q_tag9 = request.getParameter("question_tag9");
 		String q_tag10 = request.getParameter("question_tag10");
 		String q_tag11 = request.getParameter("question_tag11");
-		String keyword = request.getParameter("keyword");
-		//【保留】解決未解決ラベルはString型に、値は0か1
+		String q_contents = request.getParameter("keyword");
+		//解決未解決ラベル(String型、値は"0"か"1")
 		String solution_label = request.getParameter("solution_label");
 
 		//検索処理を行うために、qDaoオブジェクトを生成
-		QuestionsDao qDao = new QuestionsDao();
+		QuestionsListDao qLDao = new QuestionsListDao();
 
-		//解決か未解決かで呼び出すメソッド異なる？　解決→selectQListS、未解決→
-		// 【保留】！new Questionの引数入れる　検索処理を行う 検索に関係ない場所は "" かIDは0にする
+		//解決か未解決かで呼び出すメソッド異なる　解決→selectQListS、未解決→
+		// 検索処理を行う 検索に関係ない場所は "" かIDは0にする
 		if (solution_label == "1") {  //解決済みの時の検索処理とリクエストスコープへの格納
-		  List<Question> QList = qDao.selectQListS(new Question(       ));
+		  List<Question> QList = qLDao.selectQListS(new QuestionList(q_tag1,q_tag2,q_tag3,q_tag4,q_tag5,q_tag6,q_tag7,q_tag8,q_tag9,q_tag10,q_tag11,q_contents));
 		  request.setAttribute("QList", QList);
 		}
 		else if(solution_label == "0"){  //未解決の時の検索処理とリクエストスコープへの格納
-
+		  List<Question> QList = qLDao.selectQListU(new QuestionList(q_tag1,q_tag2,q_tag3,q_tag4,q_tag5,q_tag6,q_tag7,q_tag8,q_tag9,q_tag10,q_tag11,q_contents));
+		  request.setAttribute("QList", QList);
 		}
 
 		// 検索結果ページにフォワードする
