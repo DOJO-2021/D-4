@@ -40,6 +40,9 @@ public class MypageServlet extends HttpServlet {
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
 
+
+
+
 	    //リスエスとスコープに保存された検索結果のリストを取得【保留：user_idは二回使えない→変えてもよいのか？2021/06/15】
 		QuestionsDao QDao = new QuestionsDao();
 		String id = (String) session.getAttribute("id");
