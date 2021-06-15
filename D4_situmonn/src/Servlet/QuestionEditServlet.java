@@ -32,9 +32,8 @@ public class QuestionEditServlet extends HttpServlet {
 			response.sendRedirect("/D4_situmonn/LoginServlet");
 			return;
 		}
-
-		// 登録ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/questionpost.jsp");
+		// 質問編集ページにフォワードする処理
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/questionedit.jsp");//パス名を変更
 		dispatcher.forward(request, response);
 	}
 
@@ -57,7 +56,7 @@ public class QuestionEditServlet extends HttpServlet {
 	    String q_tag03 = request.getParameter("question_tag3");
 	    String q_tag04 = request.getParameter("question_tag4");
 	    String q_tag05 = request.getParameter("question_tag5");
-	    }
+
 
 	    // 質問タグを最低1つ、最大5つ選択する
 
@@ -65,14 +64,16 @@ public class QuestionEditServlet extends HttpServlet {
 
 
 	    // 解決チェックボックス
+        String done_tag = request.getParameter("solution_button");
 
         // 登録更新処理 question dao
         QuestionsDao QDao = new QuestionsDao();
-        if (QDao.update(new Question(q_id, q_title, q_contents, q_tag01, q_tag02, q_tag03, q_tag04, q_tag05,
-    		user_id, q_file, q_date, 0, counter, user_name)))  {
-		// QuestionのIDは保留
-    	// Questionのuser_idは保留。どうやって情報を取得するのか？
-    	// Stringに変えるのか？
+        if (QDao.updateQEdit(new Question(q_id, q_title, q_contents,  q_tag01, q_tag02, q_tag03,
+    		q_tag04, q_tag05, user_id, q_file, q_date, done_tag, counter,
+    		user_name)))  {
+		// Questionのq_id, user_id, q_file, q_date, counter, user_nameは保留。
+        //どうやって情報を取得するのか？
+
     	request.setAttribute("result",
 		new Result("質問を更新しました。"));
     	}
@@ -81,9 +82,7 @@ public class QuestionEditServlet extends HttpServlet {
 		new Result("質問を更新できませんでした。"));
     	}
 
-        // キャンセルをクリック
-
-
+        // キャンセルをクリック→jspで記述したのでいらない。
 
 	    // マイページにフォワードする
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");
