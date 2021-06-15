@@ -130,28 +130,28 @@ public class UsersDao {
 
 		try {
 
+			//INSERT文を準備
+			String sql = "insert into M_USERS ( USER_ID, PASSWORD, USER_NAME, COMPANY, USER_CATEGORY ) "
+					+ "values ( ?, ?, ?, ?, ?)";
 			//JDBCドライバ読み込み
 			Class.forName("org.h2.Driver");
 
 			//データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem", "sa", "sa");
 
-			//INSERT文を準備
-			String sql = "insert into M_USERS ( USER_ID, USER_NAME, PASSWORD, USER_CATEGORY, COMPANY ) "
-					+ "values ( ?, ?, ?, ?, ?)";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
 			pStmt.setString(1, card.getUser_id());
-			pStmt.setString(2, card.getUser_name());
-			pStmt.setString(3, card.getPassword());
-			pStmt.setString(4, card.getUser_category());
+			pStmt.setString(2, card.getPassword());
+			pStmt.setString(3, card.getUser_name());
 			if (card.getCompany() != null && !card.getCompany().equals("")) {
-				pStmt.setString(5, card.getCompany());
+				pStmt.setString(4, card.getCompany());
 			}
 			else {
-				pStmt.setString(5, null);
+				pStmt.setString(4, null);
 			}
+			pStmt.setString(5, card.getUser_category());
 
 			//SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -195,7 +195,7 @@ public class UsersDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem", "sa", "sa");
 
 			//SELECT文を準備
-			String sql = "select USER_ID, USER_NAME, PASSWORD, USER_CATEGORY, COMPANY from M_USERS where USER_ID = ?";
+			String sql = "select USER_ID, PASSWORD, USER_NAME, COMPANY, USER_CATEGORY from M_USERS where USER_ID = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
@@ -208,10 +208,10 @@ public class UsersDao {
 			while (rs.next()) {
 				User card = new User(
 						rs.getString("USER_ID"),
-						rs.getString("USER_NAME"),
 						rs.getString("PASSWORD"),
-						rs.getString("USER_CATEGORY"),
-						rs.getString("COMPANY")
+						rs.getString("USER_NAME"),
+						rs.getString("COMPANY"),
+						rs.getString("USER_CATEGORY")
 						);
 				cardList.add(card);
 			}
@@ -257,13 +257,13 @@ public class UsersDao {
 
 			//UPDATE文を準備
 			String sql = "update M_USERS "
-					+ "set USER_NAME = ?, PASSWORD = ?, COMPANY = ? "
+					+ "set PASSWORD = ?, USER_NAME = ?, COMPANY = ? "
 					+ "where USER_ID = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
-			pStmt.setString(1, card.getUser_name());
-			pStmt.setString(2, card.getPassword());
+			pStmt.setString(1, card.getPassword());
+			pStmt.setString(2, card.getUser_name());
 			if (card.getCompany() != null && !card.getCompany().equals("")) {
 				pStmt.setString(3, card.getCompany());
 			}
