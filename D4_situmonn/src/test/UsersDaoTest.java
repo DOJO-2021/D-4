@@ -15,7 +15,7 @@ public class UsersDaoTest {
 		// select()のテスト
 		System.out.println("---------- select()のテスト ----------");
 		//ログインチェックのテスト
-		boolean cardListLogin = dao.isLoginOK(null, null);
+		boolean cardListLogin = dao.isLoginOK("Test", "変更");
 		if(cardListLogin == true) {
 			System.out.println("ログイン成功");
 		}
@@ -24,7 +24,7 @@ public class UsersDaoTest {
 		}
 
 		//登録チェックのテスト
-		boolean cardListCheck = dao.insertcheck(null);
+		boolean cardListCheck = dao.insertcheck("Test");
 		if(cardListCheck == true) {
 			System.out.println("かぶりなし");
 		}
@@ -32,7 +32,7 @@ public class UsersDaoTest {
 			System.out.println("かぶりあり");
 		}
 
-		List<User> cardList = dao.select(null);
+		List<User> cardList = dao.select("Test");
 		for (User card : cardList) {
 			System.out.println(card.getUser_id());
 			System.out.println(card.getUser_name());
@@ -45,7 +45,8 @@ public class UsersDaoTest {
 
 		// insert()のテスト
 		System.out.println("---------- insert()のテスト ----------");
-		User insRec = new User("Test", "Test", "Test", "Test", "Test");
+		//ユーザー登録のテスト
+		User insRec = new User("Test1", "Test", "Test", "Test", "Test");
 		if (dao.insert(insRec)) {
 			System.out.println("登録成功！");
 		}
@@ -53,12 +54,13 @@ public class UsersDaoTest {
 			System.out.println("登録失敗！");
 			}
 
-		// 挿入したレコードのIDを取得する（この後で更新と削除をするため）
+		// 挿入したレコードのIDを取得する（この後で更新をするため）
 		String insId = dao.select(insRec.getUser_id()).get(0).getUser_id();
 
 		// update()のテスト
 		System.out.println("---------- update()のテスト ----------");
-		User upRec = new User(insId, "変更", "変更", "変更", "変更");
+		//プロフィール更新のテスト
+		User upRec = new User(insId, "変更", "変更", "", "変更");
 		if (dao.update(upRec)) {
 			System.out.println("更新成功！");
 		}
