@@ -1,8 +1,6 @@
 package Servlet;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -37,6 +35,7 @@ public class AnswersDetailServlet extends HttpServlet {
 			response.sendRedirect("/D4_situmonn/LoginServlet");
 			return;
 		}
+
 		//質問の表示
 		//検索処理を行う q_idをどう取得するのか分からない
 		QuestionsDao qDao = new QuestionsDao();
@@ -46,15 +45,13 @@ public class AnswersDetailServlet extends HttpServlet {
 		request.setAttribute("QEdit", QEdit);
 
 		/*ここから回答一覧の表示*/
-
-		//リクエストパラメータを取得
-		String ANS_CONTENTS = request.getParameter("newanswer");
-
-
+		//指定のq_idと紐づけた答えを表示しなければならない
 		//検索処理
 		dao.AnswersDao ansDao = new AnswersDao();
-		List<Answer> AnswerList = ansDao.List(new Answer(ANS_CONTENTS, ""));
+		List<Answer> AnswerList = ansDao.List(ans_contents, user_name);
 
+		//リクエストスコープに格納する
+		request.setAttribute("AnswerList", AnswerList);
 
 		// 質問詳細ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");//パス名を変更
@@ -72,14 +69,16 @@ public class AnswersDetailServlet extends HttpServlet {
 			response.sendRedirect("/D4_situmonn/LoginServlet");
 			return;
 		}
-		// リクエストパラメータを取得する
+		// リクエストパラメータを取得する ans_idやq_idとかの取得方法
+		//ユーザーがフォームで入力したフィールド以外はどう取得する？
+
 		request.setCharacterEncoding("UTF-8");
 		String ANS_CONTENTS = request.getParameter("newanswer");
-		}
+
 
 		//登録処理を行う
 		AnswersDao ansDao = new AnswersDao();
-		if (ansDao.insert(new Answer("", "", ANS_CONTENTS,"" ,""))){  //登録成功
+		if (ansDao.insert(new Answer(ANS_ID,Q_ID,ANS_CONTENTS,USER_ID,ANS_DATE))){  //登録成功
 			request.setAttribute("result",
 			new Result("回答を送信しました。"));
 		}
@@ -87,8 +86,8 @@ public class AnswersDetailServlet extends HttpServlet {
 			request.setAttribute("result",new Result("回答を送信できませんでした。"));
 		}
 
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+		// 同じページ（質問詳細ページ）にフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");
 		dispatcher.forward(request, response);
 	}
 }

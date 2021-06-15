@@ -34,6 +34,7 @@ public class ProfileEditServlet extends HttpServlet {
 			return;
 		}
 
+
 		// プロフィール編集ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profileedit.jsp");//パス名を変更
 		dispatcher.forward(request, response);
@@ -71,6 +72,7 @@ public class ProfileEditServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
+		String user_id = (String) session.getAttribute("id");
 		String password = request.getParameter("password_input");
 		String user_name  = request.getParameter("name_input");
 		String company = request.getParameter("company_input");
@@ -78,7 +80,7 @@ public class ProfileEditServlet extends HttpServlet {
 
 		//更新処理
 		UsersDao UDao = new UsersDao();
-		if (UDao.update(new User("", password, user_name, company, ""))){
+		if (UDao.update(new User(user_id, password, user_name, company, ""))){
 			request.setAttribute("result", new Result("プロフィールを更新しました。"));
 		}
 		else {
