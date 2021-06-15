@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.QuestionsDao;
 import dao.UsersDao;
+import model.Question;
 import model.User;
 
 /**
@@ -33,28 +34,27 @@ public class MypageServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String user_id = request.getParameter("user_id");
+		String password = request.getParameter("password");
 		String user_name = request.getParameter("user_name");
 		String company = request.getParameter("company");
 		String user_category = request.getParameter("user_category");
 
-		// ログインしているユーザーの検索処理を行う
+		// ログインしているユーザーの検索処理を行う【エラー保留中2021/06/14】
 		UsersDao UDao = new UsersDao();
-		List<User> cardList = UDao.select(new User(user_id));
+		List<User> cardList = UDao.select(new User(user_id,password, user_name, company, user_category));
 
 	    // 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
 
-		// マイページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");
-		dispatcher.forward(request, response);
-		}
+		//ユーザーの質問のリクエストパラメータは取得する？
 
-        // ログインしているユーザーの質問の検索処理を行う
+
+        // ログインしているユーザーの質問の検索処理を行う【エラー保留中2021/06/14】
 	    QuestionsDao QDao = new QuestionsDao();
-	    List<User> cardList = QDao.select(new User(user_id));
+	    List<Question> QList = QDao.select (new MyQList(user_id));
 
         // 検索結果をリクエストスコープに格納する
-		request.setAttribute("cardList", cardList);
+	    request.setAttribute("QList", QList);
 
 		// マイページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");

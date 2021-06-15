@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDao;
+import model.LoginUser;
 import model.Result;
 
 /**
@@ -43,7 +44,7 @@ public class LoginServlet extends HttpServlet {
 		if (UDao.isLoginOK(user_id, password)) {	// ログイン成功
 			// セッションスコープにIDを格納する
 			HttpSession session = request.getSession();
-			session.setAttribute("id", new LoginUser(id));//ログインしたユーザーのIDを入れるbeansがないかも？
+			session.setAttribute("id", new LoginUser(user_id));//ログインしたユーザーのIDを入れるbeansがないかも？
 
 			// メニューサーブレットにリダイレクトする(別のサーブレットで切り替えて)
 			response.sendRedirect("/D-4_situmonn/TopServlet");//フォワード先のサーブレット名を入力
