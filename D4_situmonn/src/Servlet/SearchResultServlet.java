@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.AnswersDao;
 import dao.QuestionsDao;
+import model.Answer;
 import model.Question;
+
 
 /**
  * Servlet implementation class SearchResultServlet
@@ -30,24 +33,11 @@ public class SearchResultServlet extends HttpServlet {
 		    return;
 	    }
 
-		//リスエストスコープに保存された検索結果のリストを取得　【リストの取得について保留2021/06/15】
-		QuestionsDao QDao = new QuestionsDao();
-		String user_id = (String) session.getAttribute("id");
-		System.out.println("ユーザID：" + user_id);
-	    List<Question> QList = QDao.selectMyQList(user_id);
-
-        //検索結果を日付の古い順に表示するやり方【保留　2021/06/15】
-
-
-	   // 検索結果をリクエストスコープに格納する
-	 		request.setAttribute("QList", QList);
-
 	    // 検索結果ページにフォワードする
-	 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/seachreslut.jsp");
-	 		dispatcher.forward(request, response);
+	 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/seachreslut.jsp");
+	 	dispatcher.forward(request, response);
 
 	}
-
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
@@ -57,20 +47,27 @@ public class SearchResultServlet extends HttpServlet {
 			return;
 		}
 
-		//
+		//引数q_idの取得
 		request.setCharacterEncoding("UTF-8");
 		int q_id = Integer.parseInt(request.getParameter("Q_ID"));
 
+		//質問詳細情報取得
 		QuestionsDao qDao = new QuestionsDao();
 		List<Question> QEdit = qDao.selectQDetail(q_id);
 
+		//上記をリクエストスコープに格納
 		request.setAttribute("QEdit", QEdit);
 
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/searchresult.jsp");
+		//回答情報取得
+		AnswersDao aDao = new AnswersDao();
+		List<Answer> AnswerList = aDao.List(q_id);
+
+		//上記をリクエストスコープに格納
+		request.setAttribute("AnswerList", AnswerList);
+
+		//質問詳細ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");
 		dispatcher.forward(request, response);
 	}
-
-
-
 
 }
