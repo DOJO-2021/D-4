@@ -1,7 +1,6 @@
 package Servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,9 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.AnswersDao;
-import dao.QuestionsDao;
 import model.Answer;
-import model.Question;
 import model.Result;
 
 /**
@@ -36,28 +33,11 @@ public class AnswersDetailServlet extends HttpServlet {
 			return;
 		}
 
-		//質問の表示
-		//検索処理を行う q_idをどう取得するのか分からない
-		QuestionsDao qDao = new QuestionsDao();
-		List<Question> QEdit = qDao.selectQDetail(q_id);
-
-		//リクエストスコープに格納する
-		request.setAttribute("QEdit", QEdit);
-
-		/*ここから回答一覧の表示*/
-		//指定のq_idと紐づけた答えを表示しなければならない
-		//検索処理
-		dao.AnswersDao ansDao = new AnswersDao();
-		List<Answer> AnswerList = ansDao.List(ans_contents, user_name);
-
-		//リクエストスコープに格納する
-		request.setAttribute("AnswerList", AnswerList);
-
 		// 質問詳細ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");//パス名を変更
 		dispatcher.forward(request, response);
+		
 	}
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
