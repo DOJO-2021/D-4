@@ -22,14 +22,14 @@
 							<tr>
 								<td><input type="hidden" name="Q_ID" value="${e.q_id}"></td>
 								<th>質問者：</th>
-								<td><input type="text" name="Q_NAME" value="${e.q_name}" readonly></td>
+								<td>${e.q_name}</td>
 								<th>質問日時：</th>
-								<td><input type="text" name="Q_DATE" value="${e.q_date}" readonly></td>
-								<td><input type="text" name="DONE_TAG" value="${e.done_tag}" readonly></td>
+								<td>${e.q_date}</td>
+								<td>${e.done_tag}</td>
 							</tr>
 							<tr>
-								<!--<th>質問内容を先頭から100字表示する</th>-->
-								<td><input type="text" name="Q_CONTENTS" value="${e.q_contents}" readonly></td>
+								<!--質問内容を先頭から100字表示する-->
+								<td>${e.q_contents}</td>
 							</tr>
 						</c:forEach>
 					</form>
