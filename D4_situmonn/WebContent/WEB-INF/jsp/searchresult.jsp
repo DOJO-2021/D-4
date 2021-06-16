@@ -13,7 +13,7 @@
 			<h2>検索結果</h2>
 			<div class="vertical-scroll-table">
 				<table class="searchresult"><!-- テーブルに罫線とスクロールバー -->
-					<form method="POST" action="/D-4/AnswersDetailServlet">
+					<form method="POST" action="/D-4/SearchResultServlet">
 						<c:forEach var="e" items="${QList}" >
 							<tr>
 								 <th>タイトル：</th>
