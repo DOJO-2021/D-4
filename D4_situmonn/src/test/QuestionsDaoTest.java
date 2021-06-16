@@ -14,7 +14,7 @@ public class QuestionsDaoTest {
 		// select()のテスト
 		//マイページ一覧表示時
 		System.out.println("---------- select()のテスト ----------");
-		List<Question> cardList = dao.selectMyQList("");
+		List<Question> cardList = dao.selectMyQList("Test");
 		for (Question card : cardList) {
 			System.out.println(card.getQ_id());
 			System.out.println(card.getQ_title());
