@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.AnswersDao;
 import model.Answer;
+import model.LoginUser;
 import model.Result;
 
 /**
@@ -29,14 +30,14 @@ public class AnswersDetailServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D4_situmonn/LoginServlet");
+			response.sendRedirect("./LoginServlet");
 			return;
 		}
 
 		// 質問詳細ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");//パス名を変更
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");
 		dispatcher.forward(request, response);
-		
+
 	}
 
 	/**
@@ -46,21 +47,23 @@ public class AnswersDetailServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D4_situmonn/LoginServlet");
+			response.sendRedirect("./LoginServlet");
 			return;
 		}
-		// リクエストパラメータを取得する ans_idやq_idとかの取得方法
-		//ユーザーがフォームで入力したフィールド以外はどう取得する？
 
+		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
+		//ans_idは最大値を取るため記述不要
+		//q_idはjspのQ_ID(hidden)から取得する
+		int Q_ID = Integer.parseInt(request.getParameter("Q_ID"));
 		String ANS_CONTENTS = request.getParameter("newanswer");
-
+		LoginUser USER_ID = (LoginUser) session.getAttribute("id");
+		//回答日時については回答した日付をSQL側で入れるため記述不要
 
 		//登録処理を行う
 		AnswersDao ansDao = new AnswersDao();
-		if (ansDao.insert(new Answer(ANS_ID,Q_ID,ANS_CONTENTS,USER_ID,ANS_DATE))){  //登録成功
-			request.setAttribute("result",
-			new Result("回答を送信しました。"));
+		if (ansDao.insert(new Answer(0, Q_ID, ANS_CONTENTS, USER_ID.getId(), null))){  //登録成功
+			request.setAttribute("result",new Result("回答を送信しました。"));
 		}
 		else {	// 登録失敗
 			request.setAttribute("result",new Result("回答を送信できませんでした。"));
