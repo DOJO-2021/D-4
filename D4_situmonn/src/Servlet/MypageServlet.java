@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.QuestionsDao;
 import dao.UsersDao;
+import model.LoginUser;
 import model.Question;
 import model.User;
 
@@ -33,9 +34,9 @@ public class MypageServlet extends HttpServlet {
 
 		// ログインしているユーザーの検索処理を行う
 		UsersDao UDao = new UsersDao();
-		String user_id = (String) session.getAttribute("id");
-		System.out.println("ユーザID：" + user_id);
-		List<User> cardList = UDao.select(user_id);
+		LoginUser user = (LoginUser) session.getAttribute("id");
+		System.out.println("ユーザID：" + user.getId());
+		List<User> cardList = UDao.select(user.getId());
 
 		// 検索結果をリクエストスコープに格納する
 		request.setAttribute("cardList", cardList);
@@ -45,9 +46,8 @@ public class MypageServlet extends HttpServlet {
 
 	    //リスエスとスコープに保存された検索結果のリストを取得【保留：user_idは二回使えない→変えてもよいのか？2021/06/15】
 		QuestionsDao QDao = new QuestionsDao();
-		//String id = (String) session.getAttribute("id");
-		System.out.println("ユーザID：" + user_id);
-		List<Question> QList = QDao.selectMyQList(user_id);
+		System.out.println("ユーザID：" + user.getId());
+		List<Question> QList = QDao.selectMyQList(user.getId());
 
 		// 検索結果をリクエストスコープに格納する
 	 	request.setAttribute("QList", QList);

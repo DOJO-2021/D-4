@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.QuestionsDao;
+import model.LoginUser;
 import model.Question;
 import model.Result;
 
@@ -40,6 +42,7 @@ public class QuestionEditServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
@@ -56,6 +59,10 @@ public class QuestionEditServlet extends HttpServlet {
 	    String q_tag03 = request.getParameter("question_tag3");
 	    String q_tag04 = request.getParameter("question_tag4");
 	    String q_tag05 = request.getParameter("question_tag5");
+	    LoginUser user = (LoginUser) session.getAttribute("id");
+
+	    List<Question> QList =(List<Question>)request.getAttribute("QList");
+	    int q_id=Question.getQ_id();
 
 
 	    // 質問タグを最低1つ、最大5つ選択する
