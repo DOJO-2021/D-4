@@ -27,10 +27,14 @@ public class QuestionsDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem", "sa", "sa");
 
 			//SQL文を準備
-			String sql = "select Q_ID, Q_TITLE, Q_CONTENTS, Q_TAG01, Q_TAG02, Q_TAG03, Q_TAG04, Q_TAG05, Q_DATE, DONE_TAG "
+			String sql = "select D_QUESTIONS.Q_ID, D_QUESTIONS.Q_TITLE, D_QUESTIONS.Q_CONTENTS, "
+					+ "D_QUESTIONS.Q_TAG01, D_QUESTIONS.Q_TAG02, D_QUESTIONS.Q_TAG03, D_QUESTIONS.Q_TAG04, D_QUESTIONS.Q_TAG05, "
+					+ "D_QUESTIONS.Q_DATE, D_QUESTIONS.DONE_TAG, M_USERS.USER_NAME "
 					+ "from D_QUESTIONS "
-					+ "where USER_ID = ? "
-					+ "order by Q_DATE";
+					+ "inner join M_USERS "
+					+ "on M_USERS.USER_ID = D_QUESTIONS.USER_ID "
+					+ "where D_QUESTIONS.USER_ID = ? "
+					+ "order by D_QUESTIONS.Q_DATE";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -51,11 +55,8 @@ public class QuestionsDao {
 						rs.getString("Q_TAG03"),
 						rs.getString("Q_TAG04"),
 						rs.getString("Q_TAG05"),
-						rs.getString("USER_ID"),
-						rs.getString("Q_FILE"),
 						rs.getDate("Q_DATE"),
 						rs.getInt("DONE_TAG"),
-						rs.getInt("COUNTER"),
 						rs.getString("USER_NAME")
 						);
 				QList.add(MyQList);
