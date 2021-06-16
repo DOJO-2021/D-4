@@ -11,7 +11,7 @@ import java.util.List;
 import model.Answer;
 
 public class AnswersDao {
-	public List<Answer> List(Answer param){
+	public List<Answer> List(int q_id){
 		Connection conn = null;
 		List<Answer> AnswerList = new ArrayList<Answer>();
 
@@ -23,18 +23,16 @@ public class AnswersDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem ", "sa", "sa");
 
 			// SQL文を準備する
-			String sql = "SELECT d_a.ANS_CONTENTS, m_u.USER_NAME FROM D_ANSWERS AS d_a "
-					+ "INNER JOIN M_USERS AS m_u ON d_a.USER_ID = m_u.USER_ID "
-					+ "WHERE Q_ID = ? ORDER BY ANS_DATE ASC";
+			String sql = "SELECT d_a.ANS_CONTENTS, m_u.USER_NAME "
+					+ "FROM D_ANSWERS AS d_a "
+					+ "INNER JOIN M_USERS AS m_u "
+					+ "ON d_a.USER_ID = m_u.USER_ID "
+					+ "WHERE Q_ID = ? "
+					+ "ORDER BY ANS_DATE";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			if (param.getQ_id() != 0) {
-				pStmt.setInt(1, param.getQ_id());
-			}
-			else {
-				pStmt.setInt(1, 0);
-			}
+			pStmt.setInt(1, q_id);
 
 			ResultSet rs = pStmt.executeQuery();
 
@@ -96,8 +94,8 @@ public class AnswersDao {
 				e.printStackTrace();
 			}
 
-			String sql = "INSERT INTO D_ANSWERS(ANS_ID,Q_ID,ANS_CONTENTS,"
-					+ "USER_ID,ANS_DATE) VALUES(?,?,?,?,CURDATE())";
+			String sql = "INSERT INTO D_ANSWERS(ANS_ID, Q_ID, ANS_CONTENTS, USER_ID, ANS_DATE) "
+					+ "VALUES(?, ?, ?, ?, CURDATE())";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			pStmt.setInt(1,  maxID);
