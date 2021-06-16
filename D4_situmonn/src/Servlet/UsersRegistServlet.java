@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.UsersDao;
 import model.Result;
@@ -45,12 +44,6 @@ public class UsersRegistServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D4_situmonn/LoginServlet");
-			return;
-		}
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -68,10 +61,16 @@ public class UsersRegistServlet extends HttpServlet {
 			if (UDao.insert(new User(user_id, password, user_name, company, user_category))) {	// 登録成功
 			request.setAttribute("result",
 			new Result("登録成功！"));
+			//トップページに遷移する
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
+			dispatcher.forward(request, response);
 	    	} //resultのbeansがないので赤線が出る。作成するか相談する。
 	     	else {
 			request.setAttribute("result",
 			new Result("登録失敗！"));
+			// 結果ページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usersregist.jsp");
+			dispatcher.forward(request, response);
 	    	}
 		}
 		else {
@@ -81,7 +80,7 @@ public class UsersRegistServlet extends HttpServlet {
 		}
 
 		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 		dispatcher.forward(request, response);
 	}
 

@@ -33,7 +33,7 @@
  <c:forEach var="e" items="${QList}" >
   <tr>
     <th>${e.q_title}</th>
-    <th><a href="/D4_situmonn/QeustionEditServlet">編集</a></th>
+    <th><a href="/D4_situmonn/QuestionEditServlet">編集</a></th>
   </tr>
   <tr>
     <th>${e.q_date}</th>

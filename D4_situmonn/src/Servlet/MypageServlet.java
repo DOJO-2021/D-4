@@ -27,11 +27,11 @@ public class MypageServlet extends HttpServlet {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		HttpSession session = request.getSession();
 			if (session.getAttribute("id") == null) {
-			    response.sendRedirect("/D-4situmonn/LoginServlet");
+			    response.sendRedirect("/D4_situmonn/LoginServlet");
 			    return;
 		    }
 
-		// ログインしているユーザーの検索処理を行う【エラー保留中2021/06/14】
+		// ログインしているユーザーの検索処理を行う
 		UsersDao UDao = new UsersDao();
 		String user_id = (String) session.getAttribute("id");
 		System.out.println("ユーザID：" + user_id);
@@ -45,17 +45,17 @@ public class MypageServlet extends HttpServlet {
 
 	    //リスエスとスコープに保存された検索結果のリストを取得【保留：user_idは二回使えない→変えてもよいのか？2021/06/15】
 		QuestionsDao QDao = new QuestionsDao();
-		String id = (String) session.getAttribute("id");
-		System.out.println("ユーザID：" + id);
-		List<Question> QList = QDao.selectMyQList(id);
+		//String id = (String) session.getAttribute("id");
+		System.out.println("ユーザID：" + user_id);
+		List<Question> QList = QDao.selectMyQList(user_id);
 
 		// 検索結果をリクエストスコープに格納する
 	 	request.setAttribute("QList", QList);
 
-	 // マイページにフォワードする
-	 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");
-	 		dispatcher.forward(request, response);
-	 		}
+	    // マイページにフォワードする
+	 	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");
+	 	dispatcher.forward(request, response);
+	 	}
 
 	}
 

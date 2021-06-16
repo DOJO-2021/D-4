@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute("id", new LoginUser(user_id));//ログインしたユーザーのIDを入れるbeansがないかも？
 
 			// メニューサーブレットにリダイレクトする(別のサーブレットで切り替えて)
-			response.sendRedirect("/D-4_situmonn/TopServlet");//フォワード先のサーブレット名を入力
+			response.sendRedirect("/D4_situmonn/TopServlet");//フォワード先のサーブレット名を入力
 		}
 
 		else {									// ログイン失敗
