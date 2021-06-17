@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDao;
+import model.LoginUser;
 import model.Result;
 import model.User;
 
@@ -38,19 +39,6 @@ public class ProfileEditServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profileedit.jsp");//パス名を変更
 		dispatcher.forward(request, response);
 	}
-		/*
-		// user_idを取得する
-		request.setCharacterEncoding("UTF-8");
-		String user_id = (String) session.getAttribute("id");
-
-		//プロフィールの検索処理
-		UsersDao UDao = new UsersDao();
-		List<User> cardList = UDao.select(user_id);
-
-		//リクエストスコープに格納する
-		request.setAttribute("cardList", cardList);
-		*/
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -65,7 +53,8 @@ public class ProfileEditServlet extends HttpServlet {
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
-		String user_id = (String) session.getAttribute("id");
+		LoginUser user = (LoginUser) session.getAttribute("id");
+		String user_id = user.getId();
 		String password = request.getParameter("password_input");
 		String user_name  = request.getParameter("name_input");
 		String company = request.getParameter("company_input");
