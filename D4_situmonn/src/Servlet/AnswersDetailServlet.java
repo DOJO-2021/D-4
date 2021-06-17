@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.AnswersDao;
+import dao.QuestionsDao;
 import model.Answer;
 import model.LoginUser;
+import model.Question;
 import model.Result;
 
 /**
@@ -28,17 +31,34 @@ public class AnswersDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("./LoginServlet");
-			return;
-		}
+				HttpSession session = request.getSession();
+				if (session.getAttribute("id") == null) {
+					response.sendRedirect("./LoginServlet");
+					return;
+				}
 
-		// 質問詳細ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");
-		dispatcher.forward(request, response);
+				//引数q_idの取得
+				request.setCharacterEncoding("UTF-8");
+				int q_id = Integer.parseInt(request.getParameter("Q_ID"));
 
-	}
+				//質問詳細情報取得
+				QuestionsDao qDao = new QuestionsDao();
+				List<Question> QEdit = qDao.selectQDetail(q_id);
+
+				//上記をリクエストスコープに格納
+				request.setAttribute("QEdit", QEdit);
+
+				//回答情報取得
+				AnswersDao aDao = new AnswersDao();
+				List<Answer> AnswerList = aDao.List(q_id);
+
+				//上記をリクエストスコープに格納
+				request.setAttribute("AnswerList", AnswerList);
+
+				//質問詳細ページにフォワードする
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");
+				dispatcher.forward(request, response);
+			}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
