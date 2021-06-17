@@ -1,10 +1,10 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.QuestionsDao;
+import dao.TemplateDao;
 import model.Question;
 import model.Result;
+import model.Template;
 
 
 
@@ -23,7 +25,7 @@ import model.Result;
 @WebServlet("/QuestionsPostServlet")
 public class QuestionsPostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ServletRequest request;
+	//private ServletRequest request;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -44,6 +46,11 @@ public class QuestionsPostServlet extends HttpServlet {
 			return;
 		}
 
+		TemplateDao tDao = new TemplateDao();
+		List<Template> Template = tDao.Template();
+		request.setAttribute("Template", Template);
+
+
 		// 登録ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/questionpost.jsp");
 		dispatcher.forward(request, response);
@@ -53,13 +60,8 @@ public class QuestionsPostServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// もしもログインしていなかったらログインサーブレットにリダイレクトする
-		HttpSession session = request.getSession();
-		if (session.getAttribute("id") == null) {
-			response.sendRedirect("/D4_situmonn/LoginServlet");
-			return;
-		}
 		  // リクエストパラメータを取得する?
+		HttpSession session = request.getSession();
     	request.setCharacterEncoding("UTF-8");
 	    String q_title = request.getParameter("question_title");
 	    String q_contents = request.getParameter("question_contents");
@@ -68,6 +70,9 @@ public class QuestionsPostServlet extends HttpServlet {
 	    String q_tag03 = request.getParameter("question_tag3");
 	    String q_tag04 = request.getParameter("question_tag4");
 	    String q_tag05 = request.getParameter("question_tag5");
+	    String user_id = request.getParameter((String) session.getAttribute("id"));
+	    String q_file = request.getParameter("ile_select");
+
 
 		// 質問タグを最低1つ、最大5つ選択する
 
@@ -76,10 +81,10 @@ public class QuestionsPostServlet extends HttpServlet {
 	    // 質問タグが1つも入力されていなかった場合、アラートを表示し、データ送信されずに元の入力画面に戻る。
 
 
-	    // 登録処理 question dao
+	    //登録処理 question dao
 	    QuestionsDao QDao = new QuestionsDao();
-	    if (QDao.insertQRecord(new Question(q_id, q_title, q_contents, q_tag01, q_tag02, q_tag03, q_tag04, q_tag05,
-	    		user_id, q_file, q_date, 0, counter, user_name)))  {
+	    if (QDao.insertQRecord(new Question(q_title, q_contents, q_tag01, q_tag02, q_tag03, q_tag04, q_tag05,
+	    		user_id, q_file)))  {
 			// QuestionのIDは保留
 	    	// Questionのuser_idは保留。どうやって情報を取得するのか？
 	    	// Stringに変えるのか？
@@ -92,15 +97,9 @@ public class QuestionsPostServlet extends HttpServlet {
 	    	}
 
 	    // テンプレ挿入機能はどのようにしたらよいか？
-
 		// トップページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 		dispatcher.forward(request, response);
 	}
 
-
-
-
-	}
-
-
+}
