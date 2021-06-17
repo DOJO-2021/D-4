@@ -13,9 +13,12 @@ import javax.servlet.http.HttpSession;
 
 import dao.QuestionsDao;
 import dao.TemplateDao;
+import dao.UsersDao;
+import model.LoginUser;
 import model.Question;
 import model.Result;
 import model.Template;
+import model.User;
 
 
 
@@ -50,8 +53,11 @@ public class QuestionsPostServlet extends HttpServlet {
 		List<Template> Template = tDao.Template();
 		request.setAttribute("Template", Template);
 
+		LoginUser user = (LoginUser) session.getAttribute("id");
 
-		// 登録ページにフォワードする
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("id", user.getId());
+		// 登録ページにフォワーする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/questionpost.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -61,7 +67,6 @@ public class QuestionsPostServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  // リクエストパラメータを取得する?
-		HttpSession session = request.getSession();
     	request.setCharacterEncoding("UTF-8");
 	    String q_title = request.getParameter("question_title");
 	    String q_contents = request.getParameter("question_contents");
@@ -70,8 +75,8 @@ public class QuestionsPostServlet extends HttpServlet {
 	    String q_tag03 = request.getParameter("question_tag3");
 	    String q_tag04 = request.getParameter("question_tag4");
 	    String q_tag05 = request.getParameter("question_tag5");
-	    String user_id = request.getParameter((String) session.getAttribute("id"));
-	    String q_file = request.getParameter("ile_select");
+	    String user_id = request.getParameter("user_id");
+	    String q_file = request.getParameter("file_select");
 
 
 		// 質問タグを最低1つ、最大5つ選択する
@@ -79,7 +84,6 @@ public class QuestionsPostServlet extends HttpServlet {
 		// 添付ファイル
 
 	    // 質問タグが1つも入力されていなかった場合、アラートを表示し、データ送信されずに元の入力画面に戻る。
-
 
 	    //登録処理 question dao
 	    QuestionsDao QDao = new QuestionsDao();

@@ -7,11 +7,22 @@
     <Script>
      'use strict';
      function Template(){
-    	 myform.question_contents.value="${Template.question_contents}";
+
+    	 document.myform.question_contents.value="${Template.question_contents}";
      }
 
       function check(){
-        if(question_tag1 != "" || question_tag2 != "" || question_tag3 != "" || question_tag4 != "" || question_tag5 || ""){
+    	const q_tag1 = document.getElementById("question_tag1");
+      	const question_tag1 = q_tag1.value;
+      	const q_tag2 = document.getElementById("question_tag2");
+      	const question_tag2 = q_tag2.value;
+      	const q_tag3 = document.getElementById("question_tag3");
+      	const question_tag3 = q_tag3.value;
+      	const q_tag4 = document.getElementById("question_tag4");
+      	const question_tag4 = q_tag4.value;
+      	const q_tag5 = document.getElementById("question_tag5");
+      	const question_tag5 = q_tag5.value;
+        if(question_tag1 != "" || question_tag2 != "" || question_tag3 != "" || question_tag4 != "" || question_tag5 != ""){
         	if(window.confirm('質問内容を投稿しますか？')){ // 確認ダイアログを表示
         		return true; // 「OK」時は送信を実行
         	    }
@@ -31,92 +42,94 @@
     <div class="wrapper">
     <jsp:include page="/header.jsp"/>
     <h2>質問を投稿する</h2>
-    <form method="POST" action="/D4_situmonn/QuestionPostServlet" onSubmit="return check()">
+    <!-- テンプレート挿入ボタン -->
+      <input type="submit" name="template_button" value="テンプレートの挿入"  onclick="Template()"><br>
+    <form method="POST" action="/D4_situmonn/QuestionsPostServlet" onSubmit="return check()" name="myform">
+      <input type="hidden" name="user_id" value="${id}">
       <!-- 質問タイトル -->
       <input type="text" name="question_title" placeholder="質問タイトル" required><br>
       <!-- 質問内容 -->
-      <textarea name="question_contents" placeholder="質問内容" required></textarea><br>
+      <textarea name="question_contents"  placeholder="質問内容" required></textarea><br>
       <!-- 「テンプレート挿入ボタン」をクリックすると、以下のメッセージが「5.質問内容」に挿入される。
       全文、変更/削除可能である。 -->
-      <!-- テンプレート挿入ボタン -->
-      <input type="submit" name="template_button" value="テンプレートの挿入"  onclick="Template()"><br>
+
       <!-- テンプレートを挿入する処理はservlet→servlet内でdaoを呼び出す→jspでel式のinputタグに入れる
       → -->
       <!-- 質問タグを選択。プルダウンであらかじめ用意された質問タグから選択する。 -->
         質問タグ<br>
-        <select name="question_tag1">
+        <select name="question_tag1" id="question_tag1">
         <option value="">-----</option>
-        <option value="Personal">パーソナルコース</option>
-        <option value="ITBasic">IT基礎コース</option>
-        <option value="JavaBasic">Java基礎コース</option>
-        <option value="WebAppDev">Webアプリ開発</option>
-        <option value="LifeCounseling">人生相談</option>
-        <option value="Error">エラー対応</option>
-        <option value="ComTrouble">機器トラブル</option>
-        <option value="NetTrouble">ネットワークトラブル</option>
-        <option value="ITKnowledge">IT知識</option>
-        <option value="ToAdmin">運営事務局宛て</option>
-        <option value="Others">その他</option>
+        <option value="パーソナルコース">パーソナルコース</option>
+        <option value="IT基礎コース">IT基礎コース</option>
+        <option value="Java基礎コース">Java基礎コース</option>
+        <option value="Webアプリ開発">Webアプリ開発</option>
+        <option value="人生相談">人生相談</option>
+        <option value="エラー対応">エラー対応</option>
+        <option value="機器トラブル">機器トラブル</option>
+        <option value="ネットワークトラブル">ネットワークトラブル</option>
+        <option value="IT知識">IT知識</option>
+        <option value="運営事務局宛て">運営事務局宛て</option>
+        <option value="その他">その他</option>
         </select>
 
-        <select name="question_tag2">
+        <select name="question_tag2" id="question_tag2">
         <option value="">-----</option>
-        <option value="Personal">パーソナルコース</option>
-        <option value="ITBasic">IT基礎コース</option>
-        <option value="JavaBasic">Java基礎コース</option>
-        <option value="WebAppDev">Webアプリ開発</option>
-        <option value="LifeCounseling">人生相談</option>
-        <option value="Error">エラー対応</option>
-        <option value="ComTrouble">機器トラブル</option>
-        <option value="NetTrouble">ネットワークトラブル</option>
-        <option value="ITKnowledge">IT知識</option>
-        <option value="ToAdmin">運営事務局宛て</option>
-        <option value="Others">その他</option>
+        <option value="パーソナルコース">パーソナルコース</option>
+        <option value="IT基礎コース">IT基礎コース</option>
+        <option value="Java基礎コース">Java基礎コース</option>
+        <option value="Webアプリ開発">Webアプリ開発</option>
+        <option value="人生相談">人生相談</option>
+        <option value="エラー対応">エラー対応</option>
+        <option value="機器トラブル">機器トラブル</option>
+        <option value="ネットワークトラブル">ネットワークトラブル</option>
+        <option value="IT知識">IT知識</option>
+        <option value="運営事務局宛て">運営事務局宛て</option>
+        <option value="その他">その他</option>
         </select>
 
-        <select name="question_tag3">
+        <select name="question_tag3" id="question_tag3">
         <option value="">-----</option>
-        <option value="Personal">パーソナルコース</option>
-        <option value="ITBasic">IT基礎コース</option>
-        <option value="JavaBasic">Java基礎コース</option>
-        <option value="WebAppDev">Webアプリ開発</option>
-        <option value="LifeCounseling">人生相談</option>
-        <option value="Error">エラー対応</option>
-        <option value="ComTrouble">機器トラブル</option>
-        <option value="NetTrouble">ネットワークトラブル</option>
-        <option value="ITKnowledge">IT知識</option>
-        <option value="ToAdmin">運営事務局宛て</option>
-        <option value="Others">その他</option>
+        <option value="パーソナルコース">パーソナルコース</option>
+        <option value="IT基礎コース">IT基礎コース</option>
+        <option value="Java基礎コース">Java基礎コース</option>
+        <option value="Webアプリ開発">Webアプリ開発</option>
+        <option value="人生相談">人生相談</option>
+        <option value="エラー対応">エラー対応</option>
+        <option value="機器トラブル">機器トラブル</option>
+        <option value="ネットワークトラブル">ネットワークトラブル</option>
+        <option value="IT知識">IT知識</option>
+        <option value="運営事務局宛て">運営事務局宛て</option>
+        <option value="その他">その他</option>
         </select>
 
-        <select name="question_tag4">
+        <select name="question_tag4" id="question_tag4">
         <option value="">-----</option>
-        <option value="Personal">パーソナルコース</option>
-        <option value="ITBasic">IT基礎コース</option>
-        <option value="JavaBasic">Java基礎コース</option>
-        <option value="WebAppDev">Webアプリ開発</option>
-        <option value="LifeCounseling">人生相談</option>
-        <option value="Error">エラー対応</option>
-        <option value="ComTrouble">機器トラブル</option>
-        <option value="NetTrouble">ネットワークトラブル</option>
-        <option value="ITKnowledge">IT知識</option>
-        <option value="ToAdmin">運営事務局宛て</option>
-        <option value="Others">その他</option>
+        <option value="パーソナルコース">パーソナルコース</option>
+        <option value="IT基礎コース">IT基礎コース</option>
+        <option value="Java基礎コース">Java基礎コース</option>
+        <option value="Webアプリ開発">Webアプリ開発</option>
+        <option value="人生相談">人生相談</option>
+        <option value="エラー対応">エラー対応</option>
+        <option value="機器トラブル">機器トラブル</option>
+        <option value="ネットワークトラブル">ネットワークトラブル</option>
+        <option value="IT知識">IT知識</option>
+        <option value="運営事務局宛て">運営事務局宛て</option>
+        <option value="その他">その他</option>
         </select>
 
-        <select name="question_tag5">
+        <select name="question_tag5" id="question_tag5">
         <option value="">-----</option>
-        <option value="Personal">パーソナルコース</option>
-        <option value="ITBasic">IT基礎コース</option>
-        <option value="JavaBasic">Java基礎コース</option>
-        <option value="WebAppDev">Webアプリ開発</option>
-        <option value="LifeCounseling">人生相談</option>
-        <option value="Error">エラー対応</option>
-        <option value="ComTrouble">機器トラブル</option>
-        <option value="NetTrouble">ネットワークトラブル</option>
-        <option value="ITKnowledge">IT知識</option>
-        <option value="ToAdmin">運営事務局宛て</option>
-        <option value="Others">その他</option>
+        <option value="パーソナルコース">パーソナルコース</option>
+        <option value="IT基礎コース">IT基礎コース</option>
+        <option value="Java基礎コース">Java基礎コース</option>
+        <option value="Webアプリ開発">Webアプリ開発</option>
+        <option value="人生相談">人生相談</option>
+        <option value="エラー対応">エラー対応</option>
+        <option value="機器トラブル">機器トラブル</option>
+        <option value="ネットワークトラブル">ネットワークトラブル</option>
+        <option value="IT知識">IT知識</option>
+        <option value="運営事務局宛て">運営事務局宛て</option>
+        <option value="その他">その他</option>
         </select><br>
       <!-- 最低1個、最大5個まで。←これはServletでやる -->
       <!-- 「6.ファイル選択（添付ファイル）」をクリック。ファイル選択ダイアログ
