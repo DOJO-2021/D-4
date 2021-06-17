@@ -7,14 +7,22 @@
   <title>質問・相談システム(仮)|質問編集</title>
     <Script>
     'use strict';
+
+
     function check(){
-	  if(window.confirm('質問内容を更新しますか？')){ // 確認ダイアログを表示
-		  return true; // 「OK」時は送信を実行
-	    }
-	  else {
-		  return false;
+        if(question_tag1 != "" || question_tag2 != "" || question_tag3 != "" || question_tag4 != "" || question_tag5 != ""){
+        	if(window.confirm('質問内容を投稿しますか？')){ // 確認ダイアログを表示
+        		return true; // 「OK」時は送信を実行
+        	    }
+        	    else {
+        			  return false;
+        	      }
+        }
+        else{
+        	window.alert('質問タグを最低1つ選択してください。');
+        	return false;
+        }
       }
-    }
     <!-- トップページに遷移するプログラムはservlet -->
 
     function OnLinkClick() {  //キャンセルのリンクがクリックされたとき

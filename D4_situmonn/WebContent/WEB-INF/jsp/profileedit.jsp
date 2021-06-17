@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,19 +46,20 @@ function OnLinkClick() {  //キャンセルのリンクがクリックされた�
 <h2>プロフィール編集</h2>
 
 <!-- ここからメイン -->
+<c:forEach var="e" items="${cardList}" >
 <form method = "POST" action = "/D4_situmonn/ProfileEditServlet" onSubmit="return check();">
 <!-- value = EL式 で元々登録されている氏名・会社名・パスワードを表示 -->
   <label>
   氏名<br>
-  <input type="text" name="name_input" value = "${cardList.user_name}" required><br>
+  <input type="text" name="name_input" value = "${e.user_name}" required><br>
   </label>
     <label>
   会社名<br>
-  <input type="text" name="company_input" value = "${cardList.company}"><br>
+  <input type="text" name="company_input" value = "${e.company}"><br>
   </label>
     <label>
   パスワード<br>
-  <input type="password" name="password_input" value = "${cardList.password}" id="pass1" required><br>
+  <input type="password" name="password_input" value = "${e.password}" id="pass1" required><br>
   </label>
     <label>
   パスワード確認<br>
@@ -69,6 +71,8 @@ function OnLinkClick() {  //キャンセルのリンクがクリックされた�
   <a href = "/D4_situmonn/MypageServlet" onclick="return OnLinkClick();">キャンセル</a>
 
 </form>
+</c:forEach>
+
 <!-- フッター -->
 <jsp:include page = "/footer.jsp"/>
 
