@@ -25,12 +25,11 @@
 			<h2>質問詳細ページ</h2>
 
 			<!-- ここからメイン -->
-
+            <form method = "POST" action = "/D4_situmonn/AnswersDetailServlet" onSubmit = "return check()">
 			<c:forEach var="e" items="${QEdit}">
 				<table class = "ansdetail">
 					<tr>
-						<td>${e.q_id}</td>
-						<!--<input type="hidden" name="Q_ID" value="${e.q_id}">-->
+						<td><input type="hidden" name="Q_ID" value="${e.q_id}"></td>
 					</tr>
 					<tr>
 						<th>質問タイトル<th>
@@ -73,7 +72,6 @@
 				</table>
 			</c:forEach>
 
-			<form method = "POST" action = "/D4_situmonn/AnswersDetailServlet" onSubmit = "return check()">
 				<table>
 					<tr>
 						<th>新規回答入力</th>

@@ -29,7 +29,7 @@ public class AnswersDetailServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/*protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 				HttpSession session = request.getSession();
 				if (session.getAttribute("id") == null) {
@@ -58,7 +58,7 @@ public class AnswersDetailServlet extends HttpServlet {
 				//質問詳細ページにフォワードする
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");
 				dispatcher.forward(request, response);
-			}
+			}*/
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -88,6 +88,20 @@ public class AnswersDetailServlet extends HttpServlet {
 		else {	// 登録失敗
 			request.setAttribute("result",new Result("回答を送信できませんでした。"));
 		}
+
+		//質問詳細情報取得
+				QuestionsDao qDao = new QuestionsDao();
+				List<Question> QEdit = qDao.selectQDetail(Q_ID);
+
+				//上記をリクエストスコープに格納
+				request.setAttribute("QEdit", QEdit);
+
+				//回答情報取得
+				AnswersDao aDao = new AnswersDao();
+				List<Answer> AnswerList = aDao.List(Q_ID);
+
+				//上記をリクエストスコープに格納
+				request.setAttribute("AnswerList", AnswerList);
 
 		// 同じページ（質問詳細ページ）にフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");
