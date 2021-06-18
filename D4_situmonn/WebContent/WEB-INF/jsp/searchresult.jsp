@@ -13,7 +13,7 @@
 			<h2>検索結果</h2>
 			<div class="vertical-scroll-table">
 				<table class="searchresult"><!-- テーブルに罫線とスクロールバー -->
-					<form method="POST" action="/D-4/SearchResultServlet">
+					<form method="GET" action="/D4_situmonn/AnswersDetailServlet">
 						<c:forEach var="e" items="${QList}" >
 							<tr>
 								 <th>タイトル：</th>
@@ -22,7 +22,7 @@
 							<tr>
 								<td><input type="hidden" name="Q_ID" value="${e.q_id}"></td>
 								<th>質問者：</th>
-								<td>${e.q_name}</td>
+								<td>${e.user_name}</td>
 								<th>質問日時：</th>
 								<td>${e.q_date}</td>
 								<td>${e.done_tag}</td>
