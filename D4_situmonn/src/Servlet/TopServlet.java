@@ -27,7 +27,12 @@ public class TopServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		// もしもログインしていなかったらログインサーブレットにリ
+		HttpSession session = request.getSession();
+		if (session.getAttribute("id") == null) {
+			response.sendRedirect("/D4_situmonn/LoginServlet");
+			return;
+		}
 		// トップページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");//パス名を変更
 		dispatcher.forward(request, response);
@@ -47,17 +52,17 @@ public class TopServlet extends HttpServlet {
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		//【保留】質問タグのリクエストパラメータの取得方法
-		String q_tag1 = request.getParameter("question_tag1");
-		String q_tag2 = request.getParameter("question_tag2");
-		String q_tag3= request.getParameter("question_tag3");
-		String q_tag4= request.getParameter("question_tag4");
-		String q_tag5 = request.getParameter("question_tag5");
-		String q_tag6 = request.getParameter("question_tag6");
-		String q_tag7 = request.getParameter("question_tag7");
-		String q_tag8 = request.getParameter("question_tag8");
-		String q_tag9 = request.getParameter("question_tag9");
-		String q_tag10 = request.getParameter("question_tag10");
-		String q_tag11 = request.getParameter("question_tag11");
+		String q_tag1 = request.getParameter("questions_tag1");
+		String q_tag2 = request.getParameter("questions_tag2");
+		String q_tag3= request.getParameter("questions_tag3");
+		String q_tag4= request.getParameter("questions_tag4");
+		String q_tag5 = request.getParameter("questions_tag5");
+		String q_tag6 = request.getParameter("questions_tag6");
+		String q_tag7 = request.getParameter("questions_tag7");
+		String q_tag8 = request.getParameter("questions_tag8");
+		String q_tag9 = request.getParameter("questions_tag9");
+		String q_tag10 = request.getParameter("questions_tag10");
+		String q_tag11 = request.getParameter("questions_tag11");
 		String q_contents = request.getParameter("keyword");
 		//解決未解決ラベル(String型、値は"0"か"1")
 		String solution_label = request.getParameter("solution_label");
