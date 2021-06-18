@@ -30,10 +30,11 @@
 				<table class = "ansdetail">
 					<tr>
 						<td>${e.q_id}</td>
+						<!--<input type="hidden" name="Q_ID" value="${e.q_id}">-->
 					</tr>
 					<tr>
-						<th>質問内容<th>
-						<td><input type="hidden" name="Q_ID" value="${e.q_title}"></td>
+						<th>質問タイトル<th>
+						<td>${e.q_title}</td>
 						<td>${e.done_tag}</td>
 					</tr>
 					<tr>
@@ -72,7 +73,7 @@
 				</table>
 			</c:forEach>
 
-			<form method = "POST" action = "/D4_situmonn/AnswerDetailServlet" onSubmit = "return check()">
+			<form method = "POST" action = "/D4_situmonn/AnswersDetailServlet" onSubmit = "return check()">
 				<table>
 					<tr>
 						<th>新規回答入力</th>

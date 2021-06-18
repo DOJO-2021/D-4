@@ -1,6 +1,7 @@
 package Servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,6 +35,15 @@ public class ProfileEditServlet extends HttpServlet {
 			response.sendRedirect("/D4_situmonn/LoginServlet");
 			return;
 		}
+
+		// ログインしているユーザーの検索処理を行う
+		UsersDao UDao = new UsersDao();
+		LoginUser user = (LoginUser) session.getAttribute("id");
+		System.out.println("ユーザID：" + user.getId());
+		List<User> cardList = UDao.select(user.getId());
+
+		// 検索結果をリクエストスコープに格納する
+		request.setAttribute("cardList", cardList);
 
 		// プロフィール編集ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/profileedit.jsp");//パス名を変更

@@ -132,7 +132,6 @@ public class QuestionsDao {
 						rs.getString("Q_FILE"),
 						rs.getDate("Q_DATE"),
 						rs.getInt("DONE_TAG"),
-						rs.getInt("COUNTER"),
 						rs.getString("USER_NAME")
 						);
 				QEdit.add(QEditList);
