@@ -26,7 +26,7 @@
 
 			<!-- ここからメイン -->
 
-			<c:forEach var="e" items="${QList}">
+			<c:forEach var="e" items="${QEdit}">
 				<table class = "ansdetail">
 					<tr>
 						<td>${e.q_id}</td>

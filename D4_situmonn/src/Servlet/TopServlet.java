@@ -72,11 +72,11 @@ public class TopServlet extends HttpServlet {
 
 		//解決か未解決かで呼び出すメソッド異なる　解決→selectQListS、未解決→
 		// 検索処理を行う 検索に関係ない場所は "" かIDは0にする
-		if (solution_label == "1") {  //解決済みの時の検索処理とリクエストスコープへの格納
+		if (solution_label.equals("1")) {  //解決済みの時の検索処理とリクエストスコープへの格納
 		  List<Question> QList = qLDao.selectQListS(new QuestionList(q_tag1,q_tag2,q_tag3,q_tag4,q_tag5,q_tag6,q_tag7,q_tag8,q_tag9,q_tag10,q_tag11,q_contents));
 		  request.setAttribute("QList", QList);
 		}
-		else if(solution_label == "0"){  //未解決の時の検索処理とリクエストスコープへの格納
+		else if(solution_label.equals("0")){  //未解決の時の検索処理とリクエストスコープへの格納
 		  List<Question> QList = qLDao.selectQListU(new QuestionList(q_tag1,q_tag2,q_tag3,q_tag4,q_tag5,q_tag6,q_tag7,q_tag8,q_tag9,q_tag10,q_tag11,q_contents));
 		  request.setAttribute("QList", QList);
 		}
