@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,8 +8,8 @@
     <Script>
      'use strict';
      function Template(){
-
-    	 document.myform.question_contents.value="${Template.question_contents}";
+    	 const tem = document.getElementById("tem").value;
+    	 document.getElementById("text").value = tem;
      }
 
       function check(){
@@ -43,13 +44,14 @@
     <jsp:include page="/header.jsp"/>
     <h2>質問を投稿する</h2>
     <!-- テンプレート挿入ボタン -->
+      <input type="hidden" id="tem" value="${Template}">
       <input type="submit" name="template_button" value="テンプレートの挿入"  onclick="Template()"><br>
-    <form method="POST" action="/D4_situmonn/QuestionsPostServlet" onSubmit="return check()" name="myform">
+    <form method="POST" action="/D4_situmonn/QuestionsPostServlet" onSubmit="return check()">
       <input type="hidden" name="user_id" value="${id}">
       <!-- 質問タイトル -->
       <input type="text" name="question_title" placeholder="質問タイトル" required><br>
       <!-- 質問内容 -->
-      <textarea name="question_contents"  placeholder="質問内容" required></textarea><br>
+      <textarea id="text" name="question_contents"  placeholder="質問内容" required></textarea><br>
       <!-- 「テンプレート挿入ボタン」をクリックすると、以下のメッセージが「5.質問内容」に挿入される。
       全文、変更/削除可能である。 -->
 

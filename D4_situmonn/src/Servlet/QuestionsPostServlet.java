@@ -13,12 +13,10 @@ import javax.servlet.http.HttpSession;
 
 import dao.QuestionsDao;
 import dao.TemplateDao;
-import dao.UsersDao;
 import model.LoginUser;
 import model.Question;
 import model.Result;
 import model.Template;
-import model.User;
 
 
 
