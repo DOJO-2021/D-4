@@ -44,7 +44,9 @@
     <jsp:include page="/header.jsp"/>
     <h2>質問を投稿する</h2>
     <!-- テンプレート挿入ボタン -->
-      <input type="hidden" id="tem" value="${Template}">
+    <c:forEach var="e" items="${Template}">
+      <input type="hidden" id="tem" value="${e.temp_contents}">
+    </c:forEach>
       <input type="submit" name="template_button" value="テンプレートの挿入"  onclick="Template()"><br>
     <form method="POST" action="/D4_situmonn/QuestionsPostServlet" onSubmit="return check()">
       <input type="hidden" name="user_id" value="${id}">
