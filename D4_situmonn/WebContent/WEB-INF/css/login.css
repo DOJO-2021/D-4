@@ -3,7 +3,9 @@
 h2{
   color: #77c8ff;
 }
-
+.wrapper{
+	font-family: "M PLUS Rounded 1c";
+}
 .iptxt {
   position: relative;
   width: auto;
