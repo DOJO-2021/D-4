@@ -78,5 +78,8 @@ public class ProfileEditServlet extends HttpServlet {
 		else {
 			request.setAttribute("result", new Result("プロフィールの更新に失敗しました。"));
 		}
+		// マイページにリダイレクトする
+        response.sendRedirect("/D4_situmonn/MypageServlet");
+		return;
 	}
 }
