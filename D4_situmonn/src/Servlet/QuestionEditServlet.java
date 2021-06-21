@@ -5,11 +5,13 @@ import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import dao.QuestionsDao;
 import model.LoginUser;
@@ -20,6 +22,7 @@ import model.Result;
  * Servlet implementation class QuestionEditServlet
  */
 @WebServlet("/QuestionEditServlet")
+@MultipartConfig()
 public class QuestionEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -37,12 +40,13 @@ public class QuestionEditServlet extends HttpServlet {
 
 		//リスエスとスコープに保存された検索結果のリストを取得【保留：user_idは二回使えない→変えてもよいのか？2021/06/15】
 		QuestionsDao QDao = new QuestionsDao();
+		int q_id=Integer.parseInt (request.getParameter("q_id"));
 		LoginUser user = (LoginUser) session.getAttribute("id");
 		System.out.println("ユーザID：" + user.getId());
-		List<Question> QList = QDao.selectMyQList(user.getId());
+		List<Question> QEdit = QDao.selectMyQDetail(q_id, user.getId());
 
 		// 検索結果をリクエストスコープに格納する
-		request.setAttribute("QList", QList);
+		request.setAttribute("QEdit", QEdit);
 
 		// 質問編集ページにフォワードする処理
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/questionedit.jsp");//パス名を変更
@@ -59,6 +63,12 @@ public class QuestionEditServlet extends HttpServlet {
 			response.sendRedirect("/D4_situmonn/LoginServlet");
 			return;
 		}
+
+		Part part = request.getPart("q_file");
+		String name = this.getFileName(part);
+		System.out.println(name);
+		part.write(getServletContext().getRealPath("/WEB-INF") + "/" + name);
+
 		// リクエストパラメータを取得する
     	request.setCharacterEncoding("UTF-8");
     	int q_id=Integer.parseInt (request.getParameter("q_id"));
@@ -72,7 +82,11 @@ public class QuestionEditServlet extends HttpServlet {
 	    LoginUser user = (LoginUser) session.getAttribute("id");
 	    String user_id=user.getId();
 	    String q_file=request.getParameter("q_file");
-        int done_tag = Integer.parseInt(request.getParameter("solution_button"));
+	    int done_tag = 0;
+	    String strDone_tag = request.getParameter("solution_button");
+	    if (strDone_tag != null) {
+	        done_tag = Integer.parseInt(strDone_tag);
+	    }
 
         // 登録更新処理 question dao
         QuestionsDao QDao = new QuestionsDao();
@@ -95,4 +109,16 @@ public class QuestionEditServlet extends HttpServlet {
         response.sendRedirect("/D4_situmonn/MypageServlet");
 		return;
     }
+
+	private String getFileName(Part part) {
+		String name = null;
+		for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
+			name = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
+			name = name.substring(name.lastIndexOf("\\") + 1);
+			break;
+		}
+		return name;
+	}
+
+
 }
