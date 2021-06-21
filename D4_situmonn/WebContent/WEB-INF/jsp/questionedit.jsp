@@ -141,7 +141,7 @@
         </select><br>
 
         <!-- 添付ファイルボタン -->
-         <input type="submit" name="file_select" value="ファイル選択"><br>
+        <input type="file" name="file_select" value="ファイル選択"><br>
 
         <!-- 解決チェックボックスの追加 -->
         解決チェックボックス<br>
