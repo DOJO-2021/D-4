@@ -28,15 +28,16 @@
 </table>
 <a href="/D4_situmonn/ProfileEditServlet">プロフィール編集</a>
 
-
+<form method="GET" action="/D4_situmonn/QuestionEditServlet">
 <table class=scroll><!-- テーブルに罫線(タグで指定)とスクロールバー -->
  <caption>自分のした質問</caption>
  <c:forEach var="e" items="${QList}" >
   <tr>
     <th>${e.q_title}</th>
-    <th><a href="/D4_situmonn/QuestionEditServlet">編集</a></th>
+    <th><input type="submit" name="editbutton" value="編集"></th>
   </tr>
   <tr>
+  	<td><input type="hidden" name="q_id" value="${e.q_id}"></td>
     <th>${e.q_date}</th>
     <th>${e.done_tag}</th>
   </tr>
@@ -52,6 +53,7 @@
   </tr>
 </c:forEach>
 </table>
+</form>
 
 <jsp:include page="/footer.jsp"/>
 </div>
