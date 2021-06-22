@@ -20,7 +20,7 @@
 								 <td><input type="submit" name="Q_TITLE" value="${e.q_title}"></td>
 							</tr>
 							<tr>
-								<td><input type="text" name="Q_ID" value="${e.q_id}"></td>
+								<td><input type="hidden" name="Q_ID" value="${e.q_id}"></td>
 								<th>質問者：</th>
 								<td>${e.user_name}</td>
 								<th>質問日時：</th>

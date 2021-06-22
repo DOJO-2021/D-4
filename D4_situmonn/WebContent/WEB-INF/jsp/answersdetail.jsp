@@ -13,7 +13,9 @@
 		function check(){
 			if(window.confirm('回答を送信してもよろしいですか？')){ // 確認ダイアログを表示
 				return true; // 「OK」時は送信を実行
-			}
+				}else{
+					return false;
+				}
 		}
 		</script>
 	</head>
@@ -25,7 +27,7 @@
 			<h2>質問詳細ページ</h2>
 
 			<!-- ここからメイン -->
-            <form method = "POST" action = "/D4_situmonn/AnswersDetailServlet" onSubmit = "return check()">
+            <form method = "POST" action = "/D4_situmonn/AnswersDetailServlet">
 			<c:forEach var="e" items="${QEdit}">
 				<table class = "ansdetail">
 					<tr>
@@ -34,7 +36,9 @@
 					<tr>
 						<th>質問タイトル<th>
 						<td>${e.q_title}</td>
-						<td>${e.done_tag}</td>
+						<td><c:if test="${e.done_tag == 0}">未解決</c:if>
+							<c:if test="${e.done_tag == 1}">解決</c:if>
+						</td>
 					</tr>
 					<tr>
 						<th>質問内容</th>
@@ -76,8 +80,7 @@
 					<tr>
 						<th>新規回答入力</th>
 						<td>
-							<label><textarea name = "newanswer">
-							</textarea></label>
+							<label><textarea name = "newanswer" required></textarea></label>
 						</td>
 					</tr>
 				</table>

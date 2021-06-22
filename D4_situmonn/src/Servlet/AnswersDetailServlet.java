@@ -37,7 +37,7 @@ public class AnswersDetailServlet extends HttpServlet {
 					return;
 				}
 
-				//引数q_idの取得
+				/*引数q_idの取得
 				request.setCharacterEncoding("UTF-8");
 				int q_id = Integer.parseInt(request.getParameter("Q_ID"));
 

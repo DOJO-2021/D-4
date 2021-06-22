@@ -39,7 +39,9 @@
   <tr>
   	<td><input type="hidden" name="q_id" value="${e.q_id}"></td>
     <th>${e.q_date}</th>
-    <th>${e.done_tag}</th>
+    <th><c:if test="${e.done_tag == 0}">未解決</c:if>
+		<c:if test="${e.done_tag == 1}">解決</c:if>
+	</th>
   </tr>
   <tr>
     <th>${e.q_tag01}</th>
