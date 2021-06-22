@@ -5,10 +5,13 @@
 <h1>
 	<a href="/D4_situmonn/TopServlet"><img src = "<!-- ロゴ画像 -->" alt="<!-- 商品名 -->"></a>
 </h1>
-<ul>
-    <li><a href="/D4_situmonn/Topservlet">トップページ</a></li>
-    <li><a href="/D4_situmonn/QuestionsPostServlet">質問投稿ページ</a></li>
-    <li><a href="/D4_situmonn/MypageServlet">マイページ</a></li>
-    <li><a href="/D4_situmonn/LoginServlet">ログアウト</a></li>
+<nav class="gnav">
+<img>
+<ul class="gnav_inner">
+    <li><a href="/D4_situmonn/TopServlet"><span>トップページ</span></a></li>
+    <li><a href="/D4_situmonn/QuestionsPostServlet"><span>質問投稿ページ</span></a></li>
+    <li><a href="/D4_situmonn/MypageServlet"><span>マイページ</span></a></li>
+    <li><a href="/D4_situmonn/LoginServlet"><span>ログアウト</span></a></li>
 </ul>
+</nav>
 </header>
