@@ -43,10 +43,55 @@
   		  return false;
         }
 	}
+
+	function setValue() {
+		let i = 1;
+		while(i <= 5) {
+			var select = document.getElementById("question_tag" + i);
+			var q_tag = document.getElementById("q_tag0" + i);
+			console.log(q_tag.value);
+			select.options[0].selected = true;
+			if (q_tag.value === 'パーソナルコース') {
+				select.options[1].selected = true;
+			}
+			if (q_tag.value === 'IT基礎コース') {
+				select.options[2].selected = true;
+			}
+			if (q_tag.value === 'Java基礎コース') {
+				select.options[3].selected = true;
+			}
+			if (q_tag.value === 'Webアプリ開発') {
+				select.options[4].selected = true;
+			}
+			if (q_tag.value === '人生相談') {
+				select.options[5].selected = true;
+			}
+			if (q_tag.value === 'エラー対応') {
+				select.options[6].selected = true;
+			}
+			if (q_tag.value === '機器トラブル') {
+				select.options[7].selected = true;
+			}
+			if (q_tag.value === 'ネットワークトラブル') {
+				select.options[8].selected = true;
+			}
+			if (q_tag.value === 'IT知識') {
+				select.options[9].selected = true;
+			}
+			if (q_tag.value === '運営事務局宛て') {
+				select.options[10].selected = true;
+			}
+			if (q_tag.value === 'その他') {
+				select.options[11].selected = true;
+			}
+			i += 1;
+		}
+
+	}
 	</script>
 	</head>
 
-	<body>
+	<body onload="setValue();">
 		<div class="wrapper">
 			<jsp:include page="/header.jsp"/>
 			<h2>質問編集</h2>
@@ -139,6 +184,12 @@
 					<option value="運営事務局宛て">運営事務局宛て</option>
 					<option value="その他">その他</option>
 					</select><br>
+
+					<input type="hidden" name="q_tag01" value="${e.q_tag01}" id="q_tag01">
+					<input type="hidden" name="q_tag02" value="${e.q_tag02}" id="q_tag02">
+					<input type="hidden" name="q_tag03" value="${e.q_tag03}" id="q_tag03">
+					<input type="hidden" name="q_tag04" value="${e.q_tag04}" id="q_tag04">
+					<input type="hidden" name="q_tag05" value="${e.q_tag05}" id="q_tag05">
 
 					<!-- 添付ファイルボタン -->
 					<input type="file" name="q_file" value="ファイル選択"><br>
