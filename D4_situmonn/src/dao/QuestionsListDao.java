@@ -28,7 +28,7 @@ public class QuestionsListDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem", "sa", "sa");
 
 			//SQL文を準備
-			String sql = "select D_QUESTIONS.Q_ID, D_QUESTIONS.Q_TITLE, D_QUESTIONS.Q_CONTENTS, "
+			String sql = "select D_QUESTIONS.Q_ID, D_QUESTIONS.Q_TITLE, substring(D_QUESTIONS.Q_CONTENTS, 1, 100) as Q_CONTENTS, "
 					+ "D_QUESTIONS.Q_TAG01, D_QUESTIONS.Q_TAG02, D_QUESTIONS.Q_TAG03, D_QUESTIONS.Q_TAG04, D_QUESTIONS.Q_TAG05, "
 					+ "D_QUESTIONS.USER_ID, D_QUESTIONS.Q_FILE, D_QUESTIONS.Q_DATE, D_QUESTIONS.DONE_TAG, D_QUESTIONS.COUNTER, M_USERS.USER_NAME "
 					+ "from D_QUESTIONS "
@@ -45,7 +45,7 @@ public class QuestionsListDao {
 					+ "D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or "
 					+ "D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? and "
 					+ "D_QUESTIONS.Q_CONTENTS like ? ) and D_QUESTIONS.DONE_TAG = 1 "
-					+ "order by D_QUESTIONS.Q_DATE desc";
+					+ "order by D_QUESTIONS.COUNTER desc, D_QUESTIONS.Q_ID";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -275,7 +275,7 @@ public class QuestionsListDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem", "sa", "sa");
 
 			//SQL文を準備
-			String sql = "select D_QUESTIONS.Q_ID, D_QUESTIONS.Q_TITLE, D_QUESTIONS.Q_CONTENTS, "
+			String sql = "select D_QUESTIONS.Q_ID, D_QUESTIONS.Q_TITLE, substring(D_QUESTIONS.Q_CONTENTS, 1, 100) as Q_CONTENTS, "
 					+ "D_QUESTIONS.Q_TAG01, D_QUESTIONS.Q_TAG02, D_QUESTIONS.Q_TAG03, D_QUESTIONS.Q_TAG04, D_QUESTIONS.Q_TAG05, "
 					+ "D_QUESTIONS.USER_ID, D_QUESTIONS.Q_FILE, D_QUESTIONS.Q_DATE, D_QUESTIONS.DONE_TAG, D_QUESTIONS.COUNTER, M_USERS.USER_NAME "
 					+ "from D_QUESTIONS "
@@ -292,7 +292,7 @@ public class QuestionsListDao {
 					+ "D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or "
 					+ "D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? and "
 					+ "D_QUESTIONS.Q_CONTENTS like ? ) and D_QUESTIONS.DONE_TAG = 0 "
-					+ "order by D_QUESTIONS.Q_DATE desc";
+					+ "order by D_QUESTIONS.Q_DATE desc, D_QUESTIONS.Q_ID";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
