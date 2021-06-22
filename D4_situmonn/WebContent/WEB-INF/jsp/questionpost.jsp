@@ -5,6 +5,10 @@
   <head>
     <meta charset="UTF-8">
     <title>質問・相談システム(仮)|質問投稿</title>
+    <link rel="stylesheet" href="/D4_situmonn/WEB-INF/css/common.css">
+	<link rel="stylesheet" href="/D4_situmonn/WEB-INF/css/questionspost.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
     <Script>
      'use strict';
      function Template(){
@@ -40,9 +44,9 @@
     </script>
   </head>
   <body>
-    <div class="wrapper">
     <jsp:include page="/header.jsp"/>
     <h2>質問を投稿する</h2>
+    <div class="wrapper">
     <!-- テンプレート挿入ボタン -->
     <c:forEach var="e" items="${Template}">
       <input type="hidden" id="tem" value="${e.temp_contents}">
@@ -144,12 +148,12 @@
       <!-- 「7.投稿ボタン」をクリック。
       「投稿確認メッセージ」を表示した後、「OK」が選択された場合トップページに遷移する。 -->
       <!-- 投稿ボタン -->
+    </div>
       <input type="submit" name="postbutton" value="投稿">
       <!-- 質問タグが1つも入力されていなかった場合、アラートを表示←servlet
        データ送信されずに元の入力画面(questionpost?)に戻る。
        入力内容は保持されるか？ -->
-      </form>
-      <jsp:include page="/footer.jsp"/>
-    </div>
+    </form>
+    <jsp:include page="/footer.jsp"/>
   </body>
 </html>
