@@ -80,7 +80,7 @@
 					<option value="その他">その他</option>
 					</select>
 
-					<select name="question_tag2"id="question_tag2">
+					<select name="question_tag2" id="question_tag2">
 					<option value="">-----</option>
 					<option value="パーソナルコース">パーソナルコース</option>
 					<option value="IT基礎コース">IT基礎コース</option>
@@ -142,7 +142,6 @@
 
 					<!-- 添付ファイルボタン -->
 					<input type="file" name="q_file" value="ファイル選択"><br>
-					<a href = "${e.q_file}">${e.q_file}</a><br>
 
 					<!-- 解決チェックボックスの追加 -->
 					解決チェックボックス<br>
