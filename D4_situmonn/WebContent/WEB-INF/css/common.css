@@ -5,7 +5,6 @@ html{
 background-color:#35a0d9;
 }
 .wrapper{
-  display: flex;
   justify-content: center;
   text-align: center;
   font-family: "M PLUS Rounded 1c";
