@@ -20,7 +20,7 @@ public class AnswersDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem ", "sa", "sa");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem", "sa", "sa");
 
 			// SQL文を準備する
 			String sql = "SELECT d_a.ANS_CONTENTS, m_u.USER_NAME "
@@ -70,7 +70,7 @@ public class AnswersDao {
 		try {
 			Class.forName("org.h2.Driver");
 
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem ", "sa", "sa");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem", "sa", "sa");
 
 			StringBuilder sb = new StringBuilder();
 			sb.append("SELECT ");
