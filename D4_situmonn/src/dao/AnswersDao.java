@@ -20,15 +20,15 @@ public class AnswersDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem ", "sa", "sa");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem", "sa", "sa");
 
 			// SQL文を準備する
-			String sql = "SELECT d_a.ANS_CONTENTS, m_u.USER_NAME "
-					+ "FROM D_ANSWERS AS d_a "
-					+ "INNER JOIN M_USERS AS m_u "
-					+ "ON d_a.USER_ID = m_u.USER_ID "
-					+ "WHERE Q_ID = ? "
-					+ "ORDER BY ANS_DATE";
+			String sql = "SELECT D_ANSWERS.ANS_CONTENTS, M_USERS.USER_NAME "
+					+ "FROM D_ANSWERS "
+					+ "INNER JOIN M_USERS "
+					+ "ON D_ANSWERS.USER_ID = M_USERS.USER_ID "
+					+ "WHERE D_ANSWERS.Q_ID = ? "
+					+ "ORDER BY D_ANSWERS.ANS_DATE";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
@@ -70,7 +70,7 @@ public class AnswersDao {
 		try {
 			Class.forName("org.h2.Driver");
 
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem ", "sa", "sa");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem", "sa", "sa");
 
 			StringBuilder sb = new StringBuilder();
 			sb.append("SELECT ");
@@ -86,6 +86,9 @@ public class AnswersDao {
 				try (ResultSet rs = ps.executeQuery()) {
 					while (rs.next()) {
 						maxID = rs.getInt(1);
+						if (maxID == 0) {
+							maxID = maxID + 1;
+						}
 					}
 					System.out.println("最大値:" + maxID);
 				}
@@ -94,7 +97,7 @@ public class AnswersDao {
 				e.printStackTrace();
 			}
 
-			String sql = "INSERT INTO D_ANSWERS(ANS_ID, Q_ID, ANS_CONTENTS, USER_ID, ANS_DATE) "
+			String sql = "INSERT INTO D_ANSWERS (ANS_ID, Q_ID, ANS_CONTENTS, USER_ID, ANS_DATE) "
 					+ "VALUES(?, ?, ?, ?, CURDATE())";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 

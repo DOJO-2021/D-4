@@ -25,7 +25,10 @@
 								<td>${e.user_name}</td>
 								<th>質問日時：</th>
 								<td>${e.q_date}</td>
-								<td>${e.done_tag}</td>
+								<td>
+									<c:if test="${e.done_tag == 0}">未解決</c:if>
+									<c:if test="${e.done_tag == 1}">解決</c:if>
+								</td>
 							</tr>
 							<tr>
 								<!--質問内容を先頭から100字表示する-->

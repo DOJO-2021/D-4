@@ -34,7 +34,10 @@
 					<tr>
 						<th>質問タイトル<th>
 						<td>${e.q_title}</td>
-						<td>${e.done_tag}</td>
+						<td>
+							<c:if test="${e.done_tag == 0}">未解決</c:if>
+							<c:if test="${e.done_tag == 1}">解決</c:if>
+						</td>
 					</tr>
 					<tr>
 						<th>質問内容</th>
@@ -76,8 +79,7 @@
 					<tr>
 						<th>新規回答入力</th>
 						<td>
-							<label><textarea name = "newanswer">
-							</textarea></label>
+							<label><textarea name = "newanswer"></textarea></label>
 						</td>
 					</tr>
 				</table>

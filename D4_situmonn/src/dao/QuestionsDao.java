@@ -269,6 +269,9 @@ public class QuestionsDao {
 				try (ResultSet rs = ps.executeQuery()) {
 					while (rs.next()) {
 						maxID = rs.getInt(1);
+						if (maxID == 0) {
+							maxID = maxID + 1;
+						}
 					}
 					System.out.println("最大値:" + maxID);
 				}

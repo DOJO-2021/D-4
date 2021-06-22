@@ -45,6 +45,13 @@
 	}
 
 	function setValue() {
+
+		var check = document.getElementById("check");
+		let done_tag = document.getElementById("done_tag");
+		if (done_tag.value == 1) {
+			check.checked = true;
+		}
+
 		let i = 1;
 		while(i <= 5) {
 			var select = document.getElementById("question_tag" + i);
@@ -196,7 +203,8 @@
 
 					<!-- 解決チェックボックスの追加 -->
 					解決チェックボックス<br>
-					<input type="checkbox" name="solution_button" value="1">解決<br>
+					<input type="checkbox" name="solution_button" value="1" id="check">解決<br>
+					<input type="hidden" name="done_tag" value="${e.done_tag}" id="done_tag">
 
 					<!-- 更新ボタンはsubmit -->
 					<input type="submit" name="update_button" value="更新">

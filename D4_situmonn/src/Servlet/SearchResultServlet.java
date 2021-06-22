@@ -15,6 +15,7 @@ import dao.AnswersDao;
 import dao.QuestionsDao;
 import model.Answer;
 import model.Question;
+import model.Result;
 
 
 /**
@@ -64,6 +65,17 @@ public class SearchResultServlet extends HttpServlet {
 
 		//上記をリクエストスコープに格納
 		request.setAttribute("AnswerList", AnswerList);
+
+		//カウンターの回数追加
+		QuestionsDao cDao = new QuestionsDao();
+        if (cDao.updateCountup(q_id))  {
+    	request.setAttribute("result",
+		new Result("閲覧回数を更新しました。"));
+    	}
+     	else {
+		request.setAttribute("result",
+		new Result("閲覧回数を更新できませんでした。"));
+    	}
 
 		//質問詳細ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/answersdetail.jsp");
