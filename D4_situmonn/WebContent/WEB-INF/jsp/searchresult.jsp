@@ -13,14 +13,14 @@
 			<h2>検索結果</h2>
 			<div class="vertical-scroll-table">
 				<table class="searchresult"><!-- テーブルに罫線とスクロールバー -->
-					<form method="POST" action="/D4_situmonn/SearchResultServlet">
-						<c:forEach var="e" items="${QList}" >
+					<c:forEach var="e" items="${QList}" >
+						<form method="POST" action="/D4_situmonn/SearchResultServlet">
 							<tr>
 								 <th>タイトル：</th>
 								 <td><input type="submit" name="Q_TITLE" value="${e.q_title}"></td>
 							</tr>
 							<tr>
-								<td><input type="hidden" name="Q_ID" value="${e.q_id}"></td>
+								<td><input type="text" name="Q_ID" value="${e.q_id}"></td>
 								<th>質問者：</th>
 								<td>${e.user_name}</td>
 								<th>質問日時：</th>
@@ -31,8 +31,8 @@
 								<!--質問内容を先頭から100字表示する-->
 								<td>${e.q_contents}</td>
 							</tr>
-						</c:forEach>
-					</form>
+						</form>
+					</c:forEach>
 				</table>
 			</div>
 			<jsp:include page="/footer.jsp"/>

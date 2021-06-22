@@ -87,7 +87,83 @@ public class QuestionsDao {
 		return QList;
 	}
 
-	//検索一覧から質問詳細移動時 & マイページから質問詳細移動時用
+	//マイページから質問詳細移動時用
+	//引数paramで検索項目を指定し、検索結果のリストを返す
+	public List<Question> selectMyQDetail(int q_id, String user_id) {
+
+		Connection conn = null;
+		List<Question> QEdit = new ArrayList<Question>();
+
+		try {
+			//JDBCドライバ読み込み
+			Class.forName("org.h2.Driver");
+
+			//データベースに接続する
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/D-4/QAsystem", "sa", "sa");
+
+			//SQL文を準備
+			String sql = "select D_QUESTIONS.Q_ID, D_QUESTIONS.Q_TITLE, D_QUESTIONS.Q_CONTENTS, "
+					+ "D_QUESTIONS.Q_TAG01, D_QUESTIONS.Q_TAG02, D_QUESTIONS.Q_TAG03, D_QUESTIONS.Q_TAG04, D_QUESTIONS.Q_TAG05, "
+					+ "D_QUESTIONS.USER_ID, D_QUESTIONS.Q_FILE, D_QUESTIONS.Q_DATE, D_QUESTIONS.DONE_TAG, M_USERS.USER_NAME "
+					+ "from D_QUESTIONS "
+					+ "inner join M_USERS "
+					+ "on M_USERS.USER_ID = D_QUESTIONS.USER_ID "
+					+ "where D_QUESTIONS.Q_ID = ? and D_QUESTIONS.USER_ID = ?";
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+
+			//SQL文を完成させる
+			pStmt.setInt(1, q_id);
+			pStmt.setString(2, user_id);
+
+			//SQL文を実行し、結果表を取得する
+			ResultSet rs = pStmt.executeQuery();
+
+			//結果表をコレクションにコピーする
+			while (rs.next()) {
+				Question QEditList = new Question(
+						rs.getInt("Q_ID"),
+						rs.getString("Q_TITLE"),
+						rs.getString("Q_CONTENTS"),
+						rs.getString("Q_TAG01"),
+						rs.getString("Q_TAG02"),
+						rs.getString("Q_TAG03"),
+						rs.getString("Q_TAG04"),
+						rs.getString("Q_TAG05"),
+						rs.getString("USER_ID"),
+						rs.getString("Q_FILE"),
+						rs.getDate("Q_DATE"),
+						rs.getInt("DONE_TAG"),
+						rs.getString("USER_NAME")
+						);
+				QEdit.add(QEditList);
+			}
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			QEdit = null;
+		}
+		catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			QEdit = null;
+		}
+		finally {
+			//データベースを切断
+			if (conn != null) {
+				try {
+					conn.close();
+				}
+				catch (SQLException e) {
+					e.printStackTrace();
+					QEdit = null;
+				}
+			}
+		}
+
+		//結果を返す
+		return QEdit;
+	}
+
+	//検索一覧から質問詳細移動時
 	//引数paramで検索項目を指定し、検索結果のリストを返す
 	public List<Question> selectQDetail(int q_id) {
 
@@ -108,7 +184,7 @@ public class QuestionsDao {
 					+ "from D_QUESTIONS "
 					+ "inner join M_USERS "
 					+ "on M_USERS.USER_ID = D_QUESTIONS.USER_ID "
-					+ "where Q_ID = ?";
+					+ "where D_QUESTIONS.Q_ID = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			//SQL文を完成させる
