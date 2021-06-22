@@ -1,7 +1,13 @@
 package Servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,7 +28,7 @@ import model.Result;
  * Servlet implementation class QuestionEditServlet
  */
 @WebServlet("/QuestionEditServlet")
-@MultipartConfig()
+@MultipartConfig
 public class QuestionEditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -64,13 +70,43 @@ public class QuestionEditServlet extends HttpServlet {
 			return;
 		}
 
-		Part part = request.getPart("q_file");
-		String name = this.getFileName(part);
-		System.out.println(name);
-		part.write(getServletContext().getRealPath("/WEB-INF") + "/" + name);
+    	request.setCharacterEncoding("UTF-8");
+
+		Collection<Part> parts = request.getParts();
+
+		HashMap<String, String> map = new HashMap<String, String>();
+		String uploadFileName = "";
+		String uploadFolder = "C:\\pleiades\\workspace\\D-4\\D4_situmonn\\WebContent\\WEB-INF\\";
+		//String uploadFolder = this.getServletContext().getRealPath("/WEB-INF/");
+
+		//Part imgPart = null;
+
+		for(Part part:parts) {
+			String contentType = part.getContentType();
+			if (contentType == null) {
+				try(InputStream inputStream = part.getInputStream()) {
+					BufferedReader bufReader = new BufferedReader(new InputStreamReader(inputStream));
+					String val = (String)bufReader.lines().collect(Collectors.joining());
+					map.put(part.getName(), val);
+				}
+				catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			}
+			else {
+				uploadFileName = this.getFileName(part);
+				if (uploadFileName != null && !uploadFileName.equals("")) {
+					part.write(uploadFolder + uploadFileName);
+				}
+
+				//imgPart = part;
+			}
+		}
+
+		//String item1 = map.get("q_file");
+		//imgPart.write(uploadFolder);
 
 		// リクエストパラメータを取得する
-    	request.setCharacterEncoding("UTF-8");
     	int q_id=Integer.parseInt (request.getParameter("q_id"));
 	    String q_title = request.getParameter("question_title");
 	    String q_contents = request.getParameter("question_contents");
@@ -82,6 +118,9 @@ public class QuestionEditServlet extends HttpServlet {
 	    LoginUser user = (LoginUser) session.getAttribute("id");
 	    String user_id=user.getId();
 	    String q_file=request.getParameter("q_file");
+	    if (uploadFileName != null && !uploadFileName.equals("")) {
+	    	q_file = uploadFolder + uploadFileName ;
+	    }
 	    int done_tag = 0;
 	    String strDone_tag = request.getParameter("solution_button");
 	    if (strDone_tag != null) {
@@ -112,13 +151,14 @@ public class QuestionEditServlet extends HttpServlet {
 
 	private String getFileName(Part part) {
 		String name = null;
-		for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
-			name = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
-			name = name.substring(name.lastIndexOf("\\") + 1);
-			break;
-		}
+        for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
+            if (dispotion.trim().startsWith("filename")) {
+                name = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
+                name = name.substring(name.lastIndexOf("\\") + 1);
+                break;
+            }
+        }
 		return name;
 	}
-
 
 }
