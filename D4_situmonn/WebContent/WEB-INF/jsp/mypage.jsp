@@ -3,89 +3,74 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>質問・相談システム(仮)|マイページ</title>
-	</head>
-	<body>
-		<div class="wrapper">
-			<jsp:include page="/headernologin.jsp"/>
-			<h2>マイページ</h2>
+<head>
+<meta charset="UTF-8">
+<title>質問・相談システム(仮)|マイページ</title>
+<link rel="stylesheet" href="/D4_situmonn/css/common.css">
+<link rel="stylesheet" href="/D4_situmonn/css/mypage.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
 
-			<table><!-- テーブルに罫線(タグで指定) -->
-				<caption>プロフィール</caption>
 
-				<c:forEach var="e" items="${cardList}" >
-					<tr>
-						<th>${e.user_id}</th>
-						<th>${e.user_name}</th>
-					</tr>
-					<tr>
-						<th>${e.company}</th>
-						<th>${e.user_category}</th>
-					</tr>
-				</c:forEach>
-			</table>
-			<a href="/D4_situmonn/ProfileEditServlet">プロフィール編集</a>
+</head>
+<body bgcolor="#35a0d9">
+<div class="wrapper">
+<jsp:include page="/headernologin.jsp"/>
+<h2>マイページ</h2>
 
-<form method="GET" action="/D4_situmonn/QuestionEditServlet">
-<table class=scroll><!-- テーブルに罫線(タグで指定)とスクロールバー -->
- <caption>自分のした質問</caption>
- <c:forEach var="e" items="${QList}" >
-  <tr>
-    <th>${e.q_title}</th>
-    <th><input type="submit" name="editbutton" value="編集"></th>
-  </tr>
-  <tr>
-  	<td><input type="hidden" name="q_id" value="${e.q_id}"></td>
-    <th>${e.q_date}</th>
-    <th><c:if test="${e.done_tag == 0}">未解決</c:if>
-		<c:if test="${e.done_tag == 1}">解決</c:if>
-	</th>
-  </tr>
-  <tr>
-    <th>${e.q_tag01}</th>
-    <th>${e.q_tag02}</th>
-    <th>${e.q_tag03}</th>
-    <th>${e.q_tag04}</th>
-    <th>${e.q_tag05}</th>
-  </tr>
-  <tr>
-    <th>${e.q_contents}</th>
-  </tr>
+
+<c:forEach var="e" items="${cardList}" >
+  <table class="profile">
+    <tr>
+	<td colspan="2">${e.user_name}</td>
+    </tr>
+    <tr>
+	<td colspan="2">${e.user_id}</td>
+    </tr>
+    <tr>
+	<td>${e.company}</td>
+	<td>${e.user_category}</td>
+    </tr>
+    <tr>
+	<td colspan="2">
+	<a href="/D4_situmonn/ProfileEditServlet" class="profileedit">プロフィール編集</a>
+	</td>
+    </tr>
+  </table>
 </c:forEach>
+
+
+<c:forEach var="e" items="${QList}" >
+<form method="GET" action="/D4_situmonn/QuestionEditServlet">
+  <table class="scroll"><!-- テーブルに罫線(タグで指定)とスクロールバー -->
+    <tr>
+	<td colspan="5" bgcolor="#0067c0" class="left" id="title">${e.q_title}</td>
+	<td><input type="submit" name="editbutton" value="編集"></td>
+    </tr>
+    <tr>
+	<td>${e.q_date}</td>
+	<td>
+	  <c:if test="${e.done_tag == 0}">未解決</c:if>
+	  <c:if test="${e.done_tag == 1}">解決</c:if>
+	</td>
+	<td><input type="hidden" name="q_id" value="${e.q_id}"></td>
+    </tr>
+    <tr>
+	<td>${e.q_tag01}</td>
+	<td>${e.q_tag02}</td>
+	<td>${e.q_tag03}</td>
+	<td>${e.q_tag04}</td>
+	<td>${e.q_tag05}</td>
+    </tr>
+    <tr>
+	<td colspan="5" class="left">${e.q_contents}</td>
+    </tr>
+
 </table>
 </form>
-			<table class=scroll><!-- テーブルに罫線(タグで指定)とスクロールバー -->
-				<caption>自分のした質問</caption>
-				<c:forEach var="e" items="${QList}" >
-					<form method="GET" action="/D4_situmonn/QuestionEditServlet">
-						<tr>
-							<th>${e.q_title}</th>
-							<th><input type="submit" name="editbutton" value="編集"></th>
-						</tr>
-						<tr>
-							<td><input type="hidden" name="q_id" value="${e.q_id}"></td>
-							<th>${e.q_date}</th>
-							<th>
-							<c:if test="${e.done_tag == 0}">未解決</c:if>
-							<c:if test="${e.done_tag == 1}">解決</c:if>
-							</th>
-						</tr>
-						<tr>
-							<th>${e.q_tag01}</th>
-							<th>${e.q_tag02}</th>
-							<th>${e.q_tag03}</th>
-							<th>${e.q_tag04}</th>
-							<th>${e.q_tag05}</th>
-						</tr>
-						<tr>
-							<th>${e.q_contents}</th>
-						</tr>
-					</form>
-				</c:forEach>
-			</table>
-			<jsp:include page="/footer.jsp"/>
-		</div>
-	</body>
+</c:forEach>
+
+<jsp:include page="/footer.jsp"/>
+</div>
+</body>
 </html>
