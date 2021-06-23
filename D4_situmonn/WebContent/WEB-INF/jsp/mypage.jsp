@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>質問・相談システム(仮)|マイページ</title>
+<title>Qbox|マイページ</title>
 <link rel="stylesheet" href="/D4_situmonn/css/common.css">
 <link rel="stylesheet" href="/D4_situmonn/css/mypage.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -42,14 +42,15 @@
 
 <c:forEach var="e" items="${QList}" >
 <form method="GET" action="/D4_situmonn/QuestionEditServlet">
+<div class="scrollbar">
   <table class="scroll"><!-- テーブルに罫線(タグで指定)とスクロールバー -->
     <tr>
 	<td colspan="5" bgcolor="#0067c0" class="left" id="title">${e.q_title}</td>
 	<td><input type="submit" name="editbutton" value="編集"></td>
     </tr>
     <tr>
-	<td>${e.q_date}</td>
-	<td>
+	<td bgcolor="#0067c0">${e.q_date}</td>
+	<td bgcolor="#0067c0">
 	  <c:if test="${e.done_tag == 0}">未解決</c:if>
 	  <c:if test="${e.done_tag == 1}">解決</c:if>
 	</td>
@@ -65,8 +66,8 @@
     <tr>
 	<td colspan="5" class="left">${e.q_contents}</td>
     </tr>
-
-</table>
+  </table>
+</div>
 </form>
 </c:forEach>
 

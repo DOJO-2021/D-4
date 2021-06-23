@@ -42,6 +42,12 @@ td{
   transform:translateY(-2px);
 }
 
+/* スクロールバー */
+.scrollbar{
+  overflow-y: scroll;
+}
+
+/* 質問タイトル・内容の左寄せ */
 .left{
 	text-align: left;
 }
