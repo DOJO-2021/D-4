@@ -36,7 +36,12 @@
 					<tr>
 						<th>質問タイトル<th>
 						<td>${e.q_title}</td>
+<<<<<<< HEAD
 						<td><c:if test="${e.done_tag == 0}">未解決</c:if>
+=======
+						<td>
+							<c:if test="${e.done_tag == 0}">未解決</c:if>
+>>>>>>> ed37d37a019e66e8999268c9146efcf0af48344a
 							<c:if test="${e.done_tag == 1}">解決</c:if>
 						</td>
 					</tr>
@@ -80,7 +85,11 @@
 					<tr>
 						<th>新規回答入力</th>
 						<td>
+<<<<<<< HEAD
 							<label><textarea name = "newanswer" required></textarea></label>
+=======
+							<label><textarea name = "newanswer"></textarea></label>
+>>>>>>> ed37d37a019e66e8999268c9146efcf0af48344a
 						</td>
 					</tr>
 				</table>
