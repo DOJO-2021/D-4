@@ -45,13 +45,16 @@
   </head>
   <body>
     <jsp:include page="/header.jsp"/>
-    <h2>質問投稿</h2>
     <div class="wrapper">
+    <h2>質問投稿</h2>
+    <div id="question">
     <!-- テンプレート挿入ボタン -->
+    <div id="tem">
     <c:forEach var="e" items="${Template}">
       <input type="hidden" id="tem" value="${e.temp_contents}">
     </c:forEach>
       <input type="submit" name="template_button" value="テンプレートの挿入"  onclick="Template()"><br>
+      </div>
     <form method="POST" action="/D4_situmonn/QuestionsPostServlet" onSubmit="return check()">
       <input type="hidden" name="user_id" value="${id}">
       <!-- 質問タイトル -->
@@ -149,10 +152,10 @@
        中岡さんに聞く-->
       <!-- ファイル添付ボタン -->
       <input type="file" name="file_select"><br><br>
+      </div>
       <!-- 「7.投稿ボタン」をクリック。
       「投稿確認メッセージ」を表示した後、「OK」が選択された場合トップページに遷移する。 -->
       <!-- 投稿ボタン -->
-
       <input type="submit" name="postbutton" value="投稿">
       <!-- 質問タグが1つも入力されていなかった場合、アラートを表示←servlet
        データ送信されずに元の入力画面(questionpost?)に戻る。
