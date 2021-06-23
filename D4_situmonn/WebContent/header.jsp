@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="D4_situmonn/css/common.css/">
 <header class = "header">
 <h1>
-	<a href="/D4_situmonn/TopServlet"><img src = "<!-- ロゴ画像 -->" alt="<!-- 商品名 -->"></a>
+	<a href="/D4_situmonn/TopServlet"><img class="logo" src = "/D4_situmonn/images/logo.png" alt="<!-- 商品名 -->"></a>
 </h1>
 <nav class="gnav">
 <img>
