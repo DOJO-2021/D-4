@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>質問・相談システム(仮)|トップページ</title>
-<link rel="stylesheet" href="/D4_situmonn/WEB-INF/css/common.css">
-<link rel="stylesheet" href="/D4_situmonn/WEB-INF/css/top.css">
+<link rel="stylesheet" href="/D4_situmonn/css/common.css">
+<link rel="stylesheet" href="/D4_situmonn/css/top.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
 
@@ -50,7 +50,6 @@ function isCheck() {
 	<p>※質問タグもしくはキーワードのどちらかは必ず入力してください</p>
 	<form method = "POST" action = "/D4_situmonn/TopServlet" class="search_form">
 	<table class="search">
-		<div class = "question_tag">
 		    <tr>
 		      <td>
 			<input type="checkbox" name="questions_tag1" id="q1" class="checkboxes" value ="パーソナルコース"><label class="q_tag" for="q1">パーソナルコース</label><br>
@@ -101,26 +100,25 @@ function isCheck() {
 		      </td>
 		    </tr>
 
-		</div>
+			<tr>
+		      <td colspan="2" class = "iptxt">
+			  <input type = "text" name = "keyword" id = "key" placeholder="キーワードを入力してください。">
+		      </td>
+		    </tr>
 
-		<div>
-		    <td colspan="2" class = "iptxt">
-			<input type = "text" name = "keyword" id = "key" placeholder="キーワードを入力してください。">
-		    </td>
-		</div>
-		<div class = "solution_label">
-		<tr>
-		    <td>
-			<input type="radio" id="s1" name="solution_label" value="1" checked required><label class="solution" for="s1">解決済</label>
-		    </td>
-		    <td>
-			<input type="radio" id="s2" name="solution_label" value="0"><label class="solution" for="s2">未解決</label>
-		    </td>
-		</tr>
-		</div>
-		    <td colspan="2">
+			<tr>
+		      <td>
+			  <input type="radio" id="s1" name="solution_label" value="1" checked required><label class="solution" for="s1">解決済</label>
+		      </td>
+		      <td>
+			  <input type="radio" id="s2" name="solution_label" value="0"><label class="solution" for="s2">未解決</label>
+		      </td>
+			</tr>
+			<tr>
+		      <td colspan="2">
 		      <input type = "submit" name = "search" value = "検索" onClick="return isCheck()">
-		    </td>
+		      </td>
+		    </tr>
 	</table>
 	</form>
 </main>
