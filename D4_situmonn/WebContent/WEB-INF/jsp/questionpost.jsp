@@ -47,23 +47,22 @@
     <jsp:include page="/header.jsp"/>
     <div class="wrapper">
     <h2>質問投稿</h2>
-    <div id="question">
+    <div class="question">
     <!-- テンプレート挿入ボタン -->
-    <div id="tem">
+    <div class="temp">
     <c:forEach var="e" items="${Template}">
       <input type="hidden" id="tem" value="${e.temp_contents}">
     </c:forEach>
       <input type="submit" name="template_button" value="テンプレートの挿入"  onclick="Template()"><br>
-      </div>
     <form method="POST" action="/D4_situmonn/QuestionsPostServlet" onSubmit="return check()">
       <input type="hidden" name="user_id" value="${id}">
       <!-- 質問タイトル -->
       <div class="iptxt">
-        <input type="text" name="question_title" placeholder="質問タイトル" required class="ef">
-        <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
+        <input class="order1" type="text" name="question_title" placeholder="質問タイトル" required class="ef">
       </div>
+    </div>
       <!-- 質問内容 -->
-      <textarea id="text" name="question_contents"  placeholder="質問内容"  rows="6" cols="70" required></textarea><br>
+      <textarea id="text" name="question_contents"  placeholder="質問内容"  rows="40" cols="140" required></textarea><br>
 
       <!-- 「テンプレート挿入ボタン」をクリックすると、以下のメッセージが「5.質問内容」に挿入される。
       全文、変更/削除可能である。 -->
@@ -71,6 +70,7 @@
       <!-- テンプレートを挿入する処理はservlet→servlet内でdaoを呼び出す→jspでel式のinputタグに入れる
       → -->
       <!-- 質問タグを選択。プルダウンであらかじめ用意された質問タグから選択する。 -->
+        <div class="tag_name">
         質問タグ<br>
         <select name="question_tag1" id="question_tag1">
         <option value="">-----</option>
@@ -146,6 +146,7 @@
         <option value="運営事務局宛て">運営事務局宛て</option>
         <option value="その他">その他</option>
         </select><br><br>
+        </div>
       <!-- 最低1個、最大5個まで。←これはServletでやる -->
       <!-- 「6.ファイル選択（添付ファイル）」をクリック。ファイル選択ダイアログ
        JSPはどこまで書けばいいか？全部javascriptか？

@@ -1,56 +1,114 @@
 @charset "UTF-8";
-
-.iptxt {
-  position: relative;
-  width: auto;
-  margin: 10px 3%;
+.question{ /*テーブル全体の背景色とサイズ設定*/
+  display:block;
+  background-color:#ffffff;
+  padding:10px;
+  color:#0067c0;
+  margin-left:0%;
 }
 
-.iptxt input[type='text'] {
-  border: 5px solid #bce4ff;
-  border-radius: 25px;
+input[type="text"]{ /*タイトル部分のデザイン*/
+  border: 5px solid #0067c0;
+  background-color:#ffffff;
   height: 50px;
-  margin: 1em auto;
   display: block;
   font: 15px/24px 'M PLUS Rounded 1c';
   box-sizing: border-box;
-  width: 60%;
-  height: 50px;
+  width: 1000px;
+  height: 70px;
   padding: 0.3em;
   letter-spacing: 1px;
+  color:#35a0d9;
   padding-left: 40px;
+  box-shadow: 1px 1px 2px 0 #707070 inset;
 }
 
-.iptxt input[type='text']:focus {
+input[type='text']:focus {/*タイトル部分のデザイン*/
+	outline: none;
+        border: 5px solid #0067c0;
+        box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+input[type='text']:focus::after {/*タイトル部分のデザイン*/
 	outline: none;
 }
 
-.iptxt input[type='text']:focus::after {
+textarea{/*質問内容部分のデザイン*/
+  border: 0px solid #ffffff;
+  height: 50px;
+  display: block;
+  font: 15px/24px 'M PLUS Rounded 1c';
+  box-sizing: border-box;
+  width: 1000px;
+  height: 70px;
+  padding: 0.3em;
+  letter-spacing: 1px;
+  color:#0067c0;
+  padding-left: 40px;
+  box-shadow: 1px 1px 2px 0 #707070 inset;
+}
+
+.contents textarea:focus {/*質問内容部分のデザイン*/
+	outline: none;
+        border: 2px solid #0067c0;
+        box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+.contents textarea:focus::after {/*質問内容部分のデザイン*/
 	outline: none;
 }
 
-.iptxt i {
-	position: absolute;
-	top: 0;
-	left: 0;
-	padding: 9px 5px;
-	transition: 0.3s;
-	color:#bce4ff;
+.temp{
+	display:flex;
+	flex-direction:row-reverse;
+	justify-content:space-evenly;
 }
 
-input[type="submit"] {
+.tag_name{/*タグの周りの余白設定*/
+  margin-left:0%;
+}
+
+.file input[type="file"]{/*ファイル挿入部分のデザイン（未完）*/
+  border: 5px solid #0067c0;
+  background-color:#ffffff;
+  height: 50px;
+  display: block;
+  font: 15px/24px 'M PLUS Rounded 1c';
+  box-sizing: border-box;
+  width: 1000px;
+  height: 70px;
+  letter-spacing: 1px;
+  color:#35a0d9;
+  box-shadow: 1px 1px 2px 0 #707070 inset;
+}
+
+.file input[type='file']:focus {/*ファイル挿入部分のデザイン（未完）*/
+	outline: none;
+        border: 5px solid #0067c0;
+        box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+.file input[type='file']:focus::after {/*ファイル挿入部分のデザイン（未完）*/
+	outline: none;
+}
+input[type="submit"] {/*投稿ボタンのデザイン*/
   display:block;
   border: none;
+  border-radius:25px;
   height:40px;
   width: 200px;
-  margin: 0 auto;
   line-height:50px;
   align-items: center;
-  background:#77c8ff;
+  background:#0067c0;
   color:#ffffff;
-  border-radius:25px;
   text-decoration:none;
   text-align:center;
+  margin:18px auto;
   font-size: 20px;
-  padding-bottom: 3px;
+  padding-bottom: 10px;
+  font-weight:bold;
+  box-shadow:0 30px 40px -5px rgba(0,0,0,.20),0 0 5px rgba(0,0,0,.20);
+}
+
+
+input[type="submit"]:hover{/*編集ボタンのデザイン*/
+	box-shadow:0 15px 30px -5px rgba(0,0,0,.15),0 0 5px rgba(0,0,0,.1);
+	transform:translateY(-2px);
 }

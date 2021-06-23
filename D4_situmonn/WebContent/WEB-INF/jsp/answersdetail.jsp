@@ -8,6 +8,10 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>質問相談システム(仮)|質問詳細</title>
+		    <link rel="stylesheet" href="/D4_situmonn/css/common.css">
+	<link rel="stylesheet" href="/D4_situmonn/css/questionspost.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
 		<script>
 		'use strict';
 		function check(){
@@ -81,8 +85,9 @@
 						<td class="ans">新規回答入力</td>
                                         </tr>
 					<tr>
-							<td><label><textarea name = "newanswer" placeholder="回答内容を入力してください。" rows="10" cols="150">
-							</textarea></label></td>
+							<td><label><textarea name = "newanswer" placeholder="回答内容を入力してください。" rows="10" cols="150" required></textarea>
+							    </label>
+							</td>
 					</tr>
 				</table>
 				<input type = "submit" name = "submit" value = "回答">
