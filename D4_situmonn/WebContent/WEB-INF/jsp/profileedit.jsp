@@ -49,26 +49,33 @@ function OnLinkClick() {  //キャンセルのリンクがクリックされた�
 <c:forEach var="e" items="${cardList}" >
 <form method = "POST" action = "/D4_situmonn/ProfileEditServlet" onSubmit="return check();">
 <!-- value = EL式 で元々登録されている氏名・会社名・パスワードを表示 -->
+<div class="iptxt">
   <label>
-  氏名<br>
-  <input type="text" name="name_input" value = "${e.user_name}" required><br>
+  <input type="text" name="name_input" value = "${e.user_name}" placeholder="氏名を入力" required><br>
+  <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
   </label>
+</div>
+<div class="iptxt">
     <label>
-  会社名<br>
-  <input type="text" name="company_input" value = "${e.company}"><br>
+  <input type="text" name="company_input" value = "${e.company}" placeholder="会社名を入力"><br>
+  <i class="fa fa-building a-lg fa-lg fa-fw" aria-hidden="true"></i>
   </label>
+</div>
+<div class="iptxt">
     <label>
-  パスワード<br>
-  <input type="password" name="password_input" value = "${e.password}" id="pass1" required><br>
+  <input type="password" name="password_input" value = "${e.password}" id="pass1" placeholder="パスワードを入力" required><br>
+  <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
   </label>
+</div>
+<div class="iptxt">
     <label>
-  パスワード確認<br>
-  <input type="password" name="password_confirm" id="pass2"required><br>
+  <input type="password" name="password_confirm" id="pass2"required placeholder="パスワードをもう一度入力してください"><br>
+  <i class="fa fa-lock fa-lg fa-fw" aria-hidden="true"></i>
   </label>
+</div>
+  <input type = "submit" value = "更新"><br>
 
-  <input type = "submit" value = "更新">
-
-  <a href = "/D4_situmonn/MypageServlet" onclick="return OnLinkClick();">キャンセル</a>
+  <a class="cancel" href = "/D4_situmonn/MypageServlet" onclick="return OnLinkClick();">キャンセル</a>
 
 </form>
 </c:forEach>

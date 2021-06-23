@@ -1,4 +1,11 @@
 @charset "UTF-8";
+<<<<<<< HEAD
+table td{ /*セル内で文字を折り返す*/
+  overflow-wrap:break-word;
+}
+
+.vertical-scroll-table{ /*スクロールバー自動生成*/
+=======
 
 html{
   background-color:#35a0d9;
@@ -110,10 +117,11 @@ table td{
   background-color:#ffffff;
 }
 .vertical-scroll-table{
+>>>>>>> f9b124f35e679f36095a72d50c9eb8cf70d60a89
   overflow-y:auto;
 }
 
-table{
+table{ /*テーブル全体のサイズとカラー指定*/
   background-color:#ffffff;
   width:100%;
   margin:10px auto;

@@ -1,11 +1,11 @@
 @charset "UTF-8";
-.question{
+.question{ /*テーブル全体の背景色とサイズ設定*/
   display:block;
   background-color:#ffffff;
   padding:10px;
 }
 
-.title input[type="text"]{
+.title input[type="text"]{ /*タイトル部分のデザイン*/
   border: 5px solid #0067c0;
   background-color:#ffffff;
   height: 50px;
@@ -22,16 +22,16 @@
   box-shadow: 1px 1px 2px 0 #707070 inset;
 }
 
-.title input[type='text']:focus {
+.title input[type='text']:focus {/*タイトル部分のデザイン*/
 	outline: none;
         border: 5px solid #0067c0;
         box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
-.title input[type='text']:focus::after {
+.title input[type='text']:focus::after {/*タイトル部分のデザイン*/
 	outline: none;
 }
 
-.contents textarea{
+.contents textarea{/*質問内容部分のデザイン*/
   border: 0px solid #ffffff;
   height: 50px;
   margin: 0.5em auto;
@@ -47,20 +47,20 @@
   box-shadow: 1px 1px 2px 0 #707070 inset;
 }
 
-.contents textarea:focus {
+.contents textarea:focus {/*質問内容部分のデザイン*/
 	outline: none;
         border: 2px solid #0067c0;
         box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
-.contents textarea:focus::after {
+.contents textarea:focus::after {/*質問内容部分のデザイン*/
 	outline: none;
 }
 
-.tag_name{
+.tag_name{/*タグの周りの余白設定*/
   padding:30px;
 }
 
-.file input[type="file"]{
+.file input[type="file"]{/*ファイル挿入部分のデザイン（未完）*/
   border: 5px solid #0067c0;
   background-color:#ffffff;
   height: 50px;
@@ -77,16 +77,16 @@
   box-shadow: 1px 1px 2px 0 #707070 inset;
 }
 
-.file input[type='file']:focus {
+.file input[type='file']:focus {/*ファイル挿入部分のデザイン（未完）*/
 	outline: none;
         border: 5px solid #0067c0;
         box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
-.file input[type='file']:focus::after {
+.file input[type='file']:focus::after {/*ファイル挿入部分のデザイン（未完）*/
 	outline: none;
 }
 
-input[type="submit"] {
+input[type="submit"] {/*編集ボタンのデザイン*/
   display:block;
   border: none;
   border-radius:25px;
@@ -106,12 +106,12 @@ input[type="submit"] {
 }
 
 
-input[type="submit"]:hover{
+input[type="submit"]:hover{/*編集ボタンのデザイン*/
 	box-shadow:0 15px 30px -5px rgba(0,0,0,.15),0 0 5px rgba(0,0,0,.1);
 	transform:translateY(-2px);
 }
 
-.cancel{
+.cancel{/*cancelボタンのデザイン*/
   display:block;
   border: none;
   height:40px;
@@ -127,7 +127,7 @@ input[type="submit"]:hover{
   box-shadow:0 0 3px 0 rgba(0,0,0,.12),0 2px 3px 0 rgba(0,0,0,.12);
 }
 
-.cancel:hover{
+.cancel:hover{/*cancelボタンのデザイン*/
 	box-shadow:0 15px 30px -5px rgba(0,0,0,.15),0 0 5px rgba(0,0,0,.1);
 	transform:translateY(-2px);
 }

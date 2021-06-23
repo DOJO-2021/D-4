@@ -105,18 +105,21 @@
 
 			<form method="POST" enctype="multipart/form-data" action="/D4_situmonn/QuestionEditServlet" onSubmit="return check()">
 				<c:forEach var="e" items="${QEdit}" >
-
+				       <div class="question">
 					<input type="hidden" name="q_id" value="${e.q_id}">
 					<!-- question postとほぼ同じ内容 -->
 
 					<!-- 質問タイトル -->
-					<input type="text" name="question_title" value="${e.q_title}" placeholder="質問タイトル" required><br>
-
+                                       <div class="title">
+					<input type="text" class="q_title" name="question_title" value="${e.q_title}" placeholder="質問タイトル" required><br>
+                                       </div>
+                                       <div class="contents">
 					<!-- 質問内容 -->
-					<textarea name="question_contents" placeholder="質問内容"required>${e.q_contents}</textarea><br>
-
+					<textarea class="q_contents" name="question_contents" placeholder="質問内容"required rows="10" cols="140">${e.q_contents}</textarea><br>
+                                       </div>
 					<!-- 質問タグを選択。プルダウンであらかじめ用意された質問タグから選択する。 -->
-					質問タグ<br>
+                                        質問タグ<br>
+					<div class="tag_name">
 					<select name="question_tag1" id="question_tag1">
 					<option value="">-----</option>
 					<option value="パーソナルコース">パーソナルコース</option>
@@ -131,6 +134,7 @@
 					<option value="運営事務局宛て">運営事務局宛て</option>
 					<option value="その他">その他</option>
 					</select>
+
 
 					<select name="question_tag2" id="question_tag2">
 					<option value="">-----</option>
@@ -197,21 +201,24 @@
 					<input type="hidden" name="q_tag03" value="${e.q_tag03}" id="q_tag03">
 					<input type="hidden" name="q_tag04" value="${e.q_tag04}" id="q_tag04">
 					<input type="hidden" name="q_tag05" value="${e.q_tag05}" id="q_tag05">
-
+                                       </div>
 					<!-- 添付ファイルボタン -->
+                                       <div class="file">
 					<input type="file" name="q_file" value="ファイル選択"><br>
-
+                                       </div>
 					<!-- 解決チェックボックスの追加 -->
+                                       <div class="checkbox">
 					解決チェックボックス<br>
 					<input type="checkbox" name="solution_button" value="1" id="check">解決<br>
 					<input type="hidden" name="done_tag" value="${e.done_tag}" id="done_tag">
-
+                                        </div>
+                        </div>
 					<!-- 更新ボタンはsubmit -->
-					<input type="submit" name="update_button" value="更新">
+					<input type="submit" name="update_button" value="更新"><br>
 
 					<!-- キャンセルのリンク部分にonclick="OnLinkClick();"と書き加える -->
 					<!-- onclicをおすとJavaScriptに飛ぶ -->
-					<a href = "/D4_situmonn/MypageServlet" onclick="return OnLinkClick();">キャンセル</a>
+					<a class="cancel" href = "/D4_situmonn/MypageServlet" onclick="return OnLinkClick();">キャンセル</a>
 
 				</c:forEach>
 			</form>
