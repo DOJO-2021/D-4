@@ -5,7 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>質問・相談システム(仮)|ユーザー登録</title>
+<title>Qbox|サインアップ</title>
+<link rel="stylesheet" href="/D4_situmonn/css/common.css">
+<link rel="stylesheet" href="/D4_situmonn/css/usersregist.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
 
 <script>
 'use strict';
@@ -15,9 +19,6 @@ function check(){
 	}
 }
 </script>
-<link rel="stylesheet" href="/D4_situmonn/WEB-INF/css/usersregist.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">

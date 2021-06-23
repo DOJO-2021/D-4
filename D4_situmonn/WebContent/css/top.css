@@ -12,8 +12,13 @@ p{
   color: #ffffff;
 }
 
+/* テーブル内の文字を左揃えにする */
+tr{
+	text-align: left;
+}
+
 /* 元々のチェックボックス（非表示） */
-input[type="checkbox"]{
+input[type='checkbox']{
   display:none;
 }
 /* チェックボックスの代わりを成すラベル */

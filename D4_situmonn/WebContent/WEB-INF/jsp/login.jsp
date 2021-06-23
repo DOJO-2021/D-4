@@ -6,10 +6,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>質問・相談システム(仮)｜サインイン</title>
-<link rel="stylesheet" href="D4_situmonn/WEB-INF/css/login.css">
-<link rel="stylesheet" href="/D4_situmonn/WEB-INF/css/common.css">
-<link rel="stylesheet" href="/D4_situmonn/WEB-INF/css/login.css">
+<title>Qbox｜サインイン</title>
+<link rel="stylesheet" href="/D4_situmonn/css/login.css">
+<link rel="stylesheet" href="/D4_situmonn/css/common.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
 
