@@ -62,7 +62,7 @@
       </div>
     </div>
       <!-- 質問内容 -->
-      <textarea id="text" name="question_contents"  placeholder="質問内容"  rows="40" cols="140" required></textarea><br>
+      <textarea id="text" name="question_contents"  placeholder="質問内容"  rows="100" cols="140" required></textarea><br>
 
       <!-- 「テンプレート挿入ボタン」をクリックすると、以下のメッセージが「5.質問内容」に挿入される。
       全文、変更/削除可能である。 -->

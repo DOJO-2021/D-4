@@ -2,15 +2,15 @@
 .question{ /*テーブル全体の背景色とサイズ設定*/
   display:block;
   background-color:#ffffff;
-  padding:10px;
+  padding:30px;
   color:#0067c0;
+  margin-left:0%;
 }
 
-.title input[type="text"]{ /*タイトル部分のデザイン*/
-  border: 5px solid #0067c0;
+input[type="text"]{ /*タイトル部分のデザイン*/
+  border: 2px solid #0067c0;
   background-color:#ffffff;
   height: 50px;
-  margin: 0.5em auto;
   display: block;
   font: 15px/24px 'M PLUS Rounded 1c';
   box-sizing: border-box;
@@ -23,24 +23,29 @@
   box-shadow: 1px 1px 2px 0 #707070 inset;
 }
 
-.title input[type='text']:focus {/*タイトル部分のデザイン*/
+input[type='text']:hover {/*タイトル部分のデザイン*/
 	outline: none;
-        border: 5px solid #0067c0;
+        border: 2px solid #0067c0;
         box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
-.title input[type='text']:focus::after {/*タイトル部分のデザイン*/
+
+input[type='text']:focus {/*タイトル部分のデザイン*/
+	outline: none;
+        border: 2px solid #0067c0;
+        box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+input[type='text']:focus::after {/*タイトル部分のデザイン*/
 	outline: none;
 }
 
-.contents textarea{/*質問内容部分のデザイン*/
-  border: 0px solid #ffffff;
-  height: 50px;
-  margin: 0.5em auto;
+textarea{/*質問内容部分のデザイン*/
+  border: 2px solid #0067c0;
+  height: 100px;
   display: block;
   font: 15px/24px 'M PLUS Rounded 1c';
   box-sizing: border-box;
   width: 1000px;
-  height: 70px;
+  height: 300px;
   padding: 0.3em;
   letter-spacing: 1px;
   color:#0067c0;
@@ -48,44 +53,53 @@
   box-shadow: 1px 1px 2px 0 #707070 inset;
 }
 
-.contents textarea:focus {/*質問内容部分のデザイン*/
+textarea:hover {/*質問内容部分のデザイン*/
 	outline: none;
         border: 2px solid #0067c0;
         box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
-.contents textarea:focus::after {/*質問内容部分のデザイン*/
+
+textarea:focus {/*質問内容部分のデザイン*/
 	outline: none;
+        border: 2px solid #0067c0;
+        box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+textarea:focus::after {/*質問内容部分のデザイン*/
+	outline: none;
+}
+
+.tag{
+  display:brock;
+  background-color:#0067c0;
+  height:25px;
+  width:200px;
+  margin:10px auto;
+  color:#ffffff;
 }
 
 .tag_name{/*タグの周りの余白設定*/
   padding:30px;
 }
 
-.file input[type="file"]{/*ファイル挿入部分のデザイン（未完）*/
-  border: 5px solid #0067c0;
-  background-color:#ffffff;
-  height: 50px;
-  margin: 0.5em auto;
-  display: block;
-  font: 15px/24px 'M PLUS Rounded 1c';
-  box-sizing: border-box;
-  width: 1000px;
-  height: 70px;
-  padding: 0.3em;
-  letter-spacing: 1px;
-  color:#35a0d9;
-  padding-left: 40px;
-  box-shadow: 1px 1px 2px 0 #707070 inset;
+form .file{
+	display:block;
+	margin:10px auto 10px auto;
 }
 
-.file input[type='file']:focus {/*ファイル挿入部分のデザイン（未完）*/
-	outline: none;
-        border: 5px solid #0067c0;
-        box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+.file input[type="file"]{/*ファイル挿入部分のデザイン（未完）*/
+  color:#0067c0;
 }
-.file input[type='file']:focus::after {/*ファイル挿入部分のデザイン（未完）*/
-	outline: none;
+
+.checkbox{
+  display:brock;
+  background-color:#0067c0;
+  height:25px;
+  width:200px;
+  margin:30px auto;
+  color:#ffffff;
 }
+
+
 
 input[type="submit"] {/*編集ボタンのデザイン*/
   display:block;
@@ -99,7 +113,7 @@ input[type="submit"] {/*編集ボタンのデザイン*/
   color:#ffffff;
   text-decoration:none;
   text-align:center;
-  margin:3px auto;
+  margin:30px auto;
   font-size: 20px;
   padding-bottom: 3px;
   font-weight:bold;

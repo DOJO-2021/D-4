@@ -9,16 +9,75 @@ h2{
 }
 */
 
-.profile, .scroll{
-  margin: 20px auto 20px auto;
+.profile table{
+	color:#ffffff;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 .scroll{
-	border: 1px solid #ffffff;
+  overflow-y:auto;
+  max-height:290px;
+  scrollbar-base-color:#0067c0;
 }
 
-td{
-	color: #ffffff;
+
+.scroll table{
+  background-color:#ffffff;
+  width:100%;
+  margin:10px auto;
+  padding:10px 20px;
+  overflow: auto;
+  table-layout:fixed;
+}
+
+.profile td{
+	height:50px;
+	font-size:30px;
+	overflow-wrap:break-word;
+    white-space:nowrap;
+}
+
+.scroll td{
+	height:50px;
+	width:350px;
+	font-size:20px;
+    overflow-wrap:break-word;
+    white-space:nowrap;
+}
+
+.scroll{
+  overflow-y:auto;
+  max-height:290px;
+  scrollbar-base-color:#0067c0;
+}
+
+
+table .scroll{
+  background-color:#ffffff;
+  width:100%;
+  margin:10px auto;
+  padding:10px 20px;
+  overflow: auto;
+  table-layout:fixed;
+}
+
+
+.title{
+  display:brock;
+  background-color:#35a0d9;
+  height:50px;
+  color:#ffffff;
+}
+
+.q_data{
+	color:#0067c0;
+}
+
+table .q_tag{
+  color:#ffffff;
+  background:#35a0d9;
+  height:5px;
 }
 
 /* プロフィール編集ボタン */
@@ -33,7 +92,7 @@ td{
   color:#ffffff;
   border-radius:25px;
   text-decoration:none;
-  text-align:center;
+  margin:30px auto;
   font-size: 20px;
 }
 
@@ -44,18 +103,15 @@ td{
 
 /* スクロールバー */
 .scrollbar{
-  overflow-y: scroll;
+  background-color:#ffffff;
+  width:80%;
+  margin:10px auto;
+  padding:10px 20px;
+  overflow: auto;
+  table-layout:fixed;
 }
 
-/* 質問タイトル・内容の左寄せ */
-.left{
-	text-align: left;
-}
 
-#title{
-	box-shadow:0 30px 40px -5px rgba(0,0,0,.20),0 0 5px rgba(0,0,0,.20);
-
-}
 
 /* 質問編集ボタン */
 input[type="submit"] {

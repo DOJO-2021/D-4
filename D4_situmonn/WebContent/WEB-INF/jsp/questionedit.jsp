@@ -7,7 +7,7 @@
 	<meta charset="UTF-8">
 	<title>質問・相談システム(仮)|質問編集</title>
 	    <link rel="stylesheet" href="/D4_situmonn/css/common.css">
-	<link rel="stylesheet" href="/D4_situmonn/css/questionspost.css">
+	<link rel="stylesheet" href="/D4_situmonn/css/questionedit.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
 	<Script>
@@ -122,7 +122,9 @@
 					<textarea class="q_contents" name="question_contents" placeholder="質問内容"required rows="10" cols="140">${e.q_contents}</textarea><br>
                                        </div>
 					<!-- 質問タグを選択。プルダウンであらかじめ用意された質問タグから選択する。 -->
+					<div class="tag">
                                         質問タグ<br>
+                    </div>
 					<div class="tag_name">
 					<select name="question_tag1" id="question_tag1">
 					<option value="">-----</option>
@@ -207,18 +209,20 @@
 					<input type="hidden" name="q_tag05" value="${e.q_tag05}" id="q_tag05">
                                        </div>
 					<!-- 添付ファイルボタン -->
-                                       <div class="file">
+					<div class="file">
 					<input type="file" name="q_file" value="ファイル選択"><br>
-                                       </div>
+					</div>
 					<!-- 解決チェックボックスの追加 -->
-                                       <div class="checkbox">
-					解決チェックボックス<br>
+                    <div class="checkbox">
+					解決チェックボックス
+					</div>
+					<div class="q_checkbox">
 					<input type="checkbox" name="solution_button" value="1" id="check">解決<br>
 					<input type="hidden" name="done_tag" value="${e.done_tag}" id="done_tag">
-                                        </div>
+                    </div>
                         </div>
 					<!-- 更新ボタンはsubmit -->
-					<input type="submit" name="update_button" value="更新"><br>
+					<input type="submit" name="update_button" value="更新">
 
 					<!-- キャンセルのリンク部分にonclick="OnLinkClick();"と書き加える -->
 					<!-- onclicをおすとJavaScriptに飛ぶ -->

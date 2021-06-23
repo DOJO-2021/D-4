@@ -9,7 +9,7 @@
 		<meta charset="UTF-8">
 		<title>質問相談システム(仮)|質問詳細</title>
 		    <link rel="stylesheet" href="/D4_situmonn/css/common.css">
-	<link rel="stylesheet" href="/D4_situmonn/css/questionspost.css">
+	<link rel="stylesheet" href="/D4_situmonn/css/answersdetail.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
 		<script>
@@ -45,25 +45,22 @@
 					<tr class="contents">
 						<td colspan="5">${e.q_contents}</td>
 					</tr>
-					<tr>
-						<th class="tag">質問タグ</th>
-					</tr>
-					<tr>
-						<td>${e.q_tag01}</td>
-						<td>${e.q_tag02}</td>
+					<tr class="q_tag">
+						<td class="q_tag">${e.q_tag01} ${e.q_tag02} ${e.q_tag03} ${e.q_tag04} ${e.q_tag05}</td>
+						<!--<td>${e.q_tag02}</td>
 						<td>${e.q_tag03}</td>
 						<td>${e.q_tag04}</td>
-						<td>${e.q_tag05}</td>
+						<td>${e.q_tag05}</td>-->
 					</tr>
 					<tr>
 						<th class="file">添付ファイル</th>
 					<tr>
-						<td>${e.q_file}</td>
+						<td class="file_2">${e.q_file}</td>
 					</tr>
 				</table>
 			</c:forEach>
 
-                     <div class="scroll">
+            <div class="scroll">
 			<c:forEach var="e" items="${AnswerList}">
 
 				<table class = answers>
@@ -72,13 +69,13 @@
 					</tr>
 					<tr>
 						<td class="a_contents">回答内容</td>
-                                        </tr>
-                                        <tr>
+                    </tr>
+                    <tr>
 						<td colspan="5">${e.ans_contents}</td>
 					</tr>
-                                </table>
+                 </table>
 			</c:forEach>
-                       </div>
+            </div>
 
 				<table>
 					<tr>

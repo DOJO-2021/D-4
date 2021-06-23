@@ -8,7 +8,7 @@
 }
 
 input[type="text"]{ /*タイトル部分のデザイン*/
-  border: 5px solid #0067c0;
+  border: 2px solid #0067c0;
   background-color:#ffffff;
   height: 50px;
   display: block;
@@ -23,9 +23,15 @@ input[type="text"]{ /*タイトル部分のデザイン*/
   box-shadow: 1px 1px 2px 0 #707070 inset;
 }
 
+input[type='text']:hover {/*タイトル部分のデザイン*/
+	outline: none;
+        border: 2px solid #0067c0;
+        box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+
 input[type='text']:focus {/*タイトル部分のデザイン*/
 	outline: none;
-        border: 5px solid #0067c0;
+        border: 2px solid #0067c0;
         box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
 input[type='text']:focus::after {/*タイトル部分のデザイン*/
@@ -33,13 +39,13 @@ input[type='text']:focus::after {/*タイトル部分のデザイン*/
 }
 
 textarea{/*質問内容部分のデザイン*/
-  border: 0px solid #ffffff;
-  height: 50px;
+  border: 2px solid #0067c0;
+  height: 100px;
   display: block;
   font: 15px/24px 'M PLUS Rounded 1c';
   box-sizing: border-box;
   width: 1000px;
-  height: 70px;
+  height: 300px;
   padding: 0.3em;
   letter-spacing: 1px;
   color:#0067c0;
@@ -47,12 +53,18 @@ textarea{/*質問内容部分のデザイン*/
   box-shadow: 1px 1px 2px 0 #707070 inset;
 }
 
-.contents textarea:focus {/*質問内容部分のデザイン*/
+textarea:hover {/*質問内容部分のデザイン*/
 	outline: none;
         border: 2px solid #0067c0;
         box-shadow: inset 1px 1px 2px 0 #c9c9c9;
 }
-.contents textarea:focus::after {/*質問内容部分のデザイン*/
+
+textarea:focus {/*質問内容部分のデザイン*/
+	outline: none;
+        border: 2px solid #0067c0;
+        box-shadow: inset 1px 1px 2px 0 #c9c9c9;
+}
+textarea:focus::after {/*質問内容部分のデザイン*/
 	outline: none;
 }
 

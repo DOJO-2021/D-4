@@ -22,42 +22,64 @@ table td{
 
 .title{
   display:brock;
-  background-color:#35a0d9;
+  background-color:#0067c0;
   height:50px;
   color:#ffffff;
 }
 
+.done_tag{
+	color:#0067c0;
+}
+
+.contents{
+	color:#0067c0;
+}
+
+.q_tag{
+  display:brock;
+  background-color:#0067c0;
+  height:20px;
+  color:#ffffff;
+}
+
+.file_2{
+	color:#0067c0;
+}
+
 .tag{
   display:block;
-  background-color:#35a0d9;
+  background-color:#0067c0;
   height:20px;
   color:#ffffff;
 }
 
 .file{
   display:block;
-  background-color:#35a0d9;
+  background-color:#0067c0;
   height:20px;
   color:#ffffff;
+}
+.file_2{
+	color:#ffffff;
 }
 
 .a_name{
   display:block;
-  background-color:#35a0d9;
+  background-color:#0067c0;
   height:20px;
   color:#ffffff;
 }
 
 .a_contents{
   display:block;
-  background-color:#35a0d9;
+  background-color:#0067c0;
   height:20px;
   color:#ffffff;
 }
 
 .ans{
   display:block;
-  background-color:#35a0d9;
+  background-color:#0067c0;
   height:20px;
   width:250px;
   margin:20px auto;

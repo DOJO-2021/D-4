@@ -15,29 +15,30 @@
 </head>
 <body bgcolor="#35a0d9">
 <div class="wrapper">
-<jsp:include page="/headernologin.jsp"/>
+<jsp:include page="/header.jsp"/>
 <h2>マイページ</h2>
 
-
+<div class="profile">
 <c:forEach var="e" items="${cardList}" >
-  <table class="profile">
+  <table>
     <tr>
-	<td colspan="2">${e.user_name}</td>
+	<td colspan="10">${e.user_name}</td>
     </tr>
     <tr>
-	<td colspan="2">${e.user_id}</td>
+	<td colspan="10">${e.user_id}</td>
     </tr>
     <tr>
-	<td>${e.company}</td>
-	<td>${e.user_category}</td>
+	<td colspan="5">${e.company}</td>
+	<td colspan="5">${e.user_category}</td>
     </tr>
-    <tr>
-	<td colspan="2">
-	<a href="/D4_situmonn/ProfileEditServlet" class="profileedit">プロフィール編集</a>
-	</td>
-    </tr>
-  </table>
+   </table>
 </c:forEach>
+</div>
+	<div  class="profileedit">
+	<a href="/D4_situmonn/ProfileEditServlet">プロフィール編集</a>
+	</div>
+
+
 
 
 <c:forEach var="e" items="${QList}" >
@@ -45,26 +46,26 @@
 <div class="scrollbar">
   <table class="scroll"><!-- テーブルに罫線(タグで指定)とスクロールバー -->
     <tr>
-	<td colspan="5" bgcolor="#0067c0" class="left" id="title">${e.q_title}</td>
+	<td colspan="5"class="title">${e.q_title}</td>
 	<td><input type="submit" name="editbutton" value="編集"></td>
     </tr>
     <tr>
-	<td bgcolor="#0067c0">${e.q_date}</td>
-	<td bgcolor="#0067c0">
+	<td class="q_data">${e.q_date}</td>
+	<td class="q_data">
 	  <c:if test="${e.done_tag == 0}">未解決</c:if>
 	  <c:if test="${e.done_tag == 1}">解決</c:if>
 	</td>
-	<td><input type="hidden" name="q_id" value="${e.q_id}"></td>
+	<td  class="q_data"><input type="hidden" name="q_id" value="${e.q_id}"></td>
     </tr>
     <tr>
-	<td>${e.q_tag01}</td>
-	<td>${e.q_tag02}</td>
-	<td>${e.q_tag03}</td>
-	<td>${e.q_tag04}</td>
-	<td>${e.q_tag05}</td>
+	<td class="q_tag">${e.q_tag01}${e.q_tag02}${e.q_tag03}${e.q_tag04}${e.q_tag05}</td>
+	<!--<td bgcolor="#35a0d9">${e.q_tag02}</td>
+	<td bgcolor="#35a0d9">${e.q_tag03}</td>
+	<td bgcolor="#35a0d9">${e.q_tag04}</td>
+	<td bgcolor="#35a0d9">${e.q_tag05}</td>-->
     </tr>
     <tr>
-	<td colspan="5" class="left">${e.q_contents}</td>
+	<td class="q_data" colspan="5" class="contents">${e.q_contents}</td>
     </tr>
   </table>
 </div>
