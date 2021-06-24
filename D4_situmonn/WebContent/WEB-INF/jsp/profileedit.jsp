@@ -21,6 +21,7 @@ function check(){
 
 		if (value1 != value2){
 			window.alert('パスワードの値が一致していません。');
+			return false;
 		}
 		else if(window.confirm('回答を送信してもよろしいですか？')){ // 確認ダイアログを表示
 			return true; // 「OK」時は送信を実行

@@ -53,7 +53,7 @@ h2{
 .iptxt i {
 	position: absolute;
 	top: 0;
-	left: 457px;/*アイコン左右移動*/
+	left: 450px;/*アイコン左右移動*/
 	padding: 13.5px 12px;
 	transition: 0.3s;
 	color:#35a0d9;
