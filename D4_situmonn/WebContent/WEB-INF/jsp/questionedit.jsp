@@ -10,33 +10,33 @@
 	<link rel="stylesheet" href="/D4_situmonn/css/questionedit.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c" rel="stylesheet">
-	<Script>
+	<script type="text/javascript">
 	'use strict';
 
-    function check(){
+	function check(){
     	const q_tag1 = document.getElementById("question_tag1");
-    	const question_tag1 = q_tag1.value;
-    	const q_tag2 = document.getElementById("question_tag2");
-    	const question_tag2 = q_tag2.value;
-    	const q_tag3 = document.getElementById("question_tag3");
-    	const question_tag3 = q_tag3.value;
-    	const q_tag4 = document.getElementById("question_tag4");
-    	const question_tag4 = q_tag4.value;
-    	const q_tag5 = document.getElementById("question_tag5");
-    	const question_tag5 = q_tag5.value;
-    	if(question_tag1 != "" || question_tag2 != "" || question_tag3 != "" || question_tag4 != "" || question_tag5 != ""){
-    		if(window.confirm('質問内容を投稿しますか？')){ // 確認ダイアログを表示
+      	const question_tag1 = q_tag1.value;
+      	const q_tag2 = document.getElementById("question_tag2");
+      	const question_tag2 = q_tag2.value;
+      	const q_tag3 = document.getElementById("question_tag3");
+      	const question_tag3 = q_tag3.value;
+      	const q_tag4 = document.getElementById("question_tag4");
+      	const question_tag4 = q_tag4.value;
+      	const q_tag5 = document.getElementById("question_tag5");
+      	const question_tag5 = q_tag5.value;
+        if(question_tag1 != "" || question_tag2 != "" || question_tag3 != "" || question_tag4 != "" || question_tag5 != ""){
+        	if(window.confirm('質問内容を投稿しますか？')){ // 確認ダイアログを表示
         		return true; // 「OK」時は送信を実行
-        	}
-        	else {
-        		return false;
-        	}
+        	    }
+        	    else {
+        			  return false;
+        	      }
         }
         else{
         	window.alert('質問タグを最低1つ選択してください。');
         	return false;
         }
-    }
+      }
     <!-- トップページに遷移するプログラムはservlet -->
 
 	function OnLinkClick() {  //キャンセルのリンクがクリックされたとき
@@ -48,7 +48,7 @@
         }
 	}
 
-	function setValue() {
+	 function setValue() {
 
 		var check = document.getElementById("check");
 		let done_tag = document.getElementById("done_tag");
@@ -207,7 +207,7 @@
 					<input type="hidden" name="q_tag03" value="${e.q_tag03}" id="q_tag03">
 					<input type="hidden" name="q_tag04" value="${e.q_tag04}" id="q_tag04">
 					<input type="hidden" name="q_tag05" value="${e.q_tag05}" id="q_tag05">
-                                       </div>
+                    </div>
 					<!-- 添付ファイルボタン -->
 					<div class="file">
 					<input type="file" name="q_file" value="ファイル選択"><br>
