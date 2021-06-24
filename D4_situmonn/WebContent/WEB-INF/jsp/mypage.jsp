@@ -40,37 +40,38 @@
 
 
 
-
+<div class="scrollbar">
 <c:forEach var="e" items="${QList}" >
 <form method="GET" action="/D4_situmonn/QuestionEditServlet">
-<div class="scrollbar">
   <table class="scroll"><!-- テーブルに罫線(タグで指定)とスクロールバー -->
     <tr>
-	<td colspan="5"class="title">${e.q_title}</td>
+	<td colspan="5" class="title" align="left">${e.q_title}</td>
 	<td><input type="submit" name="editbutton" value="編集"></td>
     </tr>
     <tr>
-	<td class="q_data">${e.q_date}</td>
-	<td class="q_data">
+	<td class="q_data" align="left">${e.q_date}</td>
+	<td class="q_data" align="left">
 	  <c:if test="${e.done_tag == 0}">未解決</c:if>
 	  <c:if test="${e.done_tag == 1}">解決</c:if>
 	</td>
-	<td  class="q_data"><input type="hidden" name="q_id" value="${e.q_id}"></td>
+	<td  class="q_data"><input type="hidden" name="q_id" value="${e.q_id}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    </tr>
+    <tr class="q_tag">
+	<td align="left"><c:if test="${!empty e.q_tag01}">#${e.q_tag01}</c:if></td>
+	<td align="left"><c:if test="${!empty e.q_tag02}">#${e.q_tag02}</c:if></td>
+	<td align="left"><c:if test="${!empty e.q_tag03}">#${e.q_tag03}</c:if></td>
+	<td align="left"><c:if test="${!empty e.q_tag04}">#${e.q_tag04}</c:if></td>
+	<td align="left"><c:if test="${!empty e.q_tag05}">#${e.q_tag05}</c:if></td>
     </tr>
     <tr>
-	<td class="q_tag">${e.q_tag01}${e.q_tag02}${e.q_tag03}${e.q_tag04}${e.q_tag05}</td>
-	<!--<td bgcolor="#35a0d9">${e.q_tag02}</td>
-	<td bgcolor="#35a0d9">${e.q_tag03}</td>
-	<td bgcolor="#35a0d9">${e.q_tag04}</td>
-	<td bgcolor="#35a0d9">${e.q_tag05}</td>-->
-    </tr>
-    <tr>
-	<td class="q_data" colspan="5" class="contents">${e.q_contents}</td>
+	<td class="q_data" colspan="5" class="contents" align="left">${e.q_contents}</td>
     </tr>
   </table>
-</div>
 </form>
 </c:forEach>
+</div>
 
 <jsp:include page="/footer.jsp"/>
 </div>

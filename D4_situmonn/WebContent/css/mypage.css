@@ -15,7 +15,7 @@ h2{
 	margin-right:auto;
 }
 
-.scroll{
+/*.scroll{
   overflow-y:auto;
   max-height:290px;
   scrollbar-base-color:#0067c0;
@@ -29,6 +29,10 @@ h2{
   padding:10px 20px;
   overflow: auto;
   table-layout:fixed;
+}*/
+
+td{
+
 }
 
 .profile td{
@@ -38,7 +42,8 @@ h2{
     white-space:nowrap;
 }
 
-.scroll td{
+td .title , .contents{
+	display:block;
 	height:50px;
 	width:350px;
 	font-size:20px;
@@ -46,7 +51,7 @@ h2{
     white-space:nowrap;
 }
 
-.scroll{
+.scrollbar{
   overflow-y:auto;
   max-height:290px;
   scrollbar-base-color:#0067c0;
@@ -68,6 +73,7 @@ table .scroll{
   background-color:#35a0d9;
   height:50px;
   color:#ffffff;
+
 }
 
 .q_data{
@@ -75,9 +81,9 @@ table .scroll{
 }
 
 table .q_tag{
-  color:#ffffff;
-  background:#35a0d9;
+  color:#0067c0;
   height:5px;
+  width:10px;
 }
 
 /* プロフィール編集ボタン */

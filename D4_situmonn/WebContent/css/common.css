@@ -1,6 +1,8 @@
 @charset "UTF-8";
 
-
+*{
+	outline:1px solid #ff0000;
+}
 html{
 background-color:#35a0d9;
 }
