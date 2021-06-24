@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 html{
   background-color:#35a0d9;
 }
@@ -16,15 +17,17 @@ h2{
 table td{
   overflow-wrap:break-word;
   color:#0067c0;
+  white-space:nowrap;
 }
 
-.searchresult{
+table{
   background-color:#ffffff;
+  width:100%;
+  height:80%;
   margin:10px auto;
-  padding:10px 0;
+  padding:10px 20px;
   overflow: auto;
   table-layout:fixed;
-  width: 100%
 }
 
 .title{

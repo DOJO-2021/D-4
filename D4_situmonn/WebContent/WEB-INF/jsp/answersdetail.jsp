@@ -39,22 +39,22 @@
 						<td><input type="hidden" name="Q_ID" value="${e.q_id}"></td>
 					</tr>
 					<tr>
-						<td class="title"colspan="4">${e.q_title}</td>
+						<td class="title"colspan="3" align="left">${e.q_title}</td>
 						<td class="done_tag">
                           <c:if test="${e.done_tag == 0}">未解決</c:if>
 						  <c:if test="${e.done_tag == 1}">解決</c:if>
                         </td>
 					</tr>
-					<tr class="contents">
+					<tr class="contents" align="left">
 						<td colspan="5">${e.q_contents}</td>
 					</tr>
-					<tr class="q_tag">
-						<td class="q_tag">${e.q_tag01} ${e.q_tag02} ${e.q_tag03} ${e.q_tag04} ${e.q_tag05}</td>
-						<!--<td>${e.q_tag02}</td>
-						<td>${e.q_tag03}</td>
-						<td>${e.q_tag04}</td>
-						<td>${e.q_tag05}</td>-->
-					</tr>
+                    <tr class="q_tag">
+	                  <td align="left"><c:if test="${!empty e.q_tag01}">#${e.q_tag01}</c:if></td>
+	                  <td align="left"><c:if test="${!empty e.q_tag02}">#${e.q_tag02}</c:if></td>
+	                  <td align="left"><c:if test="${!empty e.q_tag03}">#${e.q_tag03}</c:if></td>
+	                  <td align="left"><c:if test="${!empty e.q_tag04}">#${e.q_tag04}</c:if></td>
+	                  <td align="left"><c:if test="${!empty e.q_tag05}">#${e.q_tag05}</c:if></td>
+                    </tr>
 					<tr>
 						<th class="file">添付ファイル</th>
 					<tr>
@@ -74,7 +74,7 @@
 						<td class="a_contents">回答内容</td>
                     </tr>
                     <tr>
-						<td colspan="5">${e.ans_contents}</td>
+						<td colspan="5" align="left">${e.ans_contents}</td>
 					</tr>
                  </table>
 			</c:forEach>

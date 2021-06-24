@@ -1,9 +1,11 @@
 @charset "UTF-8";
 
-.scroll{
+.scroll table{
   overflow-y:auto;
   max-height:290px;
+  width:50%;
   scrollbar-base-color:#0067c0;
+  margin-left:666px;
 }
 
 
@@ -14,6 +16,7 @@ table{
   padding:10px 20px;
   overflow: auto;
   table-layout:fixed;
+  color:#0067c0;
 }
 
 table td{
@@ -35,11 +38,10 @@ table td{
 	color:#0067c0;
 }
 
-.q_tag{
-  display:brock;
-  background-color:#0067c0;
-  height:20px;
-  color:#ffffff;
+table .q_tag{
+  color:#0067c0;
+  height:5px;
+  width:10px;
 }
 
 .file_2{
