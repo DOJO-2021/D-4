@@ -7,6 +7,11 @@ h2{
   color: #ffffff;
 }
 
+.vertical-scroll-table{
+  overflow-y:auto;
+  max-height: 600px;
+  scrollbar-base-color:#0067c0;
+}
 
 table td{
   overflow-wrap:break-word;
@@ -19,6 +24,7 @@ table td{
   padding:10px 0;
   overflow: auto;
   table-layout:fixed;
+  width: 100%
 }
 
 .title{

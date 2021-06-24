@@ -11,7 +11,7 @@
     <li><a href="/D4_situmonn/TopServlet"><span>トップページ</span></a></li>
     <li><a href="/D4_situmonn/QuestionsPostServlet"><span>質問投稿ページ</span></a></li>
     <li><a href="/D4_situmonn/MypageServlet"><span>マイページ</span></a></li>
-    <li><a href="/D4_situmonn/LoginServlet"><span>ログアウト</span></a></li>
+    <li><a href="/D4_situmonn/LogoutServlet"><span>ログアウト</span></a></li>
 </ul>
 </nav>
 </header>
