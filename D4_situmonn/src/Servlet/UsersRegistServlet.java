@@ -60,14 +60,14 @@ public class UsersRegistServlet extends HttpServlet {
 		if(UDao.insertcheck(user_id)) {
 			if (UDao.insert(new User(user_id, password, user_name, company, user_category))) {	// 登録成功
 			request.setAttribute("result",
-			new Result("登録成功！", "/WEB-INF/jsp/top.jsp"));
+			new Result("登録成功しました！トップページに遷移します。"));
 			//トップページに遷移する
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 			dispatcher.forward(request, response);
 	    	} //resultのbeansがないので赤線が出る。作成するか相談する。
 	     	else {
 			request.setAttribute("result",
-			new Result("登録失敗！", "/WEB-INF/jsp/usersregist.jsp"));
+			new Result("登録失敗！"));
 			// 結果ページにフォワードする
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usersregist.jsp");
 			dispatcher.forward(request, response);
@@ -75,13 +75,11 @@ public class UsersRegistServlet extends HttpServlet {
 		}
 		else {
 			request.setAttribute("result",
-			new Result("入力されたIDは既に使用されています！", "/WEB-INF/jsp/usersregist.jsp"));
-
+			new Result("入力されたIDは既に使用されています！"));
+			// 同じページにフォワードする
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/usersregist.jsp");
+			dispatcher.forward(request, response);
 		}
-
-		// 結果ページにフォワードする
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
-		dispatcher.forward(request, response);
 	}
 
 }

@@ -131,11 +131,11 @@ public class QuestionsPostServlet extends HttpServlet {
 	    	// Questionのuser_idは保留。どうやって情報を取得するのか？
 	    	// Stringに変えるのか？
 	    	request.setAttribute("result",
-			new Result("質問登録成功！", "/WEB-INF/jsp/top.jsp"));
+			new Result("質問登録成功！"));
 	    	}
 	     	else {
 			request.setAttribute("result",
-			new Result("質問登録失敗！", "/WEB-INF/jsp/top.jsp"));
+			new Result("質問登録失敗！"));
 	    	}
 
 	    // テンプレ挿入機能はどのようにしたらよいか？
@@ -143,7 +143,7 @@ public class QuestionsPostServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 		dispatcher.forward(request, response);
 	}
-	
+
 	private String getFileName(Part part) {
 		String name = null;
         for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
