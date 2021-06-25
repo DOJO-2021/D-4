@@ -13,7 +13,7 @@
 	<script type="text/javascript">
 	'use strict';
 
-	function check(){
+	function conf(){
     	const q_tag1 = document.getElementById("question_tag1");
       	const question_tag1 = q_tag1.value;
       	const q_tag2 = document.getElementById("question_tag2");
@@ -107,7 +107,7 @@
 			<jsp:include page="/header.jsp"/>
 			<h2>質問編集</h2>
 
-			<form method="POST" enctype="multipart/form-data" action="/D4_situmonn/QuestionEditServlet" onSubmit="return check()">
+			<form method="POST" enctype="multipart/form-data" action="/D4_situmonn/QuestionEditServlet" onSubmit="conf()">
 				<c:forEach var="e" items="${QEdit}" >
 				       <div class="question">
 					<input type="hidden" name="q_id" value="${e.q_id}">
