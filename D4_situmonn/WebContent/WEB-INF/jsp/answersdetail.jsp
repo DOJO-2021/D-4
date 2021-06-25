@@ -58,7 +58,7 @@
 					<tr>
 						<th class="file">添付ファイル</th>
 					<tr>
-						<td class="file_2">${e.q_file}</td>
+						<td class="file_2"><a href="${e.q_file}">${e.q_file}</a></td>
 					</tr>
 				</table>
 			</c:forEach>
