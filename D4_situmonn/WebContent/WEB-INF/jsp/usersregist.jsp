@@ -14,14 +14,17 @@
 <script>
 'use strict';
 function check(){
-	if(window.confirm('登録完了しました。トップページへ移行します。')){ // 確認ダイアログを表示
-		return true; // 「OK」時は送信を実行
+	var cword = getElementById("message");
+	if (cword.value != null || !cword.value.equals("")) {
+		if(window.confirm('登録完了しました。トップページへ移行します。')){ // 確認ダイアログを表示
+			return true; // 「OK」時は送信を実行
+		}
 	}
 }
 </script>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper" onload="check();">
 <jsp:include page="/headernologin.jsp"/>
   <h2>ユーザー登録</h2>
     <form method="POST" action="/D4_situmonn/UsersRegistServlet">
@@ -56,7 +59,7 @@ function check(){
 	</div>
 	<input type="submit" name="regist_button" value="サインアップ"><br>
     </form>
-   <p><c:out value="${result.message}" /></p>
+   <p><c:out value="${result.message}" ></c:out></p>
 </div>
 </body>
   <jsp:include page="/footer.jsp"/>
