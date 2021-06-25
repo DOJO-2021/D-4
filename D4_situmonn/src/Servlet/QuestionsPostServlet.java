@@ -1,15 +1,23 @@
 package Servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
 import dao.QuestionsDao;
 import dao.TemplateDao;
@@ -18,12 +26,11 @@ import model.Question;
 import model.Result;
 import model.Template;
 
-
-
 /**
  * Servlet implementation class QuestionsPostServlet
  */
 @WebServlet("/QuestionsPostServlet")
+@MultipartConfig
 public class QuestionsPostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	//private ServletRequest request;
@@ -66,6 +73,37 @@ public class QuestionsPostServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		  // リクエストパラメータを取得する?
     	request.setCharacterEncoding("UTF-8");
+		Collection<Part> parts = request.getParts();
+
+		HashMap<String, String> map = new HashMap<String, String>();
+		String uploadFileName = "";
+		String uploadFolder = "C:\\pleiades\\workspace\\D-4\\D4_situmonn\\WebContent\\WEB-INF\\";
+		//String uploadFolder = this.getServletContext().getRealPath("/WEB-INF/");
+
+		//Part imgPart = null;
+
+		for(Part part:parts) {
+			String contentType = part.getContentType();
+			if (contentType == null) {
+				try(InputStream inputStream = part.getInputStream()) {
+					BufferedReader bufReader = new BufferedReader(new InputStreamReader(inputStream));
+					String val = (String)bufReader.lines().collect(Collectors.joining());
+					map.put(part.getName(), val);
+				}
+				catch (IOException e) {
+					throw new RuntimeException(e);
+				}
+			}
+			else {
+				uploadFileName = this.getFileName(part);
+				if (uploadFileName != null && !uploadFileName.equals("")) {
+					part.write(uploadFolder + uploadFileName);
+				}
+
+				//imgPart = part;
+			}
+		}
+
 	    String q_title = request.getParameter("question_title");
 	    String q_contents = request.getParameter("question_contents");
 	    String q_tag01 = request.getParameter("question_tag1");
@@ -75,7 +113,9 @@ public class QuestionsPostServlet extends HttpServlet {
 	    String q_tag05 = request.getParameter("question_tag5");
 	    String user_id = request.getParameter("user_id");
 	    String q_file = request.getParameter("file_select");
-
+	    if (uploadFileName != null && !uploadFileName.equals("")) {
+	    	q_file = uploadFolder + uploadFileName ;
+	    }
 
 		// 質問タグを最低1つ、最大5つ選択する
 
@@ -103,5 +143,18 @@ public class QuestionsPostServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/top.jsp");
 		dispatcher.forward(request, response);
 	}
+	
+	private String getFileName(Part part) {
+		String name = null;
+        for (String dispotion : part.getHeader("Content-Disposition").split(";")) {
+            if (dispotion.trim().startsWith("filename")) {
+                name = dispotion.substring(dispotion.indexOf("=") + 1).replace("\"", "").trim();
+                name = name.substring(name.lastIndexOf("\\") + 1);
+                break;
+            }
+        }
+		return name;
+	}
+
 
 }
