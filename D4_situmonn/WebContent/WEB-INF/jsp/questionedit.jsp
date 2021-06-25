@@ -107,7 +107,7 @@
 			<jsp:include page="/header.jsp"/>
 			<h2>質問編集</h2>
 
-			<form method="POST" enctype="multipart/form-data" action="/D4_situmonn/QuestionEditServlet" onSubmit="conf()">
+			<form method="POST" enctype="multipart/form-data" action="/D4_situmonn/QuestionEditServlet" onSubmit="return conf()">
 				<c:forEach var="e" items="${QEdit}" >
 				       <div class="question">
 					<input type="hidden" name="q_id" value="${e.q_id}">
