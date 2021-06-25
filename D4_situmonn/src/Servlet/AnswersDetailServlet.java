@@ -83,10 +83,10 @@ public class AnswersDetailServlet extends HttpServlet {
 		//登録処理を行う
 		AnswersDao ansDao = new AnswersDao();
 		if (ansDao.insert(new Answer(0, Q_ID, ANS_CONTENTS, USER_ID.getId(), null))){  //登録成功
-			request.setAttribute("result",new Result("回答を送信しました。"));
+			request.setAttribute("result",new Result("回答を送信しました。", "/WEB-INF/jsp/answersdetail.jsp"));
 		}
 		else {	// 登録失敗
-			request.setAttribute("result",new Result("回答を送信できませんでした。"));
+			request.setAttribute("result",new Result("回答を送信できませんでした。", "/WEB-INF/jsp/answersdetail.jsp"));
 		}
 
 		//質問詳細情報取得

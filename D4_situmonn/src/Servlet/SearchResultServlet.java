@@ -70,11 +70,11 @@ public class SearchResultServlet extends HttpServlet {
 		QuestionsDao cDao = new QuestionsDao();
         if (cDao.updateCountup(q_id))  {
     	request.setAttribute("result",
-		new Result("閲覧回数を更新しました。"));
+		new Result("閲覧回数を更新しました。", "/WEB-INF/jsp/answersdetail.jsp"));
     	}
      	else {
 		request.setAttribute("result",
-		new Result("閲覧回数を更新できませんでした。"));
+		new Result("閲覧回数を更新できませんでした。", "/WEB-INF/jsp/answersdetail.jsp"));
     	}
 
 		//質問詳細ページにフォワードする

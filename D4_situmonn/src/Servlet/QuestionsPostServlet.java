@@ -91,11 +91,11 @@ public class QuestionsPostServlet extends HttpServlet {
 	    	// Questionのuser_idは保留。どうやって情報を取得するのか？
 	    	// Stringに変えるのか？
 	    	request.setAttribute("result",
-			new Result("質問登録成功！"));
+			new Result("質問登録成功！", "/WEB-INF/jsp/top.jsp"));
 	    	}
 	     	else {
 			request.setAttribute("result",
-			new Result("質問登録失敗！"));
+			new Result("質問登録失敗！", "/WEB-INF/jsp/top.jsp"));
 	    	}
 
 	    // テンプレ挿入機能はどのようにしたらよいか？
