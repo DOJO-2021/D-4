@@ -14,9 +14,11 @@ h2{
   scrollbar-base-color:#0067c0;
 }
 
-table td{
+.searchresult td{
   overflow-wrap:break-word;
   color:#0067c0;
+  white-space:nowrap;
+  overflow-wrap:break-word;
   white-space:nowrap;
 }
 
@@ -28,6 +30,8 @@ table{
   padding:10px 20px;
   overflow: auto;
   table-layout:fixed;
+  overflow-wrap:break-word;
+  white-space:nowrap;
 }
 
 .title{
