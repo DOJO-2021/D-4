@@ -135,11 +135,11 @@ public class QuestionEditServlet extends HttpServlet {
         //どうやって情報を取得するのか？
 
     	request.setAttribute("result",
-		new Result("質問を更新しました。", "/D4_situmonn/MypageServlet"));
+		new Result("質問を更新しました。"));
     	}
      	else {
 		request.setAttribute("result",
-		new Result("質問を更新できませんでした。", "/D4_situmonn/MypageServlet"));
+		new Result("質問を更新できませんでした。"));
     	}
 
         // キャンセルをクリック→jspで記述したのでいらない。

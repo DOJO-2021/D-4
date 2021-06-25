@@ -73,10 +73,10 @@ public class ProfileEditServlet extends HttpServlet {
 		//更新処理
 		UsersDao UDao = new UsersDao();
 		if (UDao.update(new User(user_id, password, user_name, company, ""))){
-			request.setAttribute("result", new Result("プロフィールを更新しました。", "/D4_situmonn/MypageServlet"));
+			request.setAttribute("result", new Result("プロフィールを更新しました。"));
 		}
 		else {
-			request.setAttribute("result", new Result("プロフィールの更新に失敗しました。", "/D4_situmonn/MypageServlet"));
+			request.setAttribute("result", new Result("プロフィールの更新に失敗しました。"));
 		}
 		// マイページにリダイレクトする
         response.sendRedirect("/D4_situmonn/MypageServlet");
