@@ -61,7 +61,7 @@
 							<input class="order1" type="text" name="question_title" placeholder="質問タイトル" required class="ef">
 						</div>
 						<!-- 質問内容 -->
-						<textarea id="text" name="question_contents"  placeholder="質問内容"  rows="100" cols="140" required></textarea><br>
+						<textarea class="q_contents" id="text" name="question_contents"  placeholder="質問内容"  rows="100" cols="140" required></textarea><br>
 
 						<!-- 「テンプレート挿入ボタン」をクリックすると、以下のメッセージが「5.質問内容」に挿入される。
 						全文、変更/削除可能である。 -->
@@ -145,7 +145,6 @@
 								<option value="運営事務局宛て">運営事務局宛て</option>
 								<option value="その他">その他</option>
 							</select><br><br>
-						</div>
 						<!-- 最低1個、最大5個まで。←これはServletでやる -->
 						<!-- 「6.ファイル選択（添付ファイル）」をクリック。ファイル選択ダイアログ
 						JSPはどこまで書けばいいか？全部javascriptか？
@@ -159,6 +158,7 @@
 						<!-- 質問タグが1つも入力されていなかった場合、アラートを表示←servlet
 						データ送信されずに元の入力画面(questionpost?)に戻る。
 						入力内容は保持されるか？ -->
+					    </div>
 					</form>
 				</div>
 			</div>

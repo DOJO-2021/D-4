@@ -61,14 +61,12 @@ table .q_tag{
   height:20px;
   color:#ffffff;
 }
-.file_2{
-	color:#ffffff;
-}
 
 .a_name{
   display:block;
   background-color:#0067c0;
   height:20px;
+  width:250px;
   color:#ffffff;
 }
 

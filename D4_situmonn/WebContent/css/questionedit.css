@@ -18,7 +18,6 @@ input[type="text"]{ /*タイトル部分のデザイン*/
   height: 70px;
   padding: 0.3em;
   letter-spacing: 1px;
-  color:#35a0d9;
   padding-left: 40px;
   box-shadow: 1px 1px 2px 0 #707070 inset;
 }
@@ -48,7 +47,6 @@ textarea{/*質問内容部分のデザイン*/
   height: 300px;
   padding: 0.3em;
   letter-spacing: 1px;
-  color:#0067c0;
   padding-left: 40px;
   box-shadow: 1px 1px 2px 0 #707070 inset;
 }
