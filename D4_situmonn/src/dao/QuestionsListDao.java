@@ -292,7 +292,7 @@ public class QuestionsListDao {
 					+ "D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or "
 					+ "D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or D_QUESTIONS.Q_TAG05 = ? or "
 					+ "D_QUESTIONS.Q_CONTENTS like ? ) and D_QUESTIONS.DONE_TAG = 0 "
-					+ "order by D_QUESTIONS.Q_DATE desc, D_QUESTIONS.Q_ID";
+					+ "order by D_QUESTIONS.Q_DATE, D_QUESTIONS.Q_ID";
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
