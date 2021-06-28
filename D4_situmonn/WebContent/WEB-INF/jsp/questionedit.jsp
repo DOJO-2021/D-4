@@ -25,7 +25,7 @@
       	const q_tag5 = document.getElementById("question_tag5");
       	const question_tag5 = q_tag5.value;
         if(question_tag1 != "" || question_tag2 != "" || question_tag3 != "" || question_tag4 != "" || question_tag5 != ""){
-        	if(window.confirm('質問内容を投稿しますか？')){ // 確認ダイアログを表示
+        	if(window.confirm('質問内容を更新しますか？')){ // 確認ダイアログを表示
         		return true; // 「OK」時は送信を実行
         	    }
         	    else {
