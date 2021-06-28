@@ -23,7 +23,7 @@ function check(){
 			window.alert('パスワードの値が一致していません。');
 			return false;
 		}
-		else if(window.confirm('回答を送信してもよろしいですか？')){ // 確認ダイアログを表示
+		else if(window.confirm('編集内容を更新してもよろしいですか？')){ // 確認ダイアログを表示
 			return true; // 「OK」時は送信を実行
 		}
 		else{ // 「キャンセル」時の処理
