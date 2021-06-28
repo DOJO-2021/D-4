@@ -48,7 +48,6 @@ textarea{/*質問内容部分のデザイン*/
   height: 300px;
   padding: 0.3em;
   letter-spacing: 1px;
-  color:#0067c0;
   padding-left: 40px;
   box-shadow: 1px 1px 2px 0 #707070 inset;
 }
@@ -72,6 +71,10 @@ textarea:focus::after {/*質問内容部分のデザイン*/
 	display:flex;
 	flex-direction:row-reverse;
 	justify-content:space-evenly;
+}
+.tag_name{
+	display:block;
+	padding-left:250px;
 }
 
 .tag_name{/*タグの周りの余白設定*/
