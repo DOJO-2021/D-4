@@ -53,9 +53,9 @@ function check(){
 	<br>
 	<div class = "user_category">
 	  <p>当てはまるものを1つ選んでください</p>
-	  <input type="radio" id="u1" name="user_category" value="student" required><label class="user_c" for="u1">受講生</label>
-	  <input type="radio" id="u2" name="user_category" value="teacher"><label class="user_c" for="u2">講師</label>
-	  <input type="radio" id="u3" name="user_category" value="admin"><label class="user_c" for="u3">運営事務局</label><br>
+	  <input type="radio" id="u1" name="user_category" value="受講生" required><label class="user_c" for="u1">受講生</label>
+	  <input type="radio" id="u2" name="user_category" value="講師"><label class="user_c" for="u2">講師</label>
+	  <input type="radio" id="u3" name="user_category" value="運営事務局"><label class="user_c" for="u3">運営事務局</label><br>
 	</div>
 	<input type="submit" name="regist_button" value="サインアップ"><br>
     </form>

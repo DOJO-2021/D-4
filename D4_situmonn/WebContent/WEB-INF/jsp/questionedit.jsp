@@ -5,7 +5,7 @@
 <html>
 	<head>
 	<meta charset="UTF-8">
-	<title>質問・相談システム(仮)|質問編集</title>
+	<title>Qbox|質問編集</title>
 	    <link rel="stylesheet" href="/D4_situmonn/css/common.css">
 	<link rel="stylesheet" href="/D4_situmonn/css/questionedit.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
